@@ -1,0 +1,169 @@
+*{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-decoration: none;
+  }
+  .leftLogo{
+    float: left; 
+    align-self: center; 
+    margin-left: 10px;
+  }
+    .StartBlock{
+      align-self: center;
+  }
+        .divH p {
+            color: black;
+            display: block;
+            text-decoration: none;
+            font-family: inherit;
+            margin-top: -30px;
+            text-align: center;
+            text-decoration: none;
+        }
+        .search {
+            margin-right: 70px;
+        }
+        .searchTerm {
+        width: 700px;
+        border: 3px solid #00B4CC;
+        border-radius: 5px 0 0 5px;
+        outline: none;
+        color: black;
+        font-size: 15px;
+        }
+
+        .searchButton {
+            width: 40px;
+            height: 50px;
+            border: 1px solid #00B4CC;
+            background: #00B4CC;
+            text-align: center;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+             
+
+        .divH p{
+            text-align: center;
+            padding-left: 20px;
+            align-items: center;
+            padding-top: 6px;
+            
+        }
+        .divBuxheti p {
+            text-align: center;
+            color: black;
+            text-decoration: none;
+            font-family: inherit;
+            padding-left: 20px;
+            margin-top: -24px;
+           
+
+
+        }
+        .StartBlock ul li{  
+            color: white; 
+            padding-left: 10px;
+            font-size: 20px;
+
+        }
+        .StartBlock ul{
+            display: flex;
+             list-style: none;
+        }
+        .header{
+            display: flex; justify-content: space-between; background-color: black;  height: 120px;
+        }
+        .search{
+            align-self: center ;
+             display: flex;
+        }
+        .searchTerm{
+            height: 50px; 
+            align-self: center
+        }
+        .searchButton{
+            align-self: center;
+        }
+        .rightBlock{
+            display: flex;
+             align-self:center;
+              padding: 5px;
+        }
+        .divH{
+            margin-right: 10px;
+            padding-left: 20px;
+            width: 140px;
+            height: 40px;
+            background-color: 
+            #fafbfc;
+            align-items: center;
+            border-radius: 9px;
+        }
+            .divBuxheti{
+            width: 140px;
+            padding-left: 20px;
+            height: 40px;
+            background-color: 
+            #fafbfc;
+            align-items: center;
+            border-radius: 9px;
+            }
+        .menuHolder{
+            height: 60px;
+            background-color: gray;
+           
+        }
+        .Menut {
+            display: inline;
+            align-self: center;
+            
+        }
+        .Menut ul{
+            display: flex;
+            justify-content: flex-start;
+            justify-content: space-evenly;
+            margin:0px;
+            
+
+
+        }
+      
+        .Menut ul li{
+            list-style: none;
+            color: white;
+            margin-top: 22px;
+            
+        }
+
+       
+        .partners{
+            align-items: center;
+            align-content: center;
+            text-align: center;
+            justify-content: space-between;
+            background-color: #e4e4e4;
+            height: 170px;
+        
+          }
+          .imgHolder img{
+            justify-content: space-between;
+            padding-left: 40px;
+          }
+          
+
+          .divF{
+            background-color: #f3f3f3; 
+            width: auto;
+            display: flex;
+            text-align: center;
+            justify-content: space-evenly;
+            height: 700px;
+          
+            }
+            .Pay{
+              justify-content: space-evenly;
+              text-align: right;
+            }
