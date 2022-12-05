@@ -102,3 +102,15 @@ body{
     display: flex;
     justify-content: center;
 }
+#validationInfo{
+    color: aliceblue;
+}
+.valid-info-container{
+    width: 60%;
+    height: 10%;
+    transform: translateY(-107%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
