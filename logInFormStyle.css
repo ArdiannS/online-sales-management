@@ -114,3 +114,15 @@ body{
     align-items: center;
     position: absolute;
 }
+.valid-info-container-log-in{
+    width: 40%;
+    height: 10%;
+    transform: translateY(140%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+#logInValidationInfo{
+    color: aliceblue;
+}

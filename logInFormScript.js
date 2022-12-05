@@ -48,9 +48,28 @@ window.addEventListener('load',function(){
       let username = valArray[0];
       accounts[username] = [];
       for(let i = 0; i < valArray.length; i++)
+        i == 4?accounts[username].push(valArray[i].hashCode()):
         accounts[username].push(valArray[i]);
       emails[valArray[3]] = null;
+      console.log(accounts[username][4]);
       document.getElementById("validationInfo").innerHTML = "Keni regjistruar llogarine me sukses.";
+   });
+   document.getElementById("logInAccount").addEventListener('click', function(){
+      let username = document.getElementById("logInUsername").value;
+      let password = document.getElementById("logInPassword").value;
+      if(username == null || username.length == 0){
+         document.getElementById("logInValidationInfo").innerHTML = "Shenoni nje username.";
+         return;
+      }
+      if(!(username in accounts)){
+         document.getElementById("logInValidationInfo").innerHTML = "Username qe keni shenuar nuk ekziston";
+         return;
+      }
+      if(password.hashCode() != accounts[username][4]){
+         document.getElementById("logInValidationInfo").innerHTML = "Password-i qe keni shenuar nuk ju perputhet username.";
+         return;
+      }
+      window.location.href = "index.html";
    });
 });
 function validateUsername(id, msgId){
@@ -128,3 +147,14 @@ function validatePhoneNumber(id, msgId){
    }
    return val;
 }
+String.prototype.hashCode = function() {
+   var hash = 0,
+     i, chr;
+   if (this.length === 0) return hash;
+   for (i = 0; i < this.length; i++) {
+     chr = this.charCodeAt(i);
+     hash = ((hash << 5) - hash) + chr;
+     hash |= 0;
+   }
+   return hash;
+ }
