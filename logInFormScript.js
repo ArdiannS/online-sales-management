@@ -1,4 +1,5 @@
-
+let accounts = {};
+let emails = {};
 window.addEventListener('load',function(){
     document.getElementById("registerButton").addEventListener('click',function(){
          document.getElementById("logIn").style.opacity = 0;
@@ -32,4 +33,98 @@ window.addEventListener('load',function(){
                },750);
             },300);
     });
+
+   document.getElementById("registerAccount").addEventListener("click", () => {
+      let valArray = [validateUsername("registerUsername", "validationInfo"),
+      validateString("registerEmri", "validationInfo", "Emri"),
+      validateString("registerMbiemri", "validationInfo","Mbiemri"),
+      validateEmail("registerEmail", "validationInfo"),
+      validatePassword("registerPassword", "validationInfo"),
+      validateString("registerQyteti", "validationInfo","Qyteti"),
+      validateAge("registerDitelindja","validationInfo"),
+      validatePhoneNumber("registerNumriTelefonit", "validationInfo")];
+      for(let i = 0; i < valArray.length; i++)
+        if(valArray[i] == false)return;
+      let username = valArray[0];
+      accounts[username] = [];
+      for(let i = 0; i < valArray.length; i++)
+        accounts[username].push(valArray[i]);
+      emails[valArray[3]] = null;
+      document.getElementById("validationInfo").innerHTML = "Keni regjistruar llogarine me sukses.";
+   });
 });
+function validateUsername(id, msgId){
+  let val = document.getElementById(id).value;
+  if(val in accounts){
+   document.getElementById(msgId).innerHTML = "Username eshte ne perdorim.";
+   return false;
+  } 
+  if(val == "" || val == null){
+     document.getElementById(msgId).innerHTML = "Username nuk eshte valid.";
+     return false;
+   }
+  return val;
+}
+function validateString(id, msgId, str){
+   let val = document.getElementById(id).value;
+   if(val == null || val.length == 0) 
+   {
+      document.getElementById(msgId).innerHTML = str+" nuk eshte valid.";
+      return false;
+   }
+   return val;
+}
+function validateEmail(id, msgId){
+   let val = document.getElementById(id).value;
+   let target = "@gmail.com";
+   if(val in emails){
+      document.getElementById(msgId).innerHTML = "Email eshte ne perdorim.";
+      return false;
+   }
+   if(val == null|| val.length <= target.length){
+       document.getElementById(msgId).innerHTML = "Email nuk eshte ne valid.";
+       return false;
+   }
+   let isValid = false;
+   while(!isValid){
+      isValid = true;
+      for(let i = val.length-1, j = target.length-1; i >= isValid.length-target.length; i--)
+        if(val.charAt(i) != target.charAt(j--)){
+         document.getElementById(msgId).innerHTML = "Email nuk eshte valid.";
+         return false;
+      }
+   }
+   return val;
+}
+function validatePassword(id, msgId){
+   let val = document.getElementById(id).value;
+   if(val == null || val.length < 6){
+       document.getElementById(msgId).innerHTML = "Password-i nuk eshte valid.";
+       return false;
+   }
+   return val;
+}
+function validateAge(id, msgId){
+   let val = document.getElementById(id).value;
+   if(val == null || val == undefined || val == ""){
+      document.getElementById(msgId).innerHTML = "Duhesh te kesh nje ditelindje.";
+      return;
+   }
+   let date = new Date();
+   let stringDate = date.toISOString();
+   let valTime = val.slice(0,4)+val.slice(5,7)+val.slice(8,10);
+   let time = stringDate.slice(0,4)+stringDate.slice(5,7)+stringDate.slice(8,10);
+   if(time < valTime){
+      document.getElementById(msgId).innerHTML = "Duhesh te kesh nje ditelindje valide.";
+      return;  
+   }
+   return val;
+}
+function validatePhoneNumber(id, msgId){
+   let val = document.getElementById(id).value;
+   if(val.length != 9){
+      document.getElementById(msgId).innerHTML = "Numri i telefonit nuk eshte valid.";
+      return false;
+   }
+   return val;
+}
