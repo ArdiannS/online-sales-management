@@ -184,7 +184,7 @@ body{
     display: flex;
     text-align: center;
     justify-content: space-evenly;
-    height: 20%;
+    height: 100%;
 
 }
 
@@ -240,7 +240,7 @@ body{
     transform: translate(-100%, 55%);
 }
 .special-offers-image:hover + .special-offers-information-holder .special-offers-description-holder{
-    opacity: 0.5;
+    /* opacity: 0.5; */
 }
 .special-offers-image:hover + .special-offers-information-holder .special-offers-description{
     opacity: 1;
@@ -280,4 +280,5 @@ body{
 }
 .main-footer{
     height: 200px;
+    margin-top: -16px;
 }
