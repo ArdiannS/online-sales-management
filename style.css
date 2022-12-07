@@ -239,9 +239,7 @@ body{
 .special-offers-image:hover + .special-offers-information-holder{
     transform: translate(-100%, 55%);
 }
-.special-offers-image:hover + .special-offers-information-holder .special-offers-description-holder{
-    /* opacity: 0.5; */
-}
+
 .special-offers-image:hover + .special-offers-information-holder .special-offers-description{
     opacity: 1;
 }
@@ -282,3 +280,211 @@ body{
     height: 200px;
     margin-top: -16px;
 }
+.block{
+    background-color: black;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+
+.leftBlock ul{
+    display: flex;
+    list-style: none;
+
+}
+.leftBlock ul li{
+    padding-left: 10px;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   font-size: 20px;
+   color: white;
+    
+}
+.Story h3 {
+    text-align: center;
+    font-size: 60px;
+    align-self: center;
+    margin-top: auto;
+
+    
+}
+.Story p {
+    text-align: center;
+    font-size: 30px;
+    justify-content: center;
+}
+.Story {
+    background-color: inherit;
+    height: 100%;
+}
+.center {
+    width: 700px; 
+    padding: 20px;
+    border-radius: 30px;
+    margin: auto;
+    
+  }
+  .paragraphs{
+    background-color: gray;
+    height:  320px;
+    
+  }
+  .paragraphs h3{
+    padding-top: 20px;
+  }
+
+  .divAb{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+    width: 1900px;
+
+  }
+  .divP{
+    width: 150px;
+  }
+  .Orari table {
+   text-align: center;
+   justify-content: flex-end;
+   align-self: flex-end;
+  }
+  .Orari{
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 70px;
+  }
+  .Lokacioni{
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+    padding-left: 50px;
+  }
+  .Lokacioni h5{
+    padding-left: 100px;
+  }
+  .pHolder{
+    display: flex;
+    justify-content: center;
+    background-color:  gray;
+    height: 500px;
+    font-size: 40px;
+  }
+  .picsHolder{
+    display: flex; 
+    justify-content: center;
+    margin-top: -170px;
+    gap: 50px;
+    
+    
+  }
+
+  #firstP {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bolder;
+    font-family: Oswald, sans-serif !important;
+  }
+  #secondP {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bolder;
+    font-family: Oswald, sans-serif !important;
+  }
+  #thirdP{
+    text-align: center;
+    font-size: 24px;
+    font-weight: bolder;
+    font-family: Oswald, sans-serif !important;
+  }
+  #p01{
+    color: greenyellow;
+    font-family:'Open Sans',sans-serif;
+    font-size: 16px;
+  }
+  #p02{
+    font-family:'Open Sans',sans-serif;
+
+  }
+  #p03{
+    color: gray;
+    font-family:'Open Sans',sans-serif;
+    font-size: 18px;
+  }
+  #p04{
+    font-family:'Open Sans',sans-serif;
+  }
+  #p05{
+    color: gray;
+    font-size: 18px;
+  }
+
+  #p01{
+    color: gray;
+    font-family:'Open Sans',sans-serif;
+    font-size: 18px;
+  }
+
+  .box1{
+    border: #f3f3f3;
+    background-color: white;
+    
+  }
+  .box2{
+    border: #f3f3f3;
+    background-color: white;
+    
+  }.box3{
+    border: #f3f3f3;
+    background-color: white;
+    
+  }
+  .paragafi{
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+  }
+  .contactForm form input{
+    height: 35px;
+    gap: 10px;
+    border-radius: 20px;
+    border: none;
+    margin-top: 10px;
+  }
+  textarea{
+    border-radius: 15px;
+    text-align: start;
+    
+  }
+  #but{
+    width: 80px;
+    height: 35px;
+    background-color: rgb(152, 53, 209);
+    border: none;
+    border-radius: 20px;
+  }
+  .Technologies {
+    display: flex;
+    justify-content: start;
+    margin-left: 200px;
+    margin-top: 50px;
+    height: 100%;
+  }
+  .TechnologiesHolder{
+    text-align: center;
+    padding-top: 30px;
+    color: lightblue;
+  }
+
+  
+  #photo2{
+    border-radius: 40px;
+  }
+  body{
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+
