@@ -2,6 +2,10 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-decoration: none;
 }
+a{
+    text-decoration: none;
+    color: black;
+}
 
 .leftLogo {
     float: left;
@@ -188,9 +192,8 @@ body{
 
 }
 
-.Pay {
-    justify-content: space-evenly;
-    text-align: right;
+.Pay img:hover{
+    transform: scale(1.5);
 }
 .special-offers{
     width:100%;
@@ -217,7 +220,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     height: 40%;
-    width: 28%;
+    width: 28%; 
     transition: all ease-in-out 0.4s;
 }
 .special-offers-title{
@@ -334,32 +337,29 @@ body{
   .paragraphs h3{
     padding-top: 20px;
   }
-
   .divAb{
     display: flex;
-    justify-content: space-evenly;
+    align-items: center;
+    justify-content: center;
     margin-top: 50px;
-    width: 1900px;
-
+    gap: 300px;
   }
   .divP{
-    width: 150px;
+    display: flex;
+    justify-content: flex-start;
+
   }
   .Orari table {
    text-align: center;
    justify-content: flex-end;
    align-self: flex-end;
   }
-  .Orari{
-    display: flex;
-    justify-content: flex-end;
-    margin-left: 70px;
-  }
+
   .Lokacioni{
     display: flex;
     margin-top: 50px;
     justify-content: center;
-    padding-left: 50px;
+    
   }
   .Lokacioni h5{
     padding-left: 100px;
@@ -376,71 +376,26 @@ body{
     justify-content: center;
     margin-top: -170px;
     gap: 50px;
-    
-    
+  }
+  #firstP, #secondP, #thirdP{
+    text-align: center;
+    font-size: 24px;
+    font-weight: bolder;
   }
 
-  #firstP {
-    text-align: center;
-    font-size: 24px;
-    font-weight: bolder;
-    font-family: Oswald, sans-serif !important;
-  }
-  #secondP {
-    text-align: center;
-    font-size: 24px;
-    font-weight: bolder;
-    font-family: Oswald, sans-serif !important;
-  }
-  #thirdP{
-    text-align: center;
-    font-size: 24px;
-    font-weight: bolder;
-    font-family: Oswald, sans-serif !important;
-  }
-  #p01{
-    color: greenyellow;
-    font-family:'Open Sans',sans-serif;
-    font-size: 16px;
-  }
-  #p02{
-    font-family:'Open Sans',sans-serif;
 
-  }
-  #p03{
-    color: gray;
-    font-family:'Open Sans',sans-serif;
-    font-size: 18px;
-  }
-  #p04{
-    font-family:'Open Sans',sans-serif;
-  }
-  #p05{
+  #p01,#p03,#p05{
     color: gray;
     font-size: 18px;
   }
 
-  #p01{
-    color: gray;
-    font-family:'Open Sans',sans-serif;
-    font-size: 18px;
+  .box1,.box2,.box3{
+    border: #f3f3f3;
+    background-color: white;
+    
   }
 
-  .box1{
-    border: #f3f3f3;
-    background-color: white;
-    
-  }
-  .box2{
-    border: #f3f3f3;
-    background-color: white;
-    
-  }.box3{
-    border: #f3f3f3;
-    background-color: white;
-    
-  }
-  .paragafi{
+  .paragrafi{
     display: flex;
     justify-content: center;
     gap: 200px;
@@ -464,6 +419,7 @@ body{
     border: none;
     border-radius: 20px;
   }
+
   .Technologies {
     display: flex;
     justify-content: start;
@@ -476,15 +432,18 @@ body{
     padding-top: 30px;
     color: lightblue;
   }
-
-  
   #photo2{
     border-radius: 40px;
   }
-  body{
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
+  #firstGit:hover{
+    transform: scale(0.5);
   }
+  #firstLinkedin:hover{
+    transform: scale(0.5);
+  }
+  
+
+
+
 
 
