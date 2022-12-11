@@ -1,3 +1,8 @@
+html{
+    height: 100%;
+    width: 100%;
+}
+
 * {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-decoration: none;
@@ -32,6 +37,8 @@ a{
 }
 body{
     display: relative;
+    height: 100%;
+    width: 100%;
 }
 .searchTerm {
     width: 700px;
@@ -188,8 +195,7 @@ body{
     display: flex;
     text-align: center;
     justify-content: space-evenly;
-    height: 100%;
-
+    height: 30%;
 }
 
 .Pay img:hover{
@@ -285,11 +291,10 @@ body{
 }
 .block{
     background-color: black;
-    height: 100%;
+    height: 10%;
     margin: 0;
     display: flex;
     justify-content: space-between;
-    
 }
 
 
@@ -368,14 +373,14 @@ body{
     display: flex;
     justify-content: center;
     background-color:  gray;
-    height: 500px;
+    height: 30%;
     font-size: 40px;
   }
   .picsHolder{
     display: flex; 
-    justify-content: center;
-    margin-top: -170px;
-    gap: 50px;
+    justify-content: space-around;
+    height: 30%;
+    width: 100%;
   }
   #firstP, #secondP, #thirdP{
     text-align: center;
@@ -441,8 +446,87 @@ body{
   #firstLinkedin:hover{
     transform: scale(0.5);
   }
-  
-
+  .team-members-card{
+    background-color: rgb(184, 181, 181);
+    height: 100%;
+    border-radius: 10px;
+    opacity: 0.7;
+    cursor: pointer;
+    border: 4px solid black;
+    width: 25%;
+    transform: translateY(70%);
+    transition: transform ease-in-out 0.4s, opacity ease-in-out 0.25s;
+  }
+  .about-team-members-content-container{
+     margin-top: 3%;
+     margin-left: 3%;
+     height: 30%;
+     width: 30%;
+     background-color: black;
+     opacity: 0.5;
+  }
+  .about-team-members-content{
+    position: absolute;
+    color: white;
+    transform: translate(40%, -325%);
+    font-size: 2.5rem;
+    font-weight: bolder;
+  }
+  .team-members-card-name{
+    height: 30%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .team-members-card:hover{
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  .team-members-main-container{
+    height: 80%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  .team-members-card-container{
+    margin-top: 5%;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .team-members-card-description{
+      height: 70%;
+      padding-top: 2px;
+      background-color: gray;
+      border-radius: 5px;
+      margin-left: 2.5%;
+      width: 95%;
+      text-align: center;
+      text-rendering: optimizeSpeed;
+  }
+  .team-members-background{
+    opacity: 1;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+  }
+  .team-menu-bottom{
+    background-color: rgb(36, 85, 85);
+    height: 10%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .team-menu-bottom-content{
+    cursor: pointer;
+    transition: all ease-in-out 0.3s; 
+  }
+  .team-menu-bottom-content:hover{
+    font-size: 2.5rem;
+    transform: translateY(-27.5%);
+  }
 
 
 
