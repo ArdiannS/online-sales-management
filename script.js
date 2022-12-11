@@ -1,4 +1,3 @@
-
 class SpecialOffers{
     constructor(array, imageId, titleId, descriptionId){ 
       this.offers = array;
@@ -22,7 +21,7 @@ class SpecialOffers{
     }
 }
 window.addEventListener('load',function(){
-    let offersArray = [["gaming-chair.png","GAMING CHAIR","A gaming chair is a type of chair designed for the comfort of gamers. They differ from most office chairs in having high backrest designed to support the upper back and shoulders"],
+    let offersArray = [["images/gaming-chair.png","GAMING CHAIR","A gaming chair is a type of chair designed for the comfort of gamers. They differ from most office chairs in having high backrest designed to support the upper back and shoulders"],
     ["images/gaming-laptop.png","GAMING LAPTOP","A gaming laptop is one used primarily for the purpose of playing computer games. Unlike conventional laptops, they have higher-end graphics card that is not integrated or designed to conserve battery power. One of the most popular brands of gaming laptops on the market currently is the Alienware laptop manufactured and owned by Dell Corporation."]];
     let specialOffers = new SpecialOffers(offersArray, "productImage","productTitle","productDescription");
     document.getElementById("nextSpecialOffer").addEventListener('click',function(){

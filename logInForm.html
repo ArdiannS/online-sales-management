@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="logInFormStyle.css">
+    <script src="logInFormScript.js"></script>
+</head>
+<body>
+   <div id="formContainer" class="log-in-form-container">
+      <div id="logIn"class="log-in">
+      <div class="log-in-title">
+         <h1 style="color:aliceblue">Log in</h1>
+      </div>
+      <div class="log-in-info-container">
+         <input class="log-in-input"type="text" id="logInUsername"placeholder="Username">
+      </div>
+      <div class="log-in-info-container">
+         <input class="log-in-input"type="password" id="logInPassword"placeholder="Password">
+       </div>
+       <div class="valid-info-container-log-in">
+         <h1 id="logInValidationInfo"><h1>
+      </div>
+       <div class="buttons-container">
+         <button id="logInAccount" class="form-button">Log in</button>
+         <button id="registerButton"class="form-button">Register</button>
+       </div>
+       </div>
+       <div id="register" class="register">
+         <div class="log-in-title">
+            <h1 style="color:aliceblue">Register</h1>
+         </div>
+         <div class="register-info-container">
+           <div class="left-half">
+            <div class="log-in-info-container">
+               <input class="log-in-input" id="registerUsername" type="text" placeholder="Username">
+            </div>
+             <div class="log-in-info-container">
+                <input class="log-in-input"id="registerEmri"type="text" placeholder="Emri">
+             </div>
+             <div class="log-in-info-container">
+                 <input class="log-in-input"id="registerMbiemri"type="text" placeholder="Mbiemri">
+             </div>
+             <div class="log-in-info-container">
+                <input class="log-in-input"id="registerEmail"type="text" placeholder="Email">
+             </div>
+            </div>
+            <div class="right-half">
+               <div class="log-in-info-container">
+                  <input class="log-in-input"id="registerPassword"type="password" placeholder="Password">
+               </div>
+               <div class="log-in-info-container">
+                  <input class="log-in-input"id="registerQyteti"type="text" placeholder="Qyteti">
+               </div>
+               <div class="log-in-info-container">
+                   <input class="log-in-input"id="registerDitelindja"type="date" placeholder="Ditelindja">
+               </div>
+               <div class="log-in-info-container">
+                  <input class="log-in-input" id="registerNumriTelefonit"type="number" placeholder="Numri telefonit">
+               </div>
+            </div>
+         </div>
+         <div class="valid-info-container">
+            <h1 id="validationInfo"><h1>
+         </div>
+          <div class="buttons-container-register">
+            <button id="logInButton" class="form-button">Log in</button>
+            <button id="registerAccount"class="form-button">Register</button>
+          </div>
+       </div>
+   </div>
+</body>
+</html>

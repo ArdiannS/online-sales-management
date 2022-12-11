@@ -1,6 +1,15 @@
+html{
+    height: 100%;
+    width: 100%;
+}
+
 * {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-decoration: none;
+}
+a{
+    text-decoration: none;
+    color: black;
 }
 
 .leftLogo {
@@ -26,7 +35,11 @@
 .search {
     margin-right: 70px;
 }
-
+body{
+    display: relative;
+    height: 100%;
+    width: 100%;
+}
 .searchTerm {
     width: 700px;
     border: 3px solid #00B4CC;
@@ -182,13 +195,11 @@
     display: flex;
     text-align: center;
     justify-content: space-evenly;
-    height: 700px;
-
+    height: 30%;
 }
 
-.Pay {
-    justify-content: space-evenly;
-    text-align: right;
+.Pay img:hover{
+    transform: scale(1.5);
 }
 .special-offers{
     width:100%;
@@ -215,7 +226,7 @@
     display: flex;
     flex-wrap: wrap;
     height: 40%;
-    width: 28%;
+    width: 28%; 
     transition: all ease-in-out 0.4s;
 }
 .special-offers-title{
@@ -237,9 +248,7 @@
 .special-offers-image:hover + .special-offers-information-holder{
     transform: translate(-100%, 55%);
 }
-.special-offers-image:hover + .special-offers-information-holder .special-offers-description-holder{
-    opacity: 0.5;
-}
+
 .special-offers-image:hover + .special-offers-information-holder .special-offers-description{
     opacity: 1;
 }
@@ -257,12 +266,268 @@
     opacity: 0;
     position: absolute;
     transform: translateX(1%);
-    margin-top: 25%;
+    margin-top: 28%;
     transition: all 0.5s ease-in-out;
 }
 .next-special-offer-button{
-    width: 10%;
+    width: 4%;
     height: 10%;
-    transform: translate(400%,400%);
+    opacity: 0.5;
+    left: 93%;
+    top: 45%;
     position: absolute;
+    cursor: pointer;
+    transition: all ease-in-out 0.3s;
 }
+.next-special-offer-button:hover{
+    width: 6%;
+    height: 15%;
+    transform: translate(-16.6%, -16.6%);
+    opacity: 1;
+}
+.main-footer{
+    height: 200px;
+    margin-top: -16px;
+}
+.block{
+    background-color: black;
+    height: 10%;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.leftBlock ul{
+    display: flex;
+    list-style: none;
+
+}
+.leftBlock ul li{
+    padding-left: 10px;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   font-size: 20px;
+   color: white;
+    
+}
+.Story h3 {
+    text-align: center;
+    font-size: 60px;
+    align-self: center;
+    margin-top: auto;
+
+    
+}
+.Story p {
+    text-align: center;
+    font-size: 30px;
+    justify-content: center;
+}
+.Story {
+    background-color: inherit;
+    height: 100%;
+}
+.center {
+    width: 700px; 
+    padding: 20px;
+    border-radius: 30px;
+    margin: auto;
+    
+  }
+  .paragraphs{
+    background-color: gray;
+    height:  320px;
+    
+  }
+  .paragraphs h3{
+    padding-top: 20px;
+  }
+  .divAb{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 300px;
+  }
+  .divP{
+    display: flex;
+    justify-content: flex-start;
+
+  }
+  .Orari table {
+   text-align: center;
+   justify-content: flex-end;
+   align-self: flex-end;
+  }
+
+  .Lokacioni{
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+    
+  }
+  .Lokacioni h5{
+    padding-left: 100px;
+  }
+  .pHolder{
+    display: flex;
+    justify-content: center;
+    background-color:  gray;
+    height: 30%;
+    font-size: 40px;
+  }
+  .picsHolder{
+    display: flex; 
+    justify-content: space-around;
+    height: 30%;
+    width: 100%;
+  }
+  #firstP, #secondP, #thirdP{
+    text-align: center;
+    font-size: 24px;
+    font-weight: bolder;
+  }
+
+
+  #p01,#p03,#p05{
+    color: gray;
+    font-size: 18px;
+  }
+
+  .box1,.box2,.box3{
+    border: #f3f3f3;
+    background-color: white;
+    
+  }
+
+  .paragrafi{
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+  }
+  .contactForm form input{
+    height: 35px;
+    gap: 10px;
+    border-radius: 20px;
+    border: none;
+    margin-top: 10px;
+  }
+  textarea{
+    border-radius: 15px;
+    text-align: start;
+    
+  }
+  #but{
+    width: 80px;
+    height: 35px;
+    background-color: rgb(152, 53, 209);
+    border: none;
+    border-radius: 20px;
+  }
+
+  .Technologies {
+    display: flex;
+    justify-content: start;
+    margin-left: 200px;
+    margin-top: 50px;
+    height: 100%;
+  }
+  .TechnologiesHolder{
+    text-align: center;
+    padding-top: 30px;
+    color: lightblue;
+  }
+  #photo2{
+    border-radius: 40px;
+  }
+  #firstGit:hover{
+    transform: scale(0.5);
+  }
+  #firstLinkedin:hover{
+    transform: scale(0.5);
+  }
+  .team-members-card{
+    background-color: rgb(184, 181, 181);
+    height: 100%;
+    border-radius: 10px;
+    opacity: 0.7;
+    cursor: pointer;
+    border: 4px solid black;
+    width: 25%;
+    transform: translateY(70%);
+    transition: transform ease-in-out 0.4s, opacity ease-in-out 0.25s;
+  }
+  .about-team-members-content-container{
+     margin-top: 3%;
+     margin-left: 3%;
+     height: 30%;
+     width: 30%;
+     background-color: black;
+     opacity: 0.5;
+  }
+  .about-team-members-content{
+    position: absolute;
+    color: white;
+    transform: translate(40%, -325%);
+    font-size: 2.5rem;
+    font-weight: bolder;
+  }
+  .team-members-card-name{
+    height: 30%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .team-members-card:hover{
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  .team-members-main-container{
+    height: 80%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  .team-members-card-container{
+    margin-top: 5%;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .team-members-card-description{
+      height: 70%;
+      padding-top: 2px;
+      background-color: gray;
+      border-radius: 5px;
+      margin-left: 2.5%;
+      width: 95%;
+      text-align: center;
+      text-rendering: optimizeSpeed;
+  }
+  .team-members-background{
+    opacity: 1;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+  }
+  .team-menu-bottom{
+    background-color: rgb(36, 85, 85);
+    height: 10%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .team-menu-bottom-content{
+    cursor: pointer;
+    transition: all ease-in-out 0.3s; 
+  }
+  .team-menu-bottom-content:hover{
+    font-size: 2.5rem;
+    transform: translateY(-27.5%);
+  }
+
+
+
+
