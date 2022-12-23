@@ -46,12 +46,12 @@ window.addEventListener('load',function(){
       for(let i = 0; i < valArray.length; i++)
         if(valArray[i] == false)return;
       let username = valArray[0];
-      accounts[username] = [];
+      let format = ["username","name","surname","email","password","city","age","phoneNumber"];
+      accounts[username] = {};
       for(let i = 0; i < valArray.length; i++)
-        i == 4?accounts[username].push(valArray[i].hashCode()):
-        accounts[username].push(valArray[i]);
+        i == 4?accounts[username][format[i]] = valArray[i]:
+        accounts[username][format] = valArray[i];
       emails[valArray[3]] = null;
-      console.log(accounts[username][4]);
       document.getElementById("validationInfo").innerHTML = "Keni regjistruar llogarine me sukses.";
    });
    document.getElementById("logInAccount").addEventListener('click', function(){
@@ -65,7 +65,7 @@ window.addEventListener('load',function(){
          document.getElementById("logInValidationInfo").innerHTML = "Username qe keni shenuar nuk ekziston";
          return;
       }
-      if(password.hashCode() != accounts[username][4]){
+      if(password != accounts[username].password){
          document.getElementById("logInValidationInfo").innerHTML = "Password-i qe keni shenuar nuk ju perputhet username.";
          return;
       }
