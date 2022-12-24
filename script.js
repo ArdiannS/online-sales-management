@@ -25,7 +25,14 @@ window.addEventListener('load',function(){
     let offerIndex = 0;
     let offersArray = [["images/gaming-chair.png","GAMING CHAIR","A gaming chair is a type of chair designed for the comfort of gamers. They differ from most office chairs in having high backrest designed to support the upper back and shoulders"],
     ["images/gaming-laptop.png","GAMING LAPTOP","A gaming laptop is one used primarily for the purpose of playing computer games. Unlike conventional laptops, they have higher-end graphics card that is not integrated or designed to conserve battery power. One of the most popular brands of gaming laptops on the market currently is the Alienware laptop manufactured and owned by Dell Corporation."]];
-    
+    for(let i = 1; i <= 7; i++){
+      document.getElementById('preference'+i).addEventListener('click',function(){
+            const element = document.getElementById('preference'+i);
+            if(element.style.backgroundColor == 'whitesmoke')
+            element.style.backgroundColor = 'gray';
+            else element.style.backgroundColor = 'whitesmoke';
+      });
+    }
     function next(){
       if(offerIndex == offersArray.length-1)offerIndex = 0;
       else offerIndex++;
