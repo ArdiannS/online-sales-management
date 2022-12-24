@@ -1,9 +1,9 @@
 var i = 0;
 var images = [];
 var time = 5000;
-images[0] = "C:\\Users\\Dell\\Desktop\\school-projects\\online-sales-management\\decemberdeals.jpg";
-images[1] = "C:\\Users\\Dell\\Desktop\\school-projects\\online-sales-management\\christmasd.jpg";
-images[2] = "C:\\Users\\Dell\\Desktop\\school-projects\\online-sales-management\\rtx.jpg";
+images[0] = "decemberdeals.jpg";
+images[1] = "christmasd.jpg";
+images[2] = "rtx.jpg";
 
 
 function changeImg(){
