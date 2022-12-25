@@ -2,11 +2,11 @@
 <html>
     <head>
         <link rel="stylesheet" href="style.css">
-        <script>
+        <script src="validateContactUs.js">
 
         </script>
     </head>
-    <body style="margin: 0; background-color: #232323; color: #909090;" >
+    <body style="margin: 0; background-color: gray; color: black;" >
         <div class="block">
             <div class="leftBlock">
                 <ul>
@@ -40,13 +40,14 @@
                 </h3>
                 <div class="contactForm">
                     <h3>If you already have an account,<br> Contact us</h3>
-                    <form action="" onsubmit="" >
-                        <input type="text" placeholder="FirstName" id="name">
-                        <input type="text" placeholder="LastName" id="pass"><br><br>
+                    <form  id="form" onsubmit="return validate();" >
+                        <input type="text" placeholder="FirstName" id="name"> <br>
+                        <input type="text" placeholder="LastName" id="LastName"><br>
                         <input type="text" placeholder="Username" id="username">
                         <input type="text" placeholder="Email" id="email"><br> 
                         <br>
                         <textarea name="comments" id="" cols="30" rows="5" placeholder="Your reason?"></textarea><br>
+                        <p id ="error"></p>
                         <input type="submit" name="submit" id="but" style="cursor: pointer;">
                         <button id="but" ><a href="">Sign up</a> </button>
 

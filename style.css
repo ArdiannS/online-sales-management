@@ -11,6 +11,22 @@ a{
     text-decoration: none;
     color: black;
 }
+.preferences-container{
+  width: 100%;
+  height: 6%;
+  display: flex;
+  background-color: whitesmoke;
+}
+.product-preference{
+   width: 14.28%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: whitesmoke;
+   cursor: pointer;
+   transition: all ease 0.35s;
+}
 
 .leftLogo {
     float: left;
@@ -30,6 +46,9 @@ a{
     margin-top: -30px;
     text-align: center;
     text-decoration: none;
+    align-items: center;
+    padding-top: 6px;
+    padding-left: 20px;
 }
 
 .search {
@@ -41,7 +60,7 @@ body{
     width: 100%;
 }
 .searchTerm {
-    width: 700px;
+    width: 600px;
     border: 3px solid #00B4CC;
     border-radius: 5px 0 0 5px;
     outline: none;
@@ -62,15 +81,6 @@ body{
 }
 
 
-
-.divH p {
-    text-align: center;
-    padding-left: 20px;
-    align-items: center;
-    padding-top: 6px;
-
-}
-
 .divBuxheti p {
     text-align: center;
     color: black;
@@ -78,8 +88,6 @@ body{
     font-family: inherit;
     padding-left: 20px;
     margin-top: -24px;
-
-
 
 }
 
@@ -118,6 +126,7 @@ body{
 
 .rightBlock {
     display: flex;
+    justify-content: flex-end;
     align-self: center;
     padding: 5px;
 }
@@ -127,8 +136,7 @@ body{
     padding-left: 20px;
     width: 140px;
     height: 40px;
-    background-color:
-        #fafbfc;
+    background-color: #fafbfc;
     align-items: center;
     border-radius: 9px;
 }
@@ -137,8 +145,7 @@ body{
     width: 140px;
     padding-left: 20px;
     height: 40px;
-    background-color:
-        #fafbfc;
+    background-color: #fafbfc;
     align-items: center;
     border-radius: 9px;
 }
@@ -193,9 +200,8 @@ body{
     background-color: #f3f3f3;
     width: auto;
     display: flex;
-    text-align: center;
     justify-content: space-evenly;
-    height: 30%;
+    height: auto;
 }
 
 .Pay img:hover{
@@ -310,22 +316,17 @@ body{
    color: white;
     
 }
-.Story h3 {
-    text-align: center;
-    font-size: 60px;
-    align-self: center;
-    margin-top: auto;
 
-    
+.Story h3{
+  margin-top: auto;
 }
-.Story p {
-    text-align: center;
+.Story{
+
     font-size: 30px;
     justify-content: center;
-}
-.Story {
     background-color: inherit;
     height: 100%;
+    text-align: center;
 }
 .center {
     width: 700px; 
@@ -336,7 +337,7 @@ body{
   }
   .paragraphs{
     background-color: gray;
-    height:  320px;
+    height: 400px;
     
   }
   .paragraphs h3{
@@ -462,15 +463,21 @@ body{
      margin-left: 3%;
      height: 30%;
      width: 30%;
-     background-color: black;
-     opacity: 0.5;
+     background-color: white;
+     text-align: center;
+     border-radius: 20px;
+     font-size: 20px;
+
   }
+
   .about-team-members-content{
     position: absolute;
     color: white;
     transform: translate(40%, -325%);
     font-size: 2.5rem;
-    font-weight: bolder;
+    font-weight: bolder; 
+    align-self: center;
+
   }
   .team-members-card-name{
     height: 30%;
@@ -483,11 +490,16 @@ body{
     transform: translateY(0%);
     opacity: 1;
   }
+
   .team-members-main-container{
+    background-color:gray;
     height: 80%;
     width: 100%;
     position: relative;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
   }
   .team-members-card-container{
     margin-top: 5%;
@@ -505,6 +517,8 @@ body{
       width: 95%;
       text-align: center;
       text-rendering: optimizeSpeed;
+      color:black;
+      font-size: large;
   }
   .team-members-background{
     opacity: 1;
@@ -512,21 +526,16 @@ body{
     width: 100%;
     z-index: -1;
     position: absolute;
+    background-color: #434242;
   }
   .team-menu-bottom{
-    background-color: rgb(36, 85, 85);
+    background-color: #f3f3f3;
     height: 10%;
     display: flex;
     justify-content: space-evenly;
   }
-  .team-menu-bottom-content{
-    cursor: pointer;
-    transition: all ease-in-out 0.3s; 
-  }
-  .team-menu-bottom-content:hover{
-    font-size: 2.5rem;
-    transform: translateY(-27.5%);
-  }
+  
+
 
 
 
