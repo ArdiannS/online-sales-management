@@ -8,12 +8,24 @@
     <link rel="stylesheet" type="text/css" href="secondSlider.css">
     <script src="secondSlider.js"></script>
     <script src="script.js"></script>
+    <style>
+        @media screen and (min-width: 768px) {
+          body {
+            background-color: black;
+          }
+        }
+          @media screen and (max-width: 767px) {
+          body {
+            background-color: black;
+          }
+        }
+      </style>  
 </head>
 
 <body style="margin: 0;">
     <div class="header">
         <div class="leftLogo">
-            <img src="./logooo.jpg" width="160px" height="100px" alt="" id="img1">
+            <img src="./logooo.jpg" width="130px" height="100px" alt="" id="img1">
         </div>
         <div style="margin-left: 3px"class="StartBlock">
             <ul>
@@ -38,26 +50,27 @@
 
         <div class="search">
             <input type="text" class="searchTerm" placeholder="Kerko te gjitha produktet...">
-            <button type="submit" class="searchButton"><img src="search (2).png" style="width: 125%; padding-right: 20px;"  alt="">
+            <button type="submit" class="searchButton"  ><img src="search (2).png" style="width: 125%; padding-right: 20px;"  alt="">
             </button>
         </div>
+ 
 
 
-        <div class="rightBlock">
-            <div class="divH">
-                <a href="profie.html">
-                <img src="./download.png" width="30px" alt="" height="30px"
-                    id="img2" style="margin-right: 20px; padding-top: 5px;">
-                 <p>Llogaria ime</p>
+        <div class="rightBlock" style="justify-content: flex-end; gap: 4%;">
+            <div class="divBuxheti">
+                <img src="./download.png" width="30px" alt="" height="30px" id="img2"
+                    style=" padding-top: 5px;">
+                    <a href="logInForm.html">
+                    <p>Llogaria ime</p>
                 </a>
-
             </div>
 
             <div class="divBuxheti">
                 <img src="./iStok.jpg" width="30px" alt="" height="30px" id="img2"
                     style=" padding-top: 5px;">
+                    <a href="profie.html">
                 <p>0.0 </p>
-
+            </a>
             </div>
         </div>
     </div>
@@ -92,15 +105,17 @@
     
     <footer class="main-footer">
         <div class="partners">
+            <div id="h3meet">
+            <h3 >Meet our partners</h3>
+        </div>
             <div class="imgHolder">
-                <h3>Meet Our Partners</h3>
                 <img src="./msi.jpg" alt="" width="200px" id="id1"
-                    style="margin-bottom: 10px;">
+                 >
                 <img src="./lenovo.png" alt="" width="200px" id="id2">
                 <img src="./stl.png" alt="" width="200px" id="id2"
-                    style="margin-bottom: 10px;">
+                    >
                 <img src="./smsg.png" alt="" width="200px" id="id2"
-                    style="margin-bottom: 40px;">
+                    >
 
             </div>
 
