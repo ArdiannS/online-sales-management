@@ -7,60 +7,71 @@
     <link rel="stylesheet" href="profile.css">
     <link rel="stylesheet" href="style.css">
     <script src="products.js"></script>
+    <style>
+        @media screen and (min-width: 768px) {
+          body {
+            background-color: black;
+          }
+        }
+          @media screen and (max-width: 767px) {
+          body {
+            background-color: black;
+          }
+        }
+      </style>
 </head>
-<body style="margin: 0;">
-    <div class="header">
-        <div class="leftLogo">
-            <img src="./logooo.jpg" width="160px" height="100px" alt="" id="img1">
-        </div>
-        <div class="StartBlock">
-            <ul>
-
-                <a href="products.html">
-                    <li>Products</li>
-                </a>
-                <a href="index.html">
-                    <li>Home</li>
-                </a>
-                <a href="OurStory.html">
-                    <li>About us</li>
-                </a>
-                <a href="AboutUs.html">
-                <li>Contact us</li>
-                </a>
-
-
-            </ul>
-        </div>
-
-
-        <div class="search">
-            <input type="text" class="searchTerm" placeholder="Kerko te gjitha produktet..." style="height: 40px;">
-            <button type="submit" class="searchButton" style="height: 48px;"><img src="search (2).png" style="width: 120%; padding-right: 20px;"  alt="">
-            </button>
-        </div>
-
-
-        <div class="rightBlock">
-            <div class="divH">
-                <a href="profie.html">
-                <img src="./download.png" width="30px" alt="" height="30px"
-                    id="img2" style="margin-right: 20px; padding-top: 5px;">
-                 <p>Llogaria ime</p>
-                </a>
-
+      <body style="margin: 0;">
+        <div class="header" style="width: 100%;">
+            <div class="leftLogo">
+                <img src="./logooo.jpg" width="130px" height="100px" alt="" id="img1">
             </div>
-
-            <div class="divBuxheti">
-                <img src="./iStok.jpg" width="30px" alt="" height="30px" id="img2"
-                    style=" padding-top: 5px;">
-                <p>0.0 </p>
-
+            <div style="margin-left: 3px"class="StartBlock">
+                <ul>
+    
+                    <a href="products.html">
+                        <li>Products</li>
+                    </a>
+                    <a href="index.html">
+                        <li>Home</li>
+                    </a>
+                    <a href="OurStory.html">
+                        <li>About us</li>
+                    </a>
+                    <a href="AboutUs.html">
+                    <li>Contact us</li>
+                    </a>
+    
+    
+                </ul>
             </div>
-        </div>
-    </div>
+    
+    
+            <div class="search">
+                <input type="text" class="searchTerm" placeholder="Kerko te gjitha produktet...">
+                <button type="submit" class="searchButton" style="height: 56px;"  ><img src="search (2).png" style="width: 125%; padding-right: 20px;"  alt="">
+                </button>
+            </div>
      
-    </div>
+    
+    
+            <div class="rightBlock" style="justify-content: flex-end; gap: 4%;">
+                <div class="divBuxheti">
+                    <img src="./download.png" width="30px" alt="" height="30px" id="img2"
+                        style=" padding-top: 5px;">
+                        <a href="logInForm.html">
+                        <p>Llogaria ime</p>
+                    </a>
+                </div>
+    
+                <div class="divBuxheti">
+                    <img src="./iStok.jpg" width="30px" alt="" height="30px" id="img2"
+                        style=" padding-top: 5px;">
+                        <a href="profie.html">
+                    <p>0.0 </p>
+                </a>
+                </div>
+            </div>
+        </div>
         <div class="profile-main-container">
             <div class="user-profile-card">
                 <div class="profile-card-username-holder"><h1>*ketu shkon username i userit*</h1></div>

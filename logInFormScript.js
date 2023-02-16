@@ -33,6 +33,7 @@ window.addEventListener('load',function(){
                },750);
             },300);
     });
+   });
 
    document.getElementById("registerAccount").addEventListener("click", () => {
       let valArray = [validateUsername("registerUsername", "validationInfo"),
@@ -54,6 +55,7 @@ window.addEventListener('load',function(){
       emails[valArray[3]] = null;
       document.getElementById("validationInfo").innerHTML = "Keni regjistruar llogarine me sukses.";
    });
+   
    document.getElementById("logInAccount").addEventListener('click', function(){
       let username = document.getElementById("logInUsername").value;
       let password = document.getElementById("logInPassword").value;
@@ -71,7 +73,7 @@ window.addEventListener('load',function(){
       }
       window.location.href = "index.html";
    });
-});
+
 function validateUsername(id, msgId){
   let val = document.getElementById(id).value;
   if(val in accounts){
@@ -147,14 +149,14 @@ function validatePhoneNumber(id, msgId){
    }
    return val;
 }
-String.prototype.hashCode = function() {
-   var hash = 0,
-     i, chr;
-   if (this.length === 0) return hash;
-   for (i = 0; i < this.length; i++) {
-     chr = this.charCodeAt(i);
-     hash = ((hash << 5) - hash) + chr;
-     hash |= 0;
-   }
-   return hash;
- }
+// String.prototype.hashCode = function() {
+//    var hash = 0,
+//      i, chr;
+//    if (this.length === 0) return hash;
+//    for (i = 0; i < this.length; i++) {
+//      chr = this.charCodeAt(i);
+//      hash = ((hash << 5) - hash) + chr;
+//      hash |= 0;
+//    }
+//    return hash;
+//  }
