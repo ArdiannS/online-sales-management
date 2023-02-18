@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <html>
 <style>
 
@@ -30,10 +33,10 @@
         <div style="margin-left: 3px"class="StartBlock">
             <ul>
 
-                <a href="products.html">
+                <a href="products.php">
                     <li>Products</li>
                 </a>
-                <a href="index.html">
+                <a href="index.php">
                     <li>Home</li>
                 </a>
                 <a href="OurStory.html">
@@ -42,6 +45,10 @@
                 <a href="AboutUs.html">
                 <li>Contact us</li>
                 </a>
+                <?php 
+            
+            ?>
+             
 
 
             </ul>
@@ -60,7 +67,7 @@
             <div class="divBuxheti">
                 <img src="./download.png" width="30px" alt="" height="30px" id="img2"
                     style=" padding-top: 5px;">
-                    <a href="logInForm.html">
+                    <a href="logInForm.php">
                     <p>Llogaria ime</p>
                 </a>
             </div>

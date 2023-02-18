@@ -5,8 +5,9 @@
     justify-content: center;    
     align-items: center;
     
+    
 }
-.main-cointaner-product-image{
+.main-cointaner-product-image{ 
     width: 60%;
     height: 90%;
     display: flex;
@@ -17,6 +18,7 @@
 
 .main-cointaner-product-description{
     padding-left: 40px;
+    margin: 5%;
 }
 .price-product{
     width: 50%;

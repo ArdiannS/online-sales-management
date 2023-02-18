@@ -124,13 +124,14 @@ body{
     margin: 3%;
     background-color: rgb(237, 237, 237);
     border-radius: 10px;
+    height: 100%;
 }
 .product-box:hover .product-box-content{
    opacity: 0.8;
 }
 .product-image{
     width: 100%;
-    height: 100%;
+    height: 135%;
     position: absolute;
 }
 .product-box-content{
