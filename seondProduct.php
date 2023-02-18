@@ -62,11 +62,11 @@
     </div>
     
     <?php 
-        include 'DatabaseConnection.php';
-        $db = new DatabaseConnection();
+        include 'productModel.php';
+        $pd = new productModel();
         if(isset($_GET['product'])){
             $product_slug = $_GET['product'];
-            $product_data = $db->getProductsByID($product_slug);
+            $product_data = $pd->getProductsByID($product_slug);
             $product = mysqli_fetch_array($product_data);
             if($product){
                 ?>

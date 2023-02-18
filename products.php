@@ -101,9 +101,9 @@
     <div class="main-container"> 
     <div class="products-container">
     <?php
-        include 'DatabaseConnection.php';
-        $db = new DatabaseConnection();
-        $result = $db->getProducts();
+        include 'productModel.php';
+        $produkti = new ProductModel();
+        $result = $produkti->getProducts();
         foreach($result as $produkti){
     ?><div class="product-box" >
         <a href="seondProduct.php?product=<?= $produkti['ID'] ?>"> 
