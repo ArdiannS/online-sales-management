@@ -6,6 +6,7 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Document</title>
+   
    <!-- <link rel="stylesheet" type="text/css" href="logInFormStyle2.css"> -->
    <!-- <script src="logInFormScript2.js"></script> -->
 
@@ -65,10 +66,12 @@
 </head>
 
 <body>
-   <form action="validimi.php" method="POST" id="forma" onsubmit="return validationJS();">
+   <?php 
+    ?>
+   <form action="signUp.php" method="POST" id="forma" onsubmit="return validationJS();">
       <div class="form-group">
          <h1>Login Form</h1>
-         <img src="C:\Users\Dell\Desktop\school-projects\online-sales-management\logooo2.jpg" style="border-radius: 60px;height: 60px; width:70px" alt="">
+         <img src= "logooo2.jpg" style="border-radius: 60px;height: 60px; width:70px" alt="">
          <input type="text" name="username" id="username" placeholder="Username">
          <input type="password" name="password" id="password" placeholder="Password">
          <div class="buttons9" id="buttonsPlace"> </div>
