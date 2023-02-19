@@ -106,18 +106,75 @@ class UserModel extends DatabaseConnection
 
         return false;
     }
-    function getUserbyUsernameorPasswor($username, $password)
-    {
-        $query = "SELECT * FROM users WHERE username='$username' and password = '$password'";
-        $result = mysqli_query($this->conn,$query);
+    // public function getProducts(){
+    //     $data = null;
+    //     $query = "SELECT * FROM products";
+    //     if ($sql = $this->conn->query($query)) {
+    //         while ($row = mysqli_fetch_assoc($sql)) {
+    //             $data[] = $row;
+    //         }
+    //     }
+    //     return $data;
+    //    }
+    function getAllUsers(){
+        $data = null;
+        $query = "Select * From users";
+        if($sql = $this->conn->query($query)){
+            while($row = mysqli_fetch_assoc($sql)){
+                $data[] = $row;
+            }
+        }
+        return $data;
 
+    }
+
+    function getUserbyUsernameAndPassword($username, $password)
+    {
+        $sql = "SELECT * FROM users WHERE username='" . $username . "' AND password='" . $password . "' ";
+        $result = mysqli_query($this->conn, $sql);
         if (mysqli_num_rows($result) > 0) {
-            return true;
+            return $result->fetch_array();
         }
 
-        return false;
+        return null;
     }
+
+    function getCurrentUser(){
+        $userName = $_SESSION['username'];
+        $query = "SELECT * FROM users WHERE username='$userName'";
+        $result = mysqli_query($this->conn, $query);
+        if (mysqli_num_rows($result) > 0) {
+            return $result->fetch_array();
+        }
+        return null;
+    }
+
+    // public function getUsersOrAdmin($username, $password)
+    // {
+
+    //     $sql = "SELECT * FROM users WHERE username='" . $username . "' AND password='" . $password . "' ";
+    //     $result = mysqli_query($this->conn, $sql);
+    //     $row = mysqli_fetch_array($result);
+
+    //     if (mysqli_num_rows($result) > 0) {
+    //         if ($row["usetype"] == 'user') {
+    //             $_SESSION["usetype"] = $username;
+    //             $_SESSION["isAdmin"] = 'user';
+    //             echo "<script>alert('User');</script>";
+    //             echo "<script>window.location.href = 'index.php';</script>";
+    //         } else if ($row["usetype"] == 'admin') {
+    //             $_SESSION["username"] = $username;
+    //             $_SESSION["isAdmin"] = "admin";
+    //             echo "<script>alert('Admin');</script>";
+    //             echo "<script>window.location.href = 'dashboard.php';</script>";
+    //         }
+    //     } else {
+    //         echo "<script>alert('Username or Password is wrong ');</script>";
+    //         echo "<script>window.location.href = 'logInForm.php';</script>";
+    //     }
+    // }
 }
+
 
 
 

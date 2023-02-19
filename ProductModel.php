@@ -86,7 +86,7 @@ class ProductModel extends DatabaseConnection {
            }
            public function getProductsByID($ID){
             $query = "SELECT * FROM products WHERE ID = '$ID'";
-            return $query_run = mysqli_query($this->conn,$query);
+            return mysqli_query($this->conn,$query);
         } 
 
 
