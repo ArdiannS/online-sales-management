@@ -87,11 +87,10 @@ class UserModel extends DatabaseConnection
             $query = "INSERT INTO users(username, password, email, age,usetype) VALUES (?,?,?,?,?)";
             $stm = $this->conn->prepare($query);
             $stm->execute([$this->username, $this->password, $this->email, $this->age, $this->usetype]);
-
             echo "<script>alert('records added successfully');</script>";
             echo "<script>window.location.href = '/';</script>";
         } catch (Exception $e) {
-            $e->getMessage();
+            echo "<script>alert('Error: " . $e->getMessage() . "');</script>";
         }
 
     }
@@ -106,21 +105,13 @@ class UserModel extends DatabaseConnection
 
         return false;
     }
-    // public function getProducts(){
-    //     $data = null;
-    //     $query = "SELECT * FROM products";
-    //     if ($sql = $this->conn->query($query)) {
-    //         while ($row = mysqli_fetch_assoc($sql)) {
-    //             $data[] = $row;
-    //         }
-    //     }
-    //     return $data;
-    //    }
-    function getAllUsers(){
+
+    function getAllUsers()
+    {
         $data = null;
         $query = "Select * From users";
-        if($sql = $this->conn->query($query)){
-            while($row = mysqli_fetch_assoc($sql)){
+        if ($sql = $this->conn->query($query)) {
+            while ($row = mysqli_fetch_assoc($sql)) {
                 $data[] = $row;
             }
         }
@@ -139,7 +130,8 @@ class UserModel extends DatabaseConnection
         return null;
     }
 
-    function getCurrentUser(){
+    function getCurrentUser()
+    {
         $userName = $_SESSION['username'];
         $query = "SELECT * FROM users WHERE username='$userName'";
         $result = mysqli_query($this->conn, $query);
@@ -148,31 +140,36 @@ class UserModel extends DatabaseConnection
         }
         return null;
     }
-
-    // public function getUsersOrAdmin($username, $password)
-    // {
-
-    //     $sql = "SELECT * FROM users WHERE username='" . $username . "' AND password='" . $password . "' ";
-    //     $result = mysqli_query($this->conn, $sql);
-    //     $row = mysqli_fetch_array($result);
-
-    //     if (mysqli_num_rows($result) > 0) {
-    //         if ($row["usetype"] == 'user') {
-    //             $_SESSION["usetype"] = $username;
-    //             $_SESSION["isAdmin"] = 'user';
-    //             echo "<script>alert('User');</script>";
-    //             echo "<script>window.location.href = 'index.php';</script>";
-    //         } else if ($row["usetype"] == 'admin') {
-    //             $_SESSION["username"] = $username;
-    //             $_SESSION["isAdmin"] = "admin";
-    //             echo "<script>alert('Admin');</script>";
-    //             echo "<script>window.location.href = 'dashboard.php';</script>";
-    //         }
-    //     } else {
-    //         echo "<script>alert('Username or Password is wrong ');</script>";
-    //         echo "<script>window.location.href = 'logInForm.php';</script>";
-    //     }
-    // }
+    public function editUserById($id)
+    {
+        $data = null;
+        $query = "SELECT * FROM users WHERE id = '$id'";
+        if ($sql = $this->conn->query($query)) {
+            while ($row = $sql->fetch_assoc()) {
+                $data = $row;
+            }
+        }
+        return $data;
+    }
+    public function update()
+    {
+        try {
+            $sqlStm = "UPDATE users SET username=?,password=?, email=?, age=?,usetype=? where id=?";
+            $stm = $this->conn->prepare($sqlStm);
+            $stm->execute([$this->username, $this->password,$this->email, $this->age, $this->usetype,$this->id
+            ]);
+            echo "<script>alert('dhenat jane Perditsuar me sukses');document.location='displayDhenat.php';</script>";
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+    public function deleteUserById($id){
+        $query = "DELETE FROM users where id = $id";
+        if($sql = $this->conn->query($query)){
+            return true;
+        }
+        return false;
+    }
 }
 
 
