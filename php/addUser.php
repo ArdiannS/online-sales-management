@@ -59,7 +59,7 @@
 <form action="registerAdmin.php" method="POST" id="forma" >
       <div class="form-group">
          <h1>Add User</h1>
-         <img src="logooo2.jpg" style="border-radius: 60px;height: 60px; width:70px" alt="">
+         <img src="../images/logooo2.jpg" style="border-radius: 60px;height: 60px; width:70px" alt="">
          <input type="text" name="username" id="username" placeholder="Username">
          <input type="password" name="password" id="password" placeholder="Password">
          <input type="Email" name="email" id="email" placeholder="Email">

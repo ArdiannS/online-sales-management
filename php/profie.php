@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-    <?php
-    session_start(); ?>
+<?php
+session_start(); ?>
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="profile.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style/profile.css">
+    <link rel="stylesheet" href="../style/style.css">
     <script src="products.js"></script>
     <style>
         @media screen and (min-width: 768px) {
@@ -28,12 +28,12 @@
 <body style="margin: 0;">
     <div class="header" style="width: 100%;">
         <div class="leftLogo">
-            <img src="./logooo.jpg" width="130px" height="100px" alt="" id="img1">
+            <img src="../images/logooo.jpg" width="130px" height="100px" alt="" id="img1">
         </div>
         <div style="margin-left: 3px" class="StartBlock">
             <ul>
 
-                <a href="products.html">
+                <a href="products.php">
                     <li>Products</li>
                 </a>
                 <a href="index.html">
@@ -53,7 +53,7 @@
 
         <div class="search">
             <input type="text" class="searchTerm" placeholder="Kerko te gjitha produktet...">
-            <button type="submit" class="searchButton" style="height: 56px;"><img src="search (2).png"
+            <button type="submit" class="searchButton" style="height: 56px;"><img src="../images/search (2).png"
                     style="width: 125%; padding-right: 20px;" alt="">
             </button>
         </div>
@@ -63,21 +63,33 @@
         include 'UserModel.php';
         $user = new UserModel();
         $result = $user->getCurrentUser();
-         ?>
+        ?>
 
         <div class="rightBlock" style="justify-content: flex-end; gap: 4%;">
             <div class="divBuxheti">
-                <img src="./download.png" width="30px" alt="" height="30px" id="img2" style=" padding-top: 5px;">
+                <img src="../images/download.png" width="30px" alt="" height="30px" id="img2"
+                    style=" padding-top: 5px;">
                 <a href="logInForm.html">
-                    <p>Llogaria ime</p>
+                    <?php
+                    if (isset($_SESSION['username'])) {
+                        
+
+                        ?>
+                        <p><?php echo $result['username'] ?></p>
+                        <?php
+                    }
+                    ?>
+
+
                 </a>
             </div>
 
             <div class="divBuxheti">
-                <img src="./iStok.jpg" width="30px" alt="" height="30px" id="img2" style=" padding-top: 5px;">
+                <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2" style=" padding-top: 5px;">
                 <a href="profie.html">
-                    <p><?php echo $result['username'] ?></p>
-                    
+                    <p>
+                        <?php echo $result['bilanci'] . "$"?>
+                    </p>
                 </a>
             </div>
         </div>
@@ -86,33 +98,43 @@
         <div class="user-profile-card">
             <div class="profile-card-username-holder">
                 <?php
-                
+
                 ?>
-                <h1><?php echo $result['username'] ?></h1>
+                <h1>Username :
+                    <?php echo  $result['username'] ?>
+                </h1>
             </div>
             <div class="profile-card-info-container">
-            <h1> Numri total i parave ne karte :<?php echo $result['bilanci'] . "$"?></h1>
-            <h1>Emaili : <?php echo $result['email'] ?></h1>
-            <h1><?php echo $result['email'] ?></h1>
-            <h1><?php echo $result['email'] ?></h1>
+                <h1> Numri total i parave ne karte :
+                    <?php echo $result['bilanci'] . "$" ?>
+                </h1>
+                <h1>Emaili :
+                    <?php echo $result['email'] ?>
+                </h1>
+                <h1>Mosha :
+                    <?php echo $result['age'] ?>
+                </h1>
+                <h1>
+                    <?php echo $result['email'] ?>
+                </h1>
                 <div class="logoutButton">
-                   <div class="" style="display: flex; justify-content: center; margin-right: 36px;">
-                  <a href="logOut.php"> <button type="submit" id="loginBtn" name="loginBtn">Log Out</button></a>
-                </div>
-                <style>
-        button {
-         border: none;
-         padding: 10px;
-         background-color: rgb(red, green, blue);
-         border-radius: 12px;
-         color: black;
-         font-weight: bold;
-         cursor: pointer;
-         width: 150px;
-         height: 40px;
-      }
-                </style>
-                    
+                    <div class="" style="display: flex; justify-content: center; margin-right: 36px;">
+                        <a href="logOut.php"> <button type="submit" id="loginBtn" name="loginBtn">Log Out</button></a>
+                    </div>
+                    <style>
+                        button {
+                            border: none;
+                            padding: 10px;
+                            background-color: rgb(red, green, blue);
+                            border-radius: 12px;
+                            color: black;
+                            font-weight: bold;
+                            cursor: pointer;
+                            width: 150px;
+                            height: 40px;
+                        }
+                    </style>
+
                 </div>
             </div>
         </div>

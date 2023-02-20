@@ -1,5 +1,5 @@
 <?php
-include('../php/DatabaseConnection.php');
+include('DatabaseConnection.php');
 class UserModel extends DatabaseConnection
 {
     private $id;
@@ -88,7 +88,9 @@ class UserModel extends DatabaseConnection
             $stm = $this->conn->prepare($query);
             $stm->execute([$this->username, $this->password, $this->email, $this->age, $this->usetype]);
             echo "<script>alert('records added successfully');</script>";
-            echo "<script>window.location.href = '/';</script>";
+            echo "<script>window.location.href = 'index.php';</script>";
+            $_SESSION['username'] = $this->username;
+
         } catch (Exception $e) {
             echo "<script>alert('Error: " . $e->getMessage() . "');</script>";
         }
@@ -156,20 +158,35 @@ class UserModel extends DatabaseConnection
         try {
             $sqlStm = "UPDATE users SET username=?,password=?, email=?, age=?,usetype=? where id=?";
             $stm = $this->conn->prepare($sqlStm);
-            $stm->execute([$this->username, $this->password,$this->email, $this->age, $this->usetype,$this->id
+            $stm->execute([
+                $this->username, $this->password, $this->email, $this->age, $this->usetype, $this->id
             ]);
-            echo "<script>alert('dhenat jane Perditsuar me sukses');document.location='displayDhenat.php';</script>";
+            echo "<script>alert('dhenat jane Perditsuar me sukses');
+            document.location='dashboard.php';</script>";
         } catch (Exception $e) {
             return $e->getMessage();
         }
     }
-    public function deleteUserById($id){
+    public function deleteUserById($id)
+    {
         $query = "DELETE FROM users where id = $id";
-        if($sql = $this->conn->query($query)){
+        if ($sql = $this->conn->query($query)) {
             return true;
         }
         return false;
     }
+    function existsByUserNameAndEmail($username, $email)
+    {
+        $data = null;
+        $query = "SELECT * FROM users WHERE username = . '$username' . and email = '$email' ";
+        $result = mysqli_query($this->conn, $query);
+        if (mysqli_num_rows($result) > 0) {
+            return true;
+        }
+        return false;
+
+    }
+
 }
 
 

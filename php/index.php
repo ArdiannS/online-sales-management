@@ -1,20 +1,20 @@
 <?php
-// include('signUp.php');
 session_start();
-include('../UserModel.php');
+include('UserModel.php');
 $user = new UserModel();
 if (isset($_SESSION['username'])) {
-    $useri=$user->getCurrentUser();
-    if($useri['usetype'] == 'admin') {
+    $_SESSION['loggedIn'] = true;
+    $useri = $user->getCurrentUser();
+    if ($useri['usetype'] == 'admin') {
         echo "<script>alert('Welcome back');</script>";
         echo "<script>window.location.href = 'indexDash.php';</script>";
-    }else if ($useri['usetype'] == 'USER') {
+    } else if ($useri['usetype'] == 'USER') {
         // echo "<script>window.location.href = 'index.php';</script>";
-    }else{
+    } else {
         echo "<script>window.location.href = 'logInForm.php';</script>";
     }
-}else{
-    echo "<script>window.location.href = 'logInForm.php';</script>";
+} else {
+    // echo "<script>window.location.href = 'index.php';</script>";
 
 }
 ?>
@@ -60,8 +60,8 @@ if (isset($_SESSION['username'])) {
                 <a href="../templates/OurStory.html">
                     <li>About us</li>
                 </a>
-                <a href="../templates/AboutUs.html">
-                <li>Contact us</li>
+                <a href="AboutUs.php">
+                    <li>Contact us</li>
                 </a>
                 <?php
 
@@ -75,7 +75,8 @@ if (isset($_SESSION['username'])) {
 
         <div class="search">
             <input type="text" class="searchTerm" placeholder="Kerko te gjitha produktet...">
-            <button type="submit" class="searchButton"  ><img src="../images/search (2).png" style="width: 125%; padding-right: 20px;"  alt="">
+            <button type="submit" class="searchButton"><img src="../images/search (2).png"
+                    style="width: 125%; padding-right: 20px;" alt="">
             </button>
         </div>
 
@@ -83,37 +84,80 @@ if (isset($_SESSION['username'])) {
 
         <div class="rightBlock" style="justify-content: flex-end; gap: 4%;">
             <div class="divBuxheti">
-                <img src="../images/download.png" width="30px" alt="" height="30px" id="img2" style=" padding-top: 5px;">
-                <a href="profie.php">
-                    <?php
-                        $useri = $user->getCurrentUser();
-                    ?>
-                    <p><?php echo $useri['username']?></p>
+                <img src="../images/download.png" width="30px" alt="" height="30px" id="img2"
+                    style=" padding-top: 5px;">
 
-                </a>
+                <?php
+                if (isset($_SESSION['username'])) {
+                    $useri = $user->getCurrentUser();
+                    ?>
+                    <p>
+                        <a href="profie.php">
+                            <?php echo $useri['username'] ?>
+                        </a>
+
+                    </p>
+                <?php } else { ?>
+
+                    <a href="logInForm.php">
+                        <p>Log in</p>
+                    </a>
+                <?php }
+                ?>
+
+
+
+
+
+
+
             </div>
 
             <div class="divBuxheti">
                 <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2" style=" padding-top: 5px;">
-                <a href="profie.php">
-                    <?php
-                        $useri = $user->getCurrentUser();
-                    ?>
-                    <p><?php echo $useri['bilanci'] . "$"?></p>
 
+                <?php
+                if (isset($_SESSION['username'])) {
+                    $useri = $user->getCurrentUser();
+                    ?>
+                    <a href="profie.php">
+                        <p>
+                            <?php echo "Bilanci :" . $useri['bilanci'] ?>
+                        </p>
+                    </a>
+                    <?php
+                } else {
+                    ?>
+                    <p>0.0 $</p>
+                <?php }
+                ?>
                 </a>
             </div>
         </div>
     </div>
 
     <div class="preferences-container">
-        <div id="preference1" class="product-preference"><h3>Accessories</h3></div>
-        <div id="preference2" class="product-preference"><h3>Devices</h3></div>
-        <div id="preference3" class="product-preference"><h3>Furniture</h3></div>
-        <div id="preference4" class="product-preference"><h3>Music instruments</h3></div>
-        <div id="preference5" class="product-preference"><h3>Toys</h3></div>
-        <div id="preference6" class="product-preference"><h3>Animal foods</h3></div>
-        <div id="preference7" class="product-preference"><h3>Plants</h3></div>
+        <div id="preference1" class="product-preference">
+            <h3>Accessories</h3>
+        </div>
+        <div id="preference2" class="product-preference">
+            <h3>Devices</h3>
+        </div>
+        <div id="preference3" class="product-preference">
+            <h3>Furniture</h3>
+        </div>
+        <div id="preference4" class="product-preference">
+            <h3>Music instruments</h3>
+        </div>
+        <div id="preference5" class="product-preference">
+            <h3>Toys</h3>
+        </div>
+        <div id="preference6" class="product-preference">
+            <h3>Animal foods</h3>
+        </div>
+        <div id="preference7" class="product-preference">
+            <h3>Plants</h3>
+        </div>
     </div>
 
     <a href="">
@@ -122,7 +166,7 @@ if (isset($_SESSION['username'])) {
 
     <div class="special-offers">
         <img src="../images/special-offer-background.jfif" class="special-offers-background">
-        <img id="productImage"src="../images/gaming-chair.png" class="special-offers-image">
+        <img id="productImage" src="../images/gaming-chair.png" class="special-offers-image">
         <div class="special-offers-information-holder">
             <h1 id="productTitle" class="special-offers-title">GAMING CHAIR</h1>
             <div class="special-offers-description-holder">
@@ -140,21 +184,18 @@ if (isset($_SESSION['username'])) {
                 <h3>Meet our partners</h3>
             </div>
             <div class="imgHolder">
-                <img src="../images/msi.jpg" alt="" width="200px" id="id1"
-                 >
+                <img src="../images/msi.jpg" alt="" width="200px" id="id1">
                 <img src="../images/lenovo.png" alt="" width="200px" id="id2">
-                <img src="../images/stl.png" alt="" width="200px" id="id2"
-                    >
-                <img src="../images/smsg.png" alt="" width="200px" id="id2"
-                    >
+                <img src="../images/stl.png" alt="" width="200px" id="id2">
+                <img src="../images/smsg.png" alt="" width="200px" id="id2">
 
             </div>
 
         </div>
 
-    <div class="divF">
-        <div class="Help">
-            <img src="../images/logooo2.jpg" alt="" width="200px" id="img1">
+        <div class="divF">
+            <div class="Help">
+                <img src="../images/logooo2.jpg" alt="" width="200px" id="img1">
 
             </div>
             <div class="divHelp">
@@ -166,26 +207,32 @@ if (isset($_SESSION['username'])) {
                     <p>Keni harruar Fjalkalimin</p>
                 </a>
 
+            </div>
+            <div class="divH1">
+                <h3>Programi partneritetit</h3>
+                <a href="">
+                    <p>Behu partner</p>
+                </a>
+            </div>
+            <div class="divH2">
+                <h3>Rreth Nesh</h3>
+                <a href="">
+                    <p>Rreth (Emrit te kompanise)</p>
+                </a>
+                <a href="">
+                    <p>Produktet</p>
+                </a>
+            </div>
+            <div class="Pay">
+                <h2>Menyrat tona te pageses</h2>
+                <a href=""><img src="../images/raif.png" alt="" width="40px"></a>
+                <img src="../images/nlb.jpeg" alt="" width="50px">
+                <img src="../images/visa.jpg" alt="" width="35px">
+                <img src="../images/visaE.png" alt="" width="35px">
+                <img src="../images/mst.png" alt="" width="35px">
+                <img src="../images/mst2.png" alt="" width="35px">
+            </div>
         </div>
-        <div class="divH1">
-             <h3>Programi partneritetit</h3>
-                <a href=""> <p>Behu partner</p></a>
-        </div>
-        <div class="divH2">
-           <h3>Rreth Nesh</h3>
-                <a href=""> <p>Rreth (Emrit te kompanise)</p></a>
-            <a href=""> <p>Produktet</p></a>
-        </div>
-        <div class="Pay">
-            <h2>Menyrat tona te pageses</h2>
-            <a href=""><img src="../images/raif.png" alt="" width="40px"></a>
-            <img src="../images/nlb.jpeg" alt="" width="50px">
-            <img src="../images/visa.jpg" alt="" width="35px">
-            <img src="../images/visaE.png" alt="" width="35px">
-            <img src="../images/mst.png" alt="" width="35px">
-            <img src="../images/mst2.png" alt="" width="35px">
-        </div>
-    </div>
 
         </div>
     </footer>

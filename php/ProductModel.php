@@ -88,10 +88,8 @@ class ProductModel extends DatabaseConnection {
             $query = "SELECT * FROM products WHERE ID = '$ID'";
             return mysqli_query($this->conn,$query);
         } 
-
-
-
       }
+
       
       
 
