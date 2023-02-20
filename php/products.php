@@ -77,23 +77,17 @@
     </div>
 
 
-
-
-    <div class="preferences-container">
-        <div id="preference1" class="product-preference"><h3>Accessories</h3></div>
-        <div id="preference2" class="product-preference"><h3>Devices</h3></div>
-        <div id="preference3" class="product-preference"><h3>Furniture</h3></div>
-        <div id="preference4" class="product-preference"><h3>Music instruments</h3></div>
-        <div id="preference5" class="product-preference"><h3>Toys</h3></div>
-        <div id="preference6" class="product-preference"><h3>Animal foods</h3></div>
-        <div id="preference7" class="product-preference"><h3>Plants</h3></div>
-    </div> 
-
-
-    
-   
     <button class='publish-product'><a href="publishProduct.php">PUBLISH PRODUCT</a></button>
     <form action="loadPage.php" method="post">
+      <div class="preferences-container">
+        <div id="preference1" class="product-preference"><input type="checkbox" name="accessories" id="accessories"><h3>Accessories</h3></div>
+        <div id="preference2" class="product-preference"><input type="checkbox" name="devices" id="devices"><h3>Devices</h3></div>
+        <div id="preference3" class="product-preference"><input type="checkbox" name="furniture" id="furniture"><h3>Furniture</h3></div>
+        <div id="preference4" class="product-preference"><input type="checkbox" name="music-instruments" id="music-instruments"><h3>Music instruments</h3></div>
+        <div id="preference5" class="product-preference"><input type="checkbox" name="toys" id="toys"><h3>Toys</h3></div>
+        <div id="preference6" class="product-preference"><input type="checkbox" name="animal-foods" id="animal-foods"><h3>Animal foods</h3></div>
+        <div id="preference7" class="product-preference"><input type="checkbox" name="plants" id="plants"><h3>Plants</h3></div>
+      </div> 
        <button type="submit"class="next-products-page">Kerko</button>
        <input name="indexToLook"id="index-to-look"class="products-index-selector"type="number"  placeholder="Ne faqen..">
     </form>
