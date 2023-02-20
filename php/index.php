@@ -1,16 +1,14 @@
-<?php 
-session_start();
-?>
+
 <html>
 <style>
 
 </style>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="secondSlider.css">
-    <script src="secondSlider.js"></script>
-    <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <link rel="stylesheet" type="text/css" href="../style/secondSlider.css">
+    <script src="../js/secondSlider.js"></script>
+    <script src="../js/script.js"></script>
     <style>
         @media screen and (min-width: 768px) {
           body {
@@ -28,7 +26,7 @@ session_start();
 <body style="margin: 0;">
     <div class="header">
         <div class="leftLogo">
-            <img src="./logooo.jpg" width="130px" height="100px" alt="" id="img1">
+            <img src="../images/logooo.jpg" width="130px" height="100px" alt="" id="img1">
         </div>
         <div style="margin-left: 3px"class="StartBlock">
             <ul>
@@ -39,10 +37,10 @@ session_start();
                 <a href="index.php">
                     <li>Home</li>
                 </a>
-                <a href="OurStory.html">
+                <a href="../templates/OurStory.html">
                     <li>About us</li>
                 </a>
-                <a href="AboutUs.html">
+                <a href="../templates/AboutUs.html">
                 <li>Contact us</li>
                 </a>
                 <?php 
@@ -57,7 +55,7 @@ session_start();
 
         <div class="search">
             <input type="text" class="searchTerm" placeholder="Kerko te gjitha produktet...">
-            <button type="submit" class="searchButton"  ><img src="search (2).png" style="width: 125%; padding-right: 20px;"  alt="">
+            <button type="submit" class="searchButton"  ><img src="../images/search (2).png" style="width: 125%; padding-right: 20px;"  alt="">
             </button>
         </div>
  
@@ -65,15 +63,14 @@ session_start();
 
         <div class="rightBlock" style="justify-content: flex-end; gap: 4%;">
             <div class="divBuxheti">
-                <img src="./download.png" width="30px" alt="" height="30px" id="img2"
+                <img src="../images/download.png" width="30px" alt="" height="30px" id="img2"
                     style=" padding-top: 5px;">
-                    <a href="logInForm.php">
                     <p>Llogaria ime</p>
                 </a>
             </div>
 
             <div class="divBuxheti">
-                <img src="./iStok.jpg" width="30px" alt="" height="30px" id="img2"
+                <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2"
                     style=" padding-top: 5px;">
                     <a href="profie.html">
                 <p>0.0 </p>
@@ -97,8 +94,8 @@ session_start();
 </a>
 
     <div class="special-offers">
-        <img src="images/special-offer-background.jfif" class="special-offers-background">
-        <img id="productImage"src="images/gaming-chair.png" class="special-offers-image">
+        <img src="../images/special-offer-background.jfif" class="special-offers-background">
+        <img id="productImage"src="../images/gaming-chair.png" class="special-offers-image">
         <div class="special-offers-information-holder">
            <h1 id="productTitle"class="special-offers-title">GAMING CHAIR</h1>
            <div class="special-offers-description-holder">
@@ -107,7 +104,7 @@ session_start();
             for the comfort of gamers. They differ from most office chairs in having high 
             backrest designed to support the upper back and shoulders</h3>
         </div>
-        <img src="images/arrow-next.png" id="nextSpecialOffer" class="next-special-offer-button">
+        <img src="../images/arrow-next.png" id="nextSpecialOffer" class="next-special-offer-button">
     </div>
     
     <footer class="main-footer">
@@ -116,12 +113,12 @@ session_start();
             <h3 >Meet our partners</h3>
         </div>
             <div class="imgHolder">
-                <img src="./msi.jpg" alt="" width="200px" id="id1"
+                <img src="../images/msi.jpg" alt="" width="200px" id="id1"
                  >
-                <img src="./lenovo.png" alt="" width="200px" id="id2">
-                <img src="./stl.png" alt="" width="200px" id="id2"
+                <img src="../images/lenovo.png" alt="" width="200px" id="id2">
+                <img src="../images/stl.png" alt="" width="200px" id="id2"
                     >
-                <img src="./smsg.png" alt="" width="200px" id="id2"
+                <img src="../images/smsg.png" alt="" width="200px" id="id2"
                     >
 
             </div>
@@ -130,7 +127,7 @@ session_start();
 
     <div class="divF">
         <div class="Help">
-            <img src="./logooo2.jpg" alt="" width="200px" id="img1">
+            <img src="../images/logooo2.jpg" alt="" width="200px" id="img1">
 
         </div>
         <div class="divHelp">
@@ -150,12 +147,12 @@ session_start();
         </div>
         <div class="Pay">
             <h2>Menyrat tona te pageses</h2>
-            <a href=""><img src="./raif.png" alt="" width="40px"></a>
-            <img src="./nlb.jpeg" alt="" width="50px">
-            <img src="./visa.jpg" alt="" width="35px">
-            <img src="./visaE.png" alt="" width="35px">
-            <img src="./mst.png" alt="" width="35px">
-            <img src="./mst2.png" alt="" width="35px">
+            <a href=""><img src="../images/raif.png" alt="" width="40px"></a>
+            <img src="../images/nlb.jpeg" alt="" width="50px">
+            <img src="../images/visa.jpg" alt="" width="35px">
+            <img src="../images/visaE.png" alt="" width="35px">
+            <img src="../images/mst.png" alt="" width="35px">
+            <img src="../images/mst2.png" alt="" width="35px">
         </div>
     </div>
 

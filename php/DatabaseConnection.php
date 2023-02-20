@@ -1,9 +1,9 @@
 <?php 
     class DatabaseConnection {
-        public $servername = "localhost:9999";
+        public $servername = "localhost";
         public $username ='root';
-        public $password= '';
-        public $database = 'online-sales-managment';
+        public $password= 'localhost';
+        public $database = 'e-commerce';
         public $conn;
     
         public function __construct() {
@@ -53,11 +53,7 @@
     public function getProducts(){
         $data = null;
         $query = "SELECT * FROM products";
-        if ($sql = $this->conn->query($query)) {
-            while ($row = mysqli_fetch_assoc($sql)) {
-                $data[] = $row;
-            }
-        }
+        $data = mysqli_query($this->conn, $query);
         return $data;
        }
     
@@ -65,22 +61,24 @@
         $query = "SELECT * FROM products WHERE ID = '$ID'";
         return $query_run = mysqli_query($this->conn,$query);
     }
-
+    public function insertProductData($productName, $productPrice, $productDescription, $productImage, $publisherUsername){
+         $query = "INSERT INTO products(userID, name, description, image, price) VALUES ('$publisherUsername', '$productName', '$productDescription', '$productImage', '$productPrice')";
+         $sql = null;
+         if($sql = $this->conn->query($query))echo "<script>alert($productImage)</script>";
+         else echo "<script>alert('NOT right')</script>";
+    }
 function getUsersorAdmin($username,$password){
-
         $sql = "SELECT * FROM users WHERE username='" . $username . "' AND password='" . $password . "' ";
         $result = mysqli_query($this->conn, $sql);
         $row = mysqli_fetch_array($result);
- 
     if (mysqli_num_rows($result) > 0) {
+        session_start();
+        $_SESSION["username"] = $username;
+        $_SESSION["isAdmin"] = $row["usetype"];
         if ($row["usetype"] == 'user') {
-            $_SESSION["usetype"] = $username;
-            $_SESSION["isAdmin"] = 'user';
-            echo "<script>alert('User');</script>";
             echo "<script>window.location.href = 'index.php';</script>";
         } else if ($row["usetype"] == 'admin') {
-            $_SESSION["username"] = $username;
-            $_SESSION["isAdmin"] = "admin";
+    
             echo "<script>alert('Admin');</script>";
             echo "<script>window.location.href = 'dashboard.php';</script>";
         }

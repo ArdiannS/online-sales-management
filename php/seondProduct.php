@@ -4,13 +4,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="secondProduct.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/secondProduct.css">
 </head>
 <body style="margin: 0;">
     <div class="header">
         <div class="leftLogo">
-            <img src="./logooo.jpg" width="130px" height="97px" alt="" id="img1">
+            <img src="../images/logooo.jpg" width="130px" height="97px" alt="" id="img1">
         </div>
         <div style="margin-left: 3px"class="StartBlock">
             <ul>
@@ -36,7 +36,7 @@
 
         <div class="search">
             <input type="text" class="searchTerm" placeholder="Kerko te gjitha produktet...">
-            <button type="submit" class="searchButton"  ><img src="search (2).png" style="width: 125%; padding-right: 20px;"  alt="">
+            <button type="submit" class="searchButton"  ><img src="../images/search (2).png" style="width: 125%; padding-right: 20px;"  alt="">
             </button>
         </div>
  
@@ -44,15 +44,14 @@
 
         <div class="rightBlock" style="justify-content: flex-end; gap: 4%;">
             <div class="divBuxheti">
-                <img src="./download.png" width="30px" alt="" height="30px" id="img2"
+                <img src="../images/download.png" width="30px" alt="" height="30px" id="img2"
                     style=" padding-top: 5px;">
-                    <a href="logInForm.php">
                     <p>Llogaria ime</p>
                 </a>
             </div>
 
             <div class="divBuxheti">
-                <img src="./iStok.jpg" width="30px" alt="" height="30px" id="img2"
+                <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2"
                     style=" padding-top: 5px;">
                     <a href="profie.html">
                 <p>0.0 </p>
@@ -87,12 +86,12 @@
 
         <div class="Pay">
                 <h2>Menyrat tona te pageses</h2>
-                <a href=""><img src="./raif.png" alt="" width="40px"></a>
-                <img src="./nlb.jpeg" alt="" width="50px">
-                <img src="./visa.jpg" alt="" width="35px">
-                <img src="./visaE.png" alt="" width="35px">
-                <img src="./mst.png" alt="" width="35px">
-                <img src="./mst2.png" alt="" width="35px">
+                <a href=""><img src="../images/raif.png" alt="" width="40px"></a>
+                <img src="../images/nlb.jpeg" alt="" width="50px">
+                <img src="../images/visa.jpg" alt="" width="35px">
+                <img src="../images/visaE.png" alt="" width="35px">
+                <img src="../images/mst.png" alt="" width="35px">
+                <img src="../images/mst2.png" alt="" width="35px">
     </div>
         </div>
             <div class="price-product" style="border :3px solid gray; height : 100%; min-width:40%;margin-left : 100px">
@@ -125,12 +124,12 @@
             <h3 >Meet our partners</h3>
         </div>
             <div class="imgHolder">
-                <img src="./msi.jpg" alt="" width="200px" id="id1"
+                <img src="../images/msi.jpg" alt="" width="200px" id="id1"
                  >
-                <img src="./lenovo.png" alt="" width="200px" id="id2">
-                <img src="./stl.png" alt="" width="200px" id="id2"
+                <img src="../images/lenovo.png" alt="" width="200px" id="id2">
+                <img src="../images/stl.png" alt="" width="200px" id="id2"
                     >
-                <img src="./smsg.png" alt="" width="200px" id="id2"
+                <img src="../images/smsg.png" alt="" width="200px" id="id2"
                     >
 
             </div>
@@ -139,7 +138,7 @@
 
     <div class="divF">
         <div class="Help">
-            <img src="./logooo2.jpg" alt="" width="200px" id="img1">
+            <img src="../images/logooo2.jpg" alt="" width="200px" id="img1">
 
         </div>
         <div class="divHelp">
@@ -159,12 +158,12 @@
         </div>
         <div class="Pay">
             <h2>Menyrat tona te pageses</h2>
-            <a href=""><img src="./raif.png" alt="" width="40px"></a>
-            <img src="./nlb.jpeg" alt="" width="50px">
-            <img src="./visa.jpg" alt="" width="35px">
-            <img src="./visaE.png" alt="" width="35px">
-            <img src="./mst.png" alt="" width="35px">
-            <img src="./mst2.png" alt="" width="35px">
+            <a href=""><img src="../images/raif.png" alt="" width="40px"></a>
+            <img src="../images/nlb.jpeg" alt="" width="50px">
+            <img src="../images/visa.jpg" alt="" width="35px">
+            <img src="../images/visaE.png" alt="" width="35px">
+            <img src="../images/mst.png" alt="" width="35px">
+            <img src="../images/mst2.png" alt="" width="35px">
         </div>
     </div>
 

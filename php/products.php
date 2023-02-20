@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="products.css">
-    <script src="products.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style/products.css">
+    <script src="../js/products.js"></script>
+    <link rel="stylesheet" href="../style/style.css">
     <style>
         /* @media screen and (min-width: 768px) {
           body {
@@ -24,9 +24,10 @@
 
     
 <body style="margin: 0;">
+   
     <div class="header">
         <div class="leftLogo">
-            <img src="./logooo.jpg" width="130px" height="100px" alt="" id="img1">
+            <img src="../images/logooo.jpg" width="130px" height="100px" alt="" id="img1">
         </div>
         <div style="margin-left: 3px"class="StartBlock">
             <ul>
@@ -51,7 +52,7 @@
 
         <div class="search">
             <input type="text" class="searchTerm" placeholder="Kerko te gjitha produktet...">
-            <button type="submit" class="searchButton" style="height: 56px;" ><img src="search (2).png" style="width: 125%; padding-right: 20px;"  alt="">
+            <button type="submit" class="searchButton" style="height: 56px;" ><img src="../images/search (2).png" style="width: 125%; padding-right: 20px;"  alt="">
             </button>
         </div>
  
@@ -59,17 +60,16 @@
 
         <div class="rightBlock" style="justify-content: flex-end; gap: 4%;">
             <div class="divBuxheti">
-                <img src="./download.png" width="30px" alt="" height="30px" id="img2"
+                <img src="../images/download.png" width="30px" alt="" height="30px" id="img2"
                     style=" padding-top: 5px;">
-                    <a href="logInForm.php">
                     <p>Llogaria ime</p>
                 </a>
             </div>
 
             <div class="divBuxheti">
-                <img src="./iStok.jpg" width="30px" alt="" height="30px" id="img2"
+                <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2"
                     style=" padding-top: 5px;">
-                    <a href="profie.html">
+                    <a href="../templates/profie.html">
                 <p>0.0 </p>
             </a>
             </div>
@@ -91,45 +91,57 @@
 
 
     
-
    
-    <button class="next-products-page">Next</button>
-    <div class="search-page-index"><h4>Kerko</h4></div>
-    <input class="products-index-selector"type="text" placeholder="Ne faqen..">
-
+    <button class='publish-product'><a href="publishProduct.php">PUBLISH PRODUCT</a></button>
+    <form action="loadPage.php" method="post">
+       <button type="submit"class="next-products-page">Kerko</button>
+       <input name="indexToLook"id="index-to-look"class="products-index-selector"type="number"  placeholder="Ne faqen..">
+    </form>
+    <script>
+        let isValid = false;
+        const string = window.location.href, target = "?i=";
+        isValid = string.indexOf(target) != -1; 
+        if(!isValid)window.location.href = window.location.href + "?i=0";
+    </script>
 
     <div class="main-container"> 
-    <div class="products-container">
-    <?php
+    <div id="products-container"class="products-container">
+      <?php
+        $index = 0;
+        if(isset($_GET['i']))
+        $index = $index + $_GET['i']*18;
+
         include 'DatabaseConnection.php';
         $db = new DatabaseConnection();
         $result = $db->getProducts();
-        foreach($result as $produkti){
-    ?><div class="product-box" >
-        <a href="seondProduct.php?product=<?= $produkti['ID'] ?>"> 
-            <img class="product-image"src="<?php echo  $produkti['image'];?>">
-            <div class="product-box-content">
-                <h2><?php echo "Emri:" . $produkti['emri'] ?></h2>
-                <div class="product-box-description">
-                    <h4><?php echo "Pershkrimi: <br>" .  $produkti['pershkrimi'] ?></h4>
-                        <div>
-                        <h4><?php echo "Cmimi :" . $produkti['cmimi'] . "$"?></h4>
-                        </div>
+        $array = [];
+        $limit = $index + 18;
+        foreach($result as $produkti)
+            array_push($array, $produkti);
+        while($index < $limit && $index < sizeof($array)){
+            $productID = $array[$index]['ID'];
+            $productImage = $array[$index]['image'];
+            $productName = $array[$index]['name'];
+            $description = $array[$index]['description'];
+            $price = $array[$index]['price'];
+            echo "<div class='product-box'>
+                <a href='seondProduct.php?product=$productID'> 
+                <img class='product-image' style='height: 100%'src='../uploads/$productImage'>
+                <div class='product-box-content'>
+                 <h2>$productName</h2>
+                    <div class='product-box-description'>
+                        <h4>$description</h4>
+                    <div>
+                  <h4>$price</h4>
+                  </div>
                 </div>
-        </div>
-        </a>
-    </div>
-    
-    <?php 
-        } 
+               </div>
+             </a>
+           </div>";
+           $index++;
+        }
     ?>
     </div>
-    </div>
-    
- 
-
-        
-        
-       
+    </div> 
 </body>
 </html>

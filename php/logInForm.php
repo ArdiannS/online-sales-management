@@ -7,8 +7,8 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Document</title>
    
-   <!-- <link rel="stylesheet" type="text/css" href="logInFormStyle2.css"> -->
-   <!-- <script src="logInFormScript2.js"></script> -->
+   <!-- <<link rel="stylesheet" type="text/css" href="logInFormStyle2.css">
+   <script src="logInFormScript2.js"></script> -->
 
    <style type="text/css">
       body {
@@ -67,16 +67,19 @@
 
 <body>
    <?php 
+   
     ?>
-   <form action="signUp.php" method="POST" id="forma" onsubmit="return validationJS();">
+   <form action="signUp.php" method="POST" id="forma">
+       <!-- #onsubmit="return validationJS();"> -->
       <div class="form-group">
          <h1>Login Form</h1>
-         <img src= "logooo2.jpg" style="border-radius: 60px;height: 60px; width:70px" alt="">
+         <img src= "../images/logooo2.jpg" style="border-radius: 60px;height: 60px; width:70px" alt="">
          <input type="text" name="username" id="username" placeholder="Username">
          <input type="password" name="password" id="password" placeholder="Password">
          <div class="buttons9" id="buttonsPlace"> </div>
          <div class="email" id="emailPlace"></div>
-         <button type="submit" id="loginBtn" name="loginBtn" onclick="showOnly();">Login</button>
+         <button type="submit" id="loginBtn" name="loginBtn">Login</button> 
+         <!-- onclick="showOnly(); -->
          <!-- <button type="submit" id="registerBtn" name="registerBtn" onclick="showEmail();">Register</button> -->
          <p id="paragrafi">Don't have an account , <a onclick="showEmail();" style="text-decoration: underline; cursor: pointer;" >Sign Up</a></p>
          <p id ="error"></p>
@@ -198,9 +201,9 @@ function showEmail() {
   document.getElementById("loginBtn").style.display = "none";
 }
 function showOnly() {
+   echo "<script>alert('arlind555');</script>";
   document.getElementById("email").style.display = "none";
   document.getElementById("age").style.display = "none";
-
 }
    </script>
 </body>

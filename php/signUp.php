@@ -1,7 +1,6 @@
 <?php 
 include ('DatabaseConnection.php');
 $db = new DatabaseConnection();
-
   if (isset($_POST['registerBtn'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -28,10 +27,11 @@ $db = new DatabaseConnection();
 if(isset($_POST['loginBtn'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $resultati = $db->getUsersorAdmin($username,$password);
         if(validateEmptyData($username,$password)){
              header("Location:logInForm.php");
              exit();
+        }else{
+            $db->getUsersorAdmin($username,$password);
         }
 }
 function validateEmptyData($username,$password){
@@ -41,17 +41,17 @@ function validateEmptyData($username,$password){
         return false;
     }
 }
-function validimi($username,$password){
-    $db = new DatabaseConnection();
-    $result = $db->fetch();
-    foreach ($result as $user) {
-        if($user['username'] == $username && $user['password'] == $password){
-            $_SESSION['usetype']=$user['usetype'];
-            $_SESSION['username']=$user['username'];
-            return true;
-        }
-    }   
-}
+// function validimi($username,$password){
+//     $db = new DatabaseConnection();
+//     $result = $db->fetch();
+//     foreach ($result as $user) {
+//         if($user['username'] == $username && $user['password'] == $password){
+//             $_SESSION['usetype']=$user['usetype'];
+//             $_SESSION['username']=$user['username'];
+//             return true;
+//         }
+//     }   
+// }
 
 
 
