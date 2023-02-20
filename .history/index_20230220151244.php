@@ -1,5 +1,5 @@
 <?php
-include('./signUp.php');
+include('../signUp.php');
 $user = new UserModel();
 if (isset($_SESSION['username'])) {
     $useri=$user->getCurrentUser();
