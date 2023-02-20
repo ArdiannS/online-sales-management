@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 include('../UserModel.php');
 
 
@@ -31,6 +31,7 @@ if (isset($_POST['loginBtn'])) {
         exit();
     } else if ($userFound != null) {
         $_SESSION['username'] = $user->getUsername();
+        echo "<script>alert('Ju lutem plotesoni te gjitha fushat".$_SESSION['username']."');</script>";
         if ($userFound["usetype"] == 'admin') {
             echo "<script>window.location.href = 'indexDash.php';</script>";
             return;

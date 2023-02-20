@@ -114,8 +114,8 @@
         $index = $index + $_GET['i']*18;
 
         include 'DatabaseConnection.php';
-        $products = new ProductModel();
-        $result = $products->getProducts();
+        $db = new DatabaseConnection();
+        $result = $db->getProducts();
         $array = [];
         $limit = $index + 18;
         foreach($result as $produkti)
