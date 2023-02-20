@@ -13,7 +13,7 @@
             <a href="../php/index.php">
                 <li> <p>Home</p></li>
             </a>
-             <a href="OurStory.html">
+             <a href="../OurStory.html">
                 <li> <p>Our Story</p></li>
                 </a>
                  <a href="Team.html">
@@ -40,17 +40,16 @@
                 </h3>
                 <div class="contactForm">
                     <h3>If you already have an account,<br> Contact us</h3>
-                    <form  id="form" onsubmit="return validate();" >
-                        <input type="text" placeholder="FirstName" id="name"> <br>
-                        <input type="text" placeholder="LastName" id="LastName"><br>
-                        <input type="text" placeholder="Username" id="username">
-                        <input type="text" placeholder="Email" id="email"><br> 
+                    <form id="form" onsubmit="return validate();" action="ContactUs.php" method="POST">
+                        <input type="text" placeholder="FirstName" id="name" name="name"> <br>
+                        <input type="text" placeholder="LastName" id="surname" name="surname"><br>
+                        <input type="text" placeholder="Email" id="email" name="email"><br> 
                         <br>
-                        <textarea name="comments" id="" cols="30" rows="5" placeholder="Your reason?"></textarea><br>
+                        <textarea name="reason" id="reason" cols="30" rows="5" placeholder="Your reason?"></textarea><br>
                         <p id ="error"></p>
-                        <input type="submit" name="submit" id="but" style="cursor: pointer;">
+                        <!-- <input type="submit" name="submit" id="but" style="cursor: pointer;"> -->
+                        <button id="but" name = 'submit' style="cursor: pointer;" >Submit</button>
                         <button id="but" ><a href="logInForm.php">Sign up</a> </button>
-
 
                     </form>
                 </div>

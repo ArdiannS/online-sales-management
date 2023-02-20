@@ -1,8 +1,6 @@
 <?php
 session_start();
-include('../UserModel.php');
-
-
+include('UserModel.php');
 if (isset($_POST['registerBtn'])) {
     $user = new UserModel();
     $user->setUsername($_POST['username']);
@@ -14,8 +12,10 @@ if (isset($_POST['registerBtn'])) {
     if ($exists) {
         echo "<script>alert('Perdoreusi ekziston');</script>";
         echo "<script>window.location.href = 'logInForm.php';</script>";
+        
     } else {
         $user->insert();
+
     }
 }
 
