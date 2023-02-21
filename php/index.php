@@ -13,9 +13,8 @@ if (isset($_SESSION['username'])) {
     } else {
         echo "<script>window.location.href = 'logInForm.php';</script>";
     }
-} else {
-    // echo "<script>window.location.href = 'index.php';</script>";
-
+}else{
+    echo "<script>window.location.href = 'logInForm.php';</script>";
 }
 ?>
 <html>
@@ -105,32 +104,13 @@ if (isset($_SESSION['username'])) {
                 <?php }
                 ?>
 
-
-
-
-
-
-
             </div>
 
             <div class="divBuxheti">
                 <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2" style=" padding-top: 5px;">
 
-                <?php
-                if (isset($_SESSION['username'])) {
-                    $useri = $user->getCurrentUser();
-                    ?>
-                    <a href="profie.php">
-                        <p>
-                            <?php echo "Bilanci :" . $useri['bilanci'] ?>
-                        </p>
-                    </a>
-                    <?php
-                } else {
-                    ?>
-                    <p>0.0 $</p>
-                <?php }
-                ?>
+                <a href="cart.php">
+                    <p><?php echo ($useri['bilanci'] == null?0:$useri['bilanci']) . "$"?></p>
                 </a>
             </div>
         </div>
