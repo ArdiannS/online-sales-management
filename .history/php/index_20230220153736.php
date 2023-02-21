@@ -1,14 +1,18 @@
 <?php
 // include('signUp.php');
-session_start();
 include('../UserModel.php');
+    echo "<script>alert('Welcome USER');</script>";
+
 $user = new UserModel();
 if (isset($_SESSION['username'])) {
+    echo "<script>alert('Welcome USER');</script>";
     $useri=$user->getCurrentUser();
     if($useri['usetype'] == 'admin') {
         echo "<script>alert('Welcome back');</script>";
         echo "<script>window.location.href = 'indexDash.php';</script>";
     }else if ($useri['usetype'] == 'USER') {
+        echo "<script>alert('Welcome USER');</script>";
+        
         // echo "<script>window.location.href = 'index.php';</script>";
     }else{
         echo "<script>window.location.href = 'logInForm.php';</script>";

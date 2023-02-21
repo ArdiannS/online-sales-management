@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,13 @@
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/secondProduct.css">
 </head>
+
 <body style="margin: 0;">
     <div class="header">
         <div class="leftLogo">
             <img src="../images/logooo.jpg" width="130px" height="97px" alt="" id="img1">
         </div>
-        <div style="margin-left: 3px"class="StartBlock">
+        <div style="margin-left: 3px" class="StartBlock">
             <ul>
 
                 <a href="products.php">
@@ -25,9 +27,9 @@
                     <li>About us</li>
                 </a>
                 <a href="AboutUs.html">
-                <li>Contact us</li>
+                    <li>Contact us</li>
                 </a>
-             
+
 
 
             </ul>
@@ -36,10 +38,11 @@
 
         <div class="search">
             <input type="text" class="searchTerm" placeholder="Kerko te gjitha produktet...">
-            <button type="submit" class="searchButton"  ><img src="../images/search (2).png" style="width: 125%; padding-right: 20px;"  alt="">
+            <button type="submit" class="searchButton"><img src="search (2).png"
+                    style="width: 125%; padding-right: 20px;" alt="">
             </button>
         </div>
- 
+
 
 
         <div class="rightBlock" style="justify-content: flex-end; gap: 4%;">
@@ -59,30 +62,35 @@
             </div>
         </div>
     </div>
-    
-    <?php 
-        include 'DatabaseConnection.php';
-        $db = new DatabaseConnection();
-        if(isset($_GET['product'])){
-            $product_slug = $_GET['product'];
-            $product_data = $db->getProductsByID($product_slug);
-            $product = mysqli_fetch_array($product_data);
-            if($product){
-                ?>
-<div class="main-container-product" style="">
+
+    <?php
+    include 'productModel.php';
+    $pd = new productModel();
+    if (isset($_GET['product'])) {
+        $product_slug = $_GET['product'];
+        $product_data = $pd->getProductsByID($product_slug);
+        $product = mysqli_fetch_array($product_data);
+        if ($product) {
+            ?>
+            <div class="main-container-product" style="">
                 <div class="main-cointaner-product-image">
                     <div class="img-holder-products">
-                <img class="product-image" style = "height:70%;padding-right : 100px" src="<?php echo  $product['image'];?>">
+                        <img class="product-image" style="height:70%;padding-right : 100px"
+                            src="<?php echo $product['image']; ?>">
                     </div>
-    <div class="main-cointaner-product-description">
-                <h1><?php echo "Produkti:" . $product['emri'] ?></h1>
-                <p>Besueshmëria:100 %</p>
-                <p><?php echo "Dizajnuar per :" . $product['emri'] ?></p>
-                <p>Çmimi i transportit: <b>Free </b></p>
-                
+                    <div class="main-cointaner-product-description">
+                        <h1>
+                            <?php echo "Produkti:" . $product['emri'] ?>
+                        </h1>
+                        <p>Besueshmëria:100 %</p>
+                        <p>
+                            <?php echo "Dizajnuar per :" . $product['emri'] ?>
+                        </p>
+                        <p>Çmimi i transportit: <b>Free </b></p>
 
-     
-    
+
+
+
 
         <div class="Pay">
                 <h2>Menyrat tona te pageses</h2>
@@ -107,22 +115,22 @@
     </div>  
 
 
-</div>
+            </div>
 
-    <?php
-                }else{
-                    echo "Product not found";
-                    }
-
-        }else{
-            echo "Something went wrong";
+            <?php
+        } else {
+            echo "Product not found";
         }
-     ?>
-         <footer class="main-footer">
+
+    } else {
+        echo "Something went wrong";
+    }
+    ?>
+    <footer class="main-footer">
         <div class="partners">
             <div id="h3meet">
-            <h3 >Meet our partners</h3>
-        </div>
+                <h3>Meet our partners</h3>
+            </div>
             <div class="imgHolder">
                 <img src="../images/msi.jpg" alt="" width="200px" id="id1"
                  >
@@ -136,15 +144,19 @@
 
         </div>
 
-    <div class="divF">
-        <div class="Help">
-            <img src="../images/logooo2.jpg" alt="" width="200px" id="img1">
+        <div class="divF">
+            <div class="Help">
+                <img src="./logooo2.jpg" alt="" width="200px" id="img1">
 
-        </div>
-        <div class="divHelp">
-            <h3>Ndihma dhe Kontakti</h3>
-           <a href="">  <p>Probleme me llogarine ?</p></a>
-            <a href=""> <p>Keni harruar Fjalkalimin</p></a>
+            </div>
+            <div class="divHelp">
+                <h3>Ndihma dhe Kontakti</h3>
+                <a href="">
+                    <p>Probleme me llogarine ?</p>
+                </a>
+                <a href="">
+                    <p>Keni harruar Fjalkalimin</p>
+                </a>
 
         </div>
         <div class="divH1">
@@ -167,10 +179,11 @@
         </div>
     </div>
 
-    </div>
+        </div>
     </footer>
-   
 
-    
+
+
 </body>
+
 </html>

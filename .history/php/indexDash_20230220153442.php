@@ -1,21 +1,11 @@
 <?php
-// include('signUp.php');
-session_start();
-include('../UserModel.php');
+include('signUp.php');
 $user = new UserModel();
 if (isset($_SESSION['username'])) {
     $useri=$user->getCurrentUser();
-    if($useri['usetype'] == 'admin') {
-        echo "<script>alert('Welcome back');</script>";
-        echo "<script>window.location.href = 'indexDash.php';</script>";
-    }else if ($useri['usetype'] == 'USER') {
-        // echo "<script>window.location.href = 'index.php';</script>";
-    }else{
-        echo "<script>window.location.href = 'logInForm.php';</script>";
+    if($useri['usetype'] != 'admin') {
+        echo "<script>window.location.href = 'logInForm.php';</script>"; 
     }
-}else{
-    echo "<script>window.location.href = 'logInForm.php';</script>";
-
 }
 ?>
 <html>
@@ -25,48 +15,49 @@ if (isset($_SESSION['username'])) {
 
 <head>
     <link rel="stylesheet" type="text/css" href="../style/style.css">
-    <link rel="stylesheet" type="text/css" href="../style/secondSlider.css">
-    <script src="../js/secondSlider.js"></script>
-    <script src="../js/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="secondSlider.css">
+    <script src="secondSlider.js"></script>
+    <script src="script.js"></script>
     <style>
         @media screen and (min-width: 768px) {
-            body {
-                background-color: black;
-            }
+          body {
+            background-color: black;
+          }
         }
-
-        @media screen and (max-width: 767px) {
-            body {
-                background-color: black;
-            }
+          @media screen and (max-width: 767px) {
+          body {
+            background-color: black;
+          }
         }
-    </style>
+      </style>  
 </head>
 
 <body style="margin: 0;">
     <div class="header">
         <div class="leftLogo">
-            <img src="../images/logooo.jpg" width="130px" height="100px" alt="" id="img1">
+            <img src="../images/logooo.jpg" width="110px" height="100px" alt="" id="img1" style="margin-right: 50px;">
         </div>
-        <div style="margin-left: 3px" class="StartBlock">
+        <div style="margin-left: 0px;width:25%"class="StartBlock">
             <ul>
-
+            <a href="dashboard.php">
+                    <li>Dashboard</li>
+                </a>
                 <a href="products.php">
                     <li>Products</li>
                 </a>
                 <a href="index.php">
                     <li>Home</li>
                 </a>
-                <a href="../templates/OurStory.html">
+                <a href="OurStory.html">
                     <li>About us</li>
                 </a>
-                <a href="../templates/AboutUs.html">
+                <a href="AboutUs.html">
                 <li>Contact us</li>
                 </a>
-                <?php
-
-                ?>
-
+                <?php 
+            
+            ?>
+             
 
 
             </ul>
@@ -78,30 +69,24 @@ if (isset($_SESSION['username'])) {
             <button type="submit" class="searchButton"  ><img src="../images/search (2).png" style="width: 125%; padding-right: 20px;"  alt="">
             </button>
         </div>
-
+ 
 
 
         <div class="rightBlock" style="justify-content: flex-end; gap: 4%;">
             <div class="divBuxheti">
-                <img src="../images/download.png" width="30px" alt="" height="30px" id="img2" style=" padding-top: 5px;">
-                <a href="profie.php">
-                    <?php
-                        $useri = $user->getCurrentUser();
-                    ?>
-                    <p><?php echo $useri['username']?></p>
-
+                <img src="../images/download.png" width="30px" alt="" height="30px" id="img2"
+                    style=" padding-top: 5px;">
+                    <a href="logInForm.php">
+                    <p>Llogaria ime</p>
                 </a>
             </div>
 
             <div class="divBuxheti">
-                <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2" style=" padding-top: 5px;">
-                <a href="profie.php">
-                    <?php
-                        $useri = $user->getCurrentUser();
-                    ?>
-                    <p><?php echo $useri['bilanci'] . "$"?></p>
-
-                </a>
+                <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2"
+                    style=" padding-top: 5px;">
+                    <a href="profie.php">
+                <p>0.0 </p>
+            </a>
             </div>
         </div>
     </div>
@@ -116,29 +101,29 @@ if (isset($_SESSION['username'])) {
         <div id="preference7" class="product-preference"><h3>Plants</h3></div>
     </div>
 
-    <a href="">
-        <img src="" name="slide" alt="" style="height: 350px" width="100%">
-    </a>
+<a href="">
+<img src="" name="slide" alt="" style="height: 350px" width="100%">
+</a>
 
     <div class="special-offers">
         <img src="../images/special-offer-background.jfif" class="special-offers-background">
         <img id="productImage"src="../images/gaming-chair.png" class="special-offers-image">
         <div class="special-offers-information-holder">
-            <h1 id="productTitle" class="special-offers-title">GAMING CHAIR</h1>
-            <div class="special-offers-description-holder">
-            </div>
-            <h3 id="productDescription" class="special-offers-description">A gaming chair is a type of chair designed
-                for the comfort of gamers. They differ from most office chairs in having high
-                backrest designed to support the upper back and shoulders</h3>
+           <h1 id="productTitle"class="special-offers-title">GAMING CHAIR</h1>
+           <div class="special-offers-description-holder">
+           </div>
+           <h3 id="productDescription"class="special-offers-description">A gaming chair is a type of chair designed 
+            for the comfort of gamers. They differ from most office chairs in having high 
+            backrest designed to support the upper back and shoulders</h3>
         </div>
         <img src="../images/arrow-next.png" id="nextSpecialOffer" class="next-special-offer-button">
     </div>
-
+    
     <footer class="main-footer">
         <div class="partners">
             <div id="h3meet">
-                <h3>Meet our partners</h3>
-            </div>
+            <h3 >Meet our partners</h3>
+        </div>
             <div class="imgHolder">
                 <img src="../images/msi.jpg" alt="" width="200px" id="id1"
                  >
@@ -156,15 +141,11 @@ if (isset($_SESSION['username'])) {
         <div class="Help">
             <img src="../images/logooo2.jpg" alt="" width="200px" id="img1">
 
-            </div>
-            <div class="divHelp">
-                <h3>Ndihma dhe Kontakti</h3>
-                <a href="">
-                    <p>Probleme me llogarine ?</p>
-                </a>
-                <a href="">
-                    <p>Keni harruar Fjalkalimin</p>
-                </a>
+        </div>
+        <div class="divHelp">
+            <h3>Ndihma dhe Kontakti</h3>
+           <a href="">  <p>Probleme me llogarine ?</p></a>
+            <a href=""> <p>Keni harruar Fjalkalimin</p></a>
 
         </div>
         <div class="divH1">
@@ -187,7 +168,7 @@ if (isset($_SESSION['username'])) {
         </div>
     </div>
 
-        </div>
+    </div>
     </footer>
 </body>
 

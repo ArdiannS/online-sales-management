@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../UserModel.php');
+include('UserModel.php');
 
 
 if (isset($_POST['registerBtn'])) {

@@ -1,6 +1,5 @@
 <?php
-// include('signUp.php');
-session_start();
+include('signUp.php');
 include('../UserModel.php');
 $user = new UserModel();
 if (isset($_SESSION['username'])) {

@@ -35,10 +35,11 @@ class DatabaseConnection
     {
         mysqli_close($this->conn);
     }
+}
 
 
 
-    //     public function fetch(){
+//     public function fetch(){
 //         $data = null;
 //         $query = "SELECT * FROM users";
 //         if ($sql = $this->conn->query($query)) {
@@ -49,31 +50,26 @@ class DatabaseConnection
 //         return $data;
 //     }
 
-    public function getProducts()
-    {
+public function getProducts(){
         $data = null;
         $query = "SELECT * FROM products";
         $data = mysqli_query($this->conn, $query);
         return $data;
-    }
+       }
 
-    public function getProductsByID($ID)
-    {
+    public function getProductsByID($ID){
         $query = "SELECT * FROM products WHERE ID = '$ID'";
-        return $query_run = mysqli_query($this->conn, $query);
+        return $query_run = mysqli_query($this->conn,$query);
     }
-    public function insertProductData($productName, $productPrice, $productDescription, $productImage, $publisherUsername)
-    {
-        $query = "INSERT INTO products(userID, name, description, image, price) VALUES ('$publisherUsername', '$productName', '$productDescription', '$productImage', '$productPrice')";
-        $sql = null;
-        if ($sql = $this->conn->query($query))
-            echo "<script>alert($productImage)</script>";
-        else
-            echo "<script>alert('NOT right')</script>";
+    public function insertProductData($productName, $productPrice, $productDescription, $productImage, $publisherUsername){
+         $query = "INSERT INTO products(userID, name, description, image, price) VALUES ('$publisherUsername', '$productName', '$productDescription', '$productImage', '$productPrice')";
+         $sql = null;
+         if($sql = $this->conn->query($query))echo "<script>alert($productImage)</script>";
+         else echo "<script>alert('NOT right')</script>";
     }
 
 
-}
+
 // function getUsersorAdmin($username,$password){
 
 //         $sql = "SELECT * FROM users WHERE username='" . $username . "' AND password='" . $password . "' ";
