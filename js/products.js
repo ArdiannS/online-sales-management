@@ -1,12 +1,13 @@
 
-window.addEventListener('load',function(){
-      for(let i = 1; i <= 7; i++){
-            const element = document.getElementById('preference'+i);
-            element.style.backgroundColor = 'whitesmoke';
-            element.addEventListener('click',function(){
-                  if(element.style.backgroundColor == 'whitesmoke')
-                  element.style.backgroundColor = 'gray';
-                  else element.style.backgroundColor = 'whitesmoke';
-         });
-       }
+window.addEventListener('load', function () {
+      accessoryCheckboxes = ["accessories", "devices", "furniture", "music-instruments", "toys", "animal-foods", "plants"];
+      for (let i = 1; i <= 7; i++) {
+            const checkbox = document.getElementById(accessoryCheckboxes[i - 1]);
+            const div = document.getElementById("preference" + i);
+            div.style.backgroundColor = 'whitesmoke';
+            checkbox.addEventListener('click', function () {
+                  if (div.style.backgroundColor == 'whitesmoke') div.style.backgroundColor = 'gray';
+                  else div.style.backgroundColor = 'whitesmoke';
+            });
+      }
 });

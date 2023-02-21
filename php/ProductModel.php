@@ -1,29 +1,37 @@
 <?php 
-include('DatabaseConnection.php');
+include_once('DatabaseConnection.php');
 class ProductModel extends DatabaseConnection {
     private $id;
     private $emri;
     private $pershkrimi;
     private $cmimi;
     private $image;
-
+    private $type;
+    private $amount;
     public $conn;
 
       
-        public function __construct($id = ' ', $emri = ' ', $pershkrimi= ' ', $cmimi= ' ', $image= ' ') {
+        public function __construct($id = ' ', $emri = ' ', $pershkrimi= ' ', $cmimi= ' ', $image= ' ', $type=' ', $amount = ' ') {
+          parent::__construct();
           $this->id = $id;
           $this->emri = $emri;
           $this->pershkrimi = $pershkrimi;
           $this->cmimi = $cmimi;
           $this->image = $image;
-
+          $this->type = $type;
+          $this->amount = $amount;
           $this->conn = $this->connectToDatabase();
         }
       
         public function getId() {
           return $this->id;
         }
-      
+        public function setType($type){
+           $this->type = $type;
+        }
+        public function getType(){
+          return $this->type;
+        }
         public function setId($id) {
           $this->id = $id;
         }
@@ -31,7 +39,12 @@ class ProductModel extends DatabaseConnection {
         public function getEmri() {
           return $this->emri;
         }
-      
+        public function getAmount(){
+          return $this->amount;
+        }
+        public function setAmount($amount){
+          $this->amount = $amount;
+        }
         public function setEmri($emri) {
           $this->emri = $emri;
         }
@@ -63,16 +76,23 @@ class ProductModel extends DatabaseConnection {
         function insert()
         {
             try {
-                $query = "INSERT INTO products(emri, pershkrimi, cmimi, image) VALUES (?,?,?,?,?)";
+                $query = "INSERT INTO products(userID, name, description, image, price, type, amount) VALUES (?,?,?,?,?,?,?)";
                 $stm = $this->conn->prepare($query);
-                $stm->execute([$this->emri, $this->pershkrimi, $this->cmimi, $this->image]);
-    
-                echo "<script>alert('Product added successfully');</script>";
-                echo "<script>window.location.href = 'product.php';</script>";
+                $stm->execute([$this->id, $this->emri, $this->pershkrimi, $this->image, $this->cmimi, $this->type, $this->amount]);
+                echo "<script>window.location.href = 'publishProduct.php';</script>";
             } catch (Exception $e) {
                 $e->getMessage();
             }
     
+        }
+        public function decreaseAmountOfProductById($id, $amount){
+           try{
+              $query = "UPDATE products SET amount = amount - $amount WHERE ID = '$id'";
+              $stm = $this->conn->prepare($query);
+              $stm->execute();
+           }catch(Exception $e){
+              return $e->getMessage();
+           }
         }
         public function getProducts(){
             $data = null;
@@ -88,6 +108,24 @@ class ProductModel extends DatabaseConnection {
             $query = "SELECT * FROM products WHERE ID = '$ID'";
             return mysqli_query($this->conn,$query);
         } 
+
+      public function getProductsByPreference($preferences){
+           $data = null;
+           $query = "SELECT * FROM products WHERE ";
+           $i = 0;
+           while($i < sizeof($preferences)){
+             $current = $preferences[$i];
+             if($i++ == 0) $query .= "type = '$current'";
+             else $query .= " OR type = '$current'";
+           }
+           if($i == 0) $query = "SELECT * FROM products";
+           if($sql = $this->conn->query($query)){
+                while($row = mysqli_fetch_assoc($sql)){
+                   $data[] = $row;
+                }
+           }
+           return $data;
+        }
       }
 
       

@@ -7,9 +7,21 @@
     <title>Document</title>
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/secondProduct.css">
+    <link rel="stylesheet" href="../style/cartPage.css">
 </head>
 
 <body style="margin: 0;">
+    <?php
+        session_start();
+        include_once('UserModel.php');
+        include_once('ProductModel.php');
+        $productDatabase = new ProductModel();
+        $user = new UserModel();
+        $products = [];
+        if (isset($_SESSION['username'])) 
+            $currentUser = $user->getCurrentUser();
+        if(isset($_SESSION['cart'])) $products = $_SESSION['cart'];
+   ?>
     <div class="header">
         <div class="leftLogo">
             <img src="../images/logooo.jpg" width="130px" height="97px" alt="" id="img1">
@@ -49,82 +61,43 @@
             <div class="divBuxheti">
                 <img src="../images/download.png" width="30px" alt="" height="30px" id="img2"
                     style=" padding-top: 5px;">
-                    <p>Llogaria ime</p>
+                    <p><?php echo $currentUser['username']?></p>
                 </a>
             </div>
-
             <div class="divBuxheti">
                 <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2"
                     style=" padding-top: 5px;">
                     <a href="profie.html">
-                <p>0.0 </p>
+                <p><?php echo ($currentUser['bilanci'] == null?0:$currentUser['bilanci']).""?> </p>
             </a>
             </div>
         </div>
     </div>
-
     <?php
-    include 'productModel.php';
-    $pd = new productModel();
-    if (isset($_GET['product'])) {
-        $product_slug = $_GET['product'];
-        $product_data = $pd->getProductsByID($product_slug);
-        $product = mysqli_fetch_array($product_data);
-        if ($product) {
-            ?>
-            <div class="main-container-product" style="">
-                <div class="main-cointaner-product-image">
-                    <div class="img-holder-products">
-                        <img class="product-image" style="height:70%;padding-right : 100px"
-                            src="<?php echo $product['image']; ?>">
-                    </div>
-                    <div class="main-cointaner-product-description">
-                        <h1>
-                            <?php echo "Produkti:" . $product['emri'] ?>
-                        </h1>
-                        <p>Besueshmëria:100 %</p>
-                        <p>
-                            <?php echo "Dizajnuar per :" . $product['emri'] ?>
-                        </p>
-                        <p>Çmimi i transportit: <b>Free </b></p>
-
-
-
-
-
-        <div class="Pay">
-                <h2>Menyrat tona te pageses</h2>
-                <a href=""><img src="../images/raif.png" alt="" width="40px"></a>
-                <img src="../images/nlb.jpeg" alt="" width="50px">
-                <img src="../images/visa.jpg" alt="" width="35px">
-                <img src="../images/visaE.png" alt="" width="35px">
-                <img src="../images/mst.png" alt="" width="35px">
-                <img src="../images/mst2.png" alt="" width="35px">
-    </div>
-        </div>
-            <div class="price-product" style="border :3px solid gray; height : 100%; min-width:40%;margin-left : 100px">
-                <h1><?php echo "Cmimi:" . $product['cmimi'] . "$"?></h1>
-                <h3>Dispoeshmeria : Aktive </h3>
-                <h3>Me shume se 3 produkte</h3><br><br>
-                <button><input type="number" min="1" class="count-products" value="1" placeholder="Sasia"> Sasia</button><br> <br>
-                <button class="add-to-cart">Add to Cart</button>
-                <button class="add-to-wishlist">Add to Wishlist</button><br> <br>
-                <button class="buy-now">Buy now</button>
-            </div>
-        </div>
-    </div>  
-
-
-            </div>
-
-            <?php
-        } else {
-            echo "Product not found";
+       foreach($products as $key=>$value){
+        $currentProductData = $productDatabase->getProductsByID($key);
+        if($currentProductData == null) continue;
+        $currentProductData = mysqli_fetch_array($currentProductData);
+        if($currentProductData == null){
+            continue;
         }
-
-    } else {
-        echo "Something went wrong";
-    }
+    ?>
+    <div class="cart-main-container">
+       <div class="product-in-cart">
+           <div class="product-card-image-container">
+              <img class="product-card-image" src="../uploads/<?php echo $currentProductData['image']?>">
+           </div>
+           <div class="product-card-additional-information">
+              <h2><?php echo $currentProductData['name']?></h2>
+              <h2><?php echo $currentProductData['type']?></h2>
+              <h2><?php echo $currentProductData['price']?></h2>
+              <h2><?php echo $value['total']?></h2>
+              <h2><?php echo $value['amount']?></h2>
+           </div>
+       </div>
+    </div>
+    <?php
+     }
     ?>
     <footer class="main-footer">
         <div class="partners">
@@ -146,8 +119,7 @@
 
         <div class="divF">
             <div class="Help">
-                <img src="./logooo2.jpg" alt="" width="200px" id="img1">
-
+                <img src="../images/logooo2.jpg" alt="" width="200px" id="img1">
             </div>
             <div class="divHelp">
                 <h3>Ndihma dhe Kontakti</h3>

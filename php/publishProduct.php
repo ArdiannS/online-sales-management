@@ -87,11 +87,22 @@
           </div>
           <div class='publish-product-field' style="height: 30%">
               <textarea style="max-height: 100%; min-height:20%; min-width: 20%;"name="product-description" cols="30" rows="10" maxlength="499"placeholder="Product description..."></textarea>
-          </div>
-          <h4 style="margin-left:42.5%;">Product image</h4>
-          <div class='publish-product-field'>
-             <input id="file-input" type="file" name="product-image" accept="image/*">
-             <!-- <button id="image-button" class="choose-image">Choose an image</button> -->
+        </div>
+          <div class='publish-product-field' style="display:inline; height:30%;">
+            <div style="height: 30%">
+             <label for="file-input">Choose Image</label><input id="file-input" hidden="hidden" type="file" placeholder="Choose image" name="product-image" accept="image/*">
+            </div>
+            <div style="height: 30%">
+             <select name="product-type" >
+                    <option value="Accessories">Accessories</option>
+                    <option value="Devices">Devices</option>
+                    <option value="Furniture">Furniture</option>
+                    <option value="Music Instruments">Music Instruments</option>
+                    <option value="Toys">Toys</option>
+                    <option value="Animal Foods">Animal Foods</option>
+                    <option value="Plants">Accessories</option>
+              </select></div>
+              <div style="height: 30%"><input type="number" name="product-amount"class="publish-product-input" placeholder="Sasia e produktit..."></div>
           </div>   
           <button class="submit-product-button" name='submit-button' type="submit" >SUBMIT</button>
           <h3 id='about-submission'></h3>
