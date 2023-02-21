@@ -186,19 +186,25 @@ class UserModel extends DatabaseConnection
             return $e->getMessage();
         }
     }
-    public function deleteUserById($id){
+    public function deleteUserById($id)
+    {
         $query = "DELETE FROM users where id = $id";
-        if($sql = $this->conn->query($query)){
+        if ($sql = $this->conn->query($query)) {
             return true;
         }
         return false;
     }
+    function existsByUserNameAndEmail($username, $email)
+    {
+        $data = null;
+        $query = "SELECT * FROM users WHERE username = . '$username' . and email = '$email' ";
+        $result = mysqli_query($this->conn, $query);
+        if (mysqli_num_rows($result) > 0) {
+            return true;
+        }
+        return false;
+
+    }
+
 }
-
-
-
-
-
-
-
 ?>

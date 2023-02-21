@@ -2,7 +2,6 @@
 session_start();
 include('UserModel.php');
 
-
 if (isset($_POST['registerBtn'])) {
     $user = new UserModel();
     $user->setUsername($_POST['username']);
@@ -21,7 +20,7 @@ if (isset($_POST['registerBtn'])) {
         echo "<script>window.location.href = 'index.php';</script>";
         $_SESSION['username'] = $user->getUsername();
         $_SESSION['cart'] = [];
-        return;
+        return;        
     }
 }
 

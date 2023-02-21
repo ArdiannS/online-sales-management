@@ -108,6 +108,7 @@ class ProductModel extends DatabaseConnection {
             $query = "SELECT * FROM products WHERE ID = '$ID'";
             return mysqli_query($this->conn,$query);
         } 
+
       public function getProductsByPreference($preferences){
            $data = null;
            $query = "SELECT * FROM products WHERE ";
@@ -126,6 +127,7 @@ class ProductModel extends DatabaseConnection {
            return $data;
         }
       }
+
       
       
 

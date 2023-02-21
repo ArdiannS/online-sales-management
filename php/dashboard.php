@@ -165,7 +165,7 @@
 <body>
     <div class="header">
         <div class="leftLogo">
-            <img src="./logooo.jpg" width="130px" height="100px" alt="" id="img1">
+            <img src="../images/logooo.jpg" width="130px" height="100px" alt="" id="img1">
         </div>
         <div style="margin-left: 3px" class="StartBlock">
             <ul class="inline-list">

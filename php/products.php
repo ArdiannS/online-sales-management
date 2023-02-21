@@ -1,5 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+ <?php 
+ include 'UserModel.php';
+ session_start();
+ $user = new UserModel();
+ if (isset($_SESSION['username'])) {
+    $useri=$user->getCurrentUser();
+    if ($useri['usetype'] != 'admin') {
+        // echo "<script>window.location.href = 'logInForm.php';</script>";
+    }
+}
+ ?>   
 
 <head>
     
@@ -86,7 +97,6 @@
     </div>
 
 
-   
     <button class='publish-product'><a href="publishProduct.php">PUBLISH PRODUCT</a></button>
     <form action="loadPage.php" method="post">
       <div class="preferences-container">
