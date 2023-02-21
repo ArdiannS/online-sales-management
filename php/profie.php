@@ -41,7 +41,7 @@ session_start(); ?>
                 <a href="OurStory.html">
                     <li>About us</li>
                 </a>
-                <a href="AboutUs.html">
+                <a href="AboutUs.php">
                     <li>Contact us</li>
                 </a>
 
@@ -70,13 +70,17 @@ session_start(); ?>
                 <a href="../php/logInForm.php">
                     <?php
                     if (isset($_SESSION['username'])) {
-                        
+
 
                         ?>
-                        <p><?php echo $result['username'] ?></p>
+                        <p>
+                            <?php echo $result['username'] ?>
+                        </p>
                         <?php
                     }
                     ?>
+
+
                 </a>
             </div>
 
@@ -85,7 +89,7 @@ session_start(); ?>
 
                 <a href="../php/profie.php">
                     <p>
-                        <?php echo $result['bilanci'] . "$"?>
+                        <?php echo $result['bilanci'] . "$" ?>
                     </p>
                 </a>
             </div>
@@ -97,44 +101,64 @@ session_start(); ?>
                 <?php
 
                 ?>
-                <h1>Username :
-                    <?php echo  $result['username'] ?>
+                <h1>Username:
+                    <?php echo $result['username'] ?>
                 </h1>
             </div>
             <div class="profile-card-info-container">
-                <h1> Numri total i parave ne karte :
+                <h1> Numri total i parave ne karte:
                     <?php echo $result['bilanci'] . "$" ?>
                 </h1>
-                <h1>Emaili :
+                <h1>Emaili:
                     <?php echo $result['email'] ?>
                 </h1>
-                <h1>Mosha :
+                <h1>Mosha:
                     <?php echo $result['age'] ?>
                 </h1>
-                <h1>
-                    <?php echo $result['email'] ?>
-                </h1>
+                <div class="edit-button-container">
+                </div>
+
                 <div class="logoutButton">
                     <div class="" style="display: flex; justify-content: center; margin-right: 36px;">
                         <a href="logOut.php"> <button type="submit" id="loginBtn" name="loginBtn">Log Out</button></a>
-                    </div>
-                    <style>
-                        button {
-                            border: none;
-                            padding: 10px;
-                            background-color: rgb(red, green, blue);
-                            border-radius: 12px;
-                            color: black;
-                            font-weight: bold;
-                            cursor: pointer;
-                            width: 150px;
-                            height: 40px;
-                        }
-                    </style>
+                        <a href="edit.php?id=<?php echo $result['id']; ?>"> <button class="edit-button"
+                            name="edit" id="loginBtn">Edit</button></a>
 
+                    </div>
                 </div>
+
+                <style>
+                    .profile-main-container {
+                        text-align: center;
+
+                    }
+
+                    .user-profile-card {
+                        padding-top: 100px;
+                        background-color: gainsboro;
+                    }
+
+                    button {
+                        border: none;
+                        padding: 10px;
+                        background-color: rgb(red, green, blue);
+                        border-radius: 12px;
+                        color: black;
+                        font-weight: bold;
+                        cursor: pointer;
+                        width: 150px;
+                        height: 40px;
+                    }
+
+                    .logoutButton button {
+                        margin: 10px;
+                    }
+
+                </style>
+
             </div>
         </div>
+    </div>
     </div>
 
 </body>

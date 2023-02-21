@@ -58,17 +58,17 @@ function validateEmptyData($username, $password)
         return false;
     }
 }
-function validimi($username,$password){
-    $db = new DatabaseConnection();
-    $result = $db->fetch();
-    foreach ($result as $user) {
-        if($user['username'] == $username && $user['password'] == $password){
-            $_SESSION['usetype']=$user['usetype'];
-            $_SESSION['username']=$user['username'];
-            return true;
-        }
-    }   
-}
+// function validimi($username,$password){
+//     $db = new DatabaseConnection();
+//     $result = $db->fetch();
+//     foreach ($result as $user) {
+//         if($user['username'] == $username && $user['password'] == $password){
+//             $_SESSION['usetype']=$user['usetype'];
+//             $_SESSION['username']=$user['username'];
+//             return true;
+//         }
+//     }   
+
 
 
 

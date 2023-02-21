@@ -95,6 +95,7 @@ class UserModel extends DatabaseConnection
             $stm = $this->conn->prepare($query);
             $stm->execute([$this->username, $this->password, $this->email, $this->age, $this->usetype, $this->bilanci]);
             echo "<script>alert('records added successfully');</script>";
+            echo "<script>window.location.href = 'index.php';</script>";
         } catch (Exception $e) {
             echo "<script>alert('Error: " . $e->getMessage() . "');</script>";
         }
