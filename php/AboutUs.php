@@ -13,16 +13,16 @@
             <a href="../php/index.php">
                 <li> <p>Home</p></li>
             </a>
-             <a href="../OurStory.html">
+             <a href="../templates/OurStory.html">
                 <li> <p>Our Story</p></li>
                 </a>
-                 <a href="Team.html">
+                 <a href="../templates/Team.html">
                     <li><p>Team</p></li>
                 </a>
-                 <a href="Technologies.html">
+                 <a href="../templates/Technologies.html">
                     <li><p>Technologies</p></li>
                 </a>
-                <a href="AboutUs.html">
+                <a href="AboutUs.php">
                     <li><p>Contact Us</p></li>
                 </a>
             

@@ -8,6 +8,7 @@ include('UserModel.php');
         $user->setPassword($_POST['password']);
         $user->setAge($_POST['age']);
         $user->setUsertype($_POST['usetype']);
+        $user->setBilanci(500);
         $exists = $user->existsByUsername($user->getUsername());
         if ($exists) {
             echo "<script>alert('Perdoreusi ekziston');</script>";

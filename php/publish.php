@@ -59,6 +59,6 @@ if(!empty($fileName)){
 // Display status message
 if(strlen($statusMsg) != 0)
 echo "<script>alert($statusMsg);</script>";
-echo "<script>window.location.href = 'http://localhost/prjekti__web/online-sales-management/php/publishProduct.php';</script>";
+echo "<script>window.location.href = 'publishProduct.php';</script>";
                    
 ?>

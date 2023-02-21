@@ -3,7 +3,7 @@ session_start();
 include('UserModel.php');
 $user = new UserModel();
 if (isset($_SESSION['username'])) {
-    $_SESSION['loggedIn'] = true;
+    // $_SESSION['loggedIn'] = true;
     $useri = $user->getCurrentUser();
     if ($useri['usetype'] == 'admin') {
         echo "<script>alert('Welcome back');</script>";
@@ -11,10 +11,11 @@ if (isset($_SESSION['username'])) {
     } else if ($useri['usetype'] == 'USER') {
         // echo "<script>window.location.href = 'index.php';</script>";
     } else {
-        echo "<script>window.location.href = 'logInForm.php';</script>";
+        // echo "<script>window.location.href = 'logInForm.php';</script>";
     }
-}else{
-    echo "<script>window.location.href = 'logInForm.php';</script>";
+} else {
+    // echo "<script>window.location.href = 'index.php';</script>";
+
 }
 ?>
 <html>
@@ -104,13 +105,27 @@ if (isset($_SESSION['username'])) {
                 <?php }
                 ?>
 
+
             </div>
 
             <div class="divBuxheti">
                 <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2" style=" padding-top: 5px;">
 
-                <a href="cart.php">
-                    <p><?php echo ($useri['bilanci'] == null?0:$useri['bilanci']) . "$"?></p>
+                <?php
+                if (isset($_SESSION['username'])) {
+                    $useri = $user->getCurrentUser();
+                    ?>
+                    <a href="profie.php">
+                        <p>
+                            <?php echo $useri['bilanci'] ."$" ?>
+                        </p>
+                    </a>
+                    <?php
+                } else {
+                    ?>
+                    <p>0.0 $</p>
+                <?php }
+                ?>
                 </a>
             </div>
         </div>

@@ -1,4 +1,5 @@
 <?php
+
 include 'UserModel.php';
 $user = new UserModel();
 $id = $_GET['id'];
@@ -16,10 +17,18 @@ if (isset($_POST['update'])) {
      document.location='profie.php'</script>";
     return;
   } else {
-    echo $user->update();
+    $updatedUsername = $user->update();
+    if ($updatedUsername != null) {
+      session_destroy();
+      session_start();
+      $_SESSION['username'] = $updatedUsername;
+    } else {
+      echo "<script>alert('Ka ndodhur nje problem');
+     document.location='profie.php'</script>";
+    }
   }
-
 }
+
 $editingData = $user->editUserById($id);
 $userData = $editingData;
 
@@ -53,8 +62,7 @@ $userData = $editingData;
         <label for="age">Age:</label>
         <input type="number" name="age" id="age" placeholder="Age" value="<?php echo $userData['age'] ?>">
         <label for="usertype">UserType:</label>
-        <input type="text" name="usertype" id="usertype" placeholder="UserType"
-          value="<?php echo $userData['usetype'] ?>">
+        <input type="text" name="usetype" id="usetype" placeholder="UserType" value="<?php echo $userData['usetype'] ?>">
         <button name='update'>Edito</button>
       </div>
       <?php
@@ -74,7 +82,9 @@ $userData = $editingData;
         <input type="email" name="email" id="email" placeholder="Email" value="<?php echo $userData['email'] ?>">
         <label for="age">Age:</label>
         <input type="number" name="age" id="age" placeholder="Age" value="<?php echo $userData['age'] ?>">
+        <input type="hidden" name="usetype" id="usetype" placeholder="UserType" value="<?php echo $userData['usetype'] ?>">
         <button name='update'>Edito</button>
+
       </div>
       <?php
     }
