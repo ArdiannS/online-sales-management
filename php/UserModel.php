@@ -1,5 +1,5 @@
 <?php
-include('../php/DatabaseConnection.php');
+include_once('DatabaseConnection.php');
 class UserModel extends DatabaseConnection
 {
     private $id;
@@ -7,21 +7,28 @@ class UserModel extends DatabaseConnection
     private $email;
     private $password;
     private $age;
+    private $bilanci;
     private $usetype;
     public $conn;
 
-    public function __construct($id = ' ', $username = ' ', $email = ' ', $password = ' ', $age = ' ', $usetype = ' ')
+    public function __construct($id = ' ', $username = ' ', $email = ' ', $password = ' ', $age = ' ', $usetype = ' ', $bilanci=' ')
     {
+        parent::__construct();
         $this->id = $id;
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
         $this->age = $age;
         $this->usetype = $usetype;
-
+        $this->$bilanci = $bilanci;
         $this->conn = $this->connectToDatabase();
     }
-
+    public function getBilanci(){
+        return $this->bilanci;
+    }
+    public function setBilanci($b){
+        $this->bilanci = $b;
+    }
     public function getId()
     {
         return $this->id;
@@ -84,11 +91,10 @@ class UserModel extends DatabaseConnection
     function insert()
     {
         try {
-            $query = "INSERT INTO users(username, password, email, age,usetype) VALUES (?,?,?,?,?)";
+            $query = "INSERT INTO users(username, password, email, age,usetype, bilanci) VALUES (?,?,?,?,?,?)";
             $stm = $this->conn->prepare($query);
-            $stm->execute([$this->username, $this->password, $this->email, $this->age, $this->usetype]);
+            $stm->execute([$this->username, $this->password, $this->email, $this->age, $this->usetype, $this->bilanci]);
             echo "<script>alert('records added successfully');</script>";
-            echo "<script>window.location.href = '/';</script>";
         } catch (Exception $e) {
             echo "<script>alert('Error: " . $e->getMessage() . "');</script>";
         }
@@ -132,6 +138,7 @@ class UserModel extends DatabaseConnection
 
     function getCurrentUser()
     {
+        if(session_status() != 2)session_start();
         $userName = $_SESSION['username'];
         $query = "SELECT * FROM users WHERE username='$userName'";
         $result = mysqli_query($this->conn, $query);
@@ -151,13 +158,29 @@ class UserModel extends DatabaseConnection
         }
         return $data;
     }
+    public function getUserById($id){
+        $query = "SELECT * FROM users WHERE id = '$id'";
+        $data = mysqli_query($this->conn, $query);
+        if (mysqli_num_rows($data) != 0) {
+            return $data;
+        }
+        return null;
+    }
+    public function decreaseBalanceById($id, $amount){
+       try{
+         $query = "UPDATE users SET bilanci = bilanci - $amount WHERE id='$id'";
+         $stm = $this->conn->prepare($query);
+         $stm->execute();
+       }catch(Exception $e){
+          return $e->getMessage();
+       }
+    }
     public function update()
     {
         try {
             $sqlStm = "UPDATE users SET username=?,password=?, email=?, age=?,usetype=? where id=?";
             $stm = $this->conn->prepare($sqlStm);
-            $stm->execute([$this->username, $this->password,$this->email, $this->age, $this->usetype,$this->id
-            ]);
+            $stm->execute([$this->username, $this->password,$this->email, $this->age, $this->usetype,$this->id]);
             echo "<script>alert('dhenat jane Perditsuar me sukses');document.location='displayDhenat.php';</script>";
         } catch (Exception $e) {
             return $e->getMessage();

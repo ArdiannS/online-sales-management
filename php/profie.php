@@ -7,9 +7,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="profile.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="products.js"></script>
+    <link rel="stylesheet" href="../style/profile.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="../js/products.js"></script>
     <style>
         @media screen and (min-width: 768px) {
             body {
@@ -28,15 +28,15 @@
 <body style="margin: 0;">
     <div class="header" style="width: 100%;">
         <div class="leftLogo">
-            <img src="./logooo.jpg" width="130px" height="100px" alt="" id="img1">
+            <img src="../images/logooo.jpg" width="130px" height="100px" alt="" id="img1">
         </div>
         <div style="margin-left: 3px" class="StartBlock">
             <ul>
 
-                <a href="products.html">
+                <a href="../php/products.php">
                     <li>Products</li>
                 </a>
-                <a href="index.html">
+                <a href="../php/index.php">
                     <li>Home</li>
                 </a>
                 <a href="OurStory.html">
@@ -67,15 +67,15 @@
 
         <div class="rightBlock" style="justify-content: flex-end; gap: 4%;">
             <div class="divBuxheti">
-                <img src="./download.png" width="30px" alt="" height="30px" id="img2" style=" padding-top: 5px;">
-                <a href="logInForm.html">
+                <img src="../images/download.png" width="30px" alt="" height="30px" id="img2" style=" padding-top: 5px;">
+                <a href="../templates/logInForm.php">
                     <p>Llogaria ime</p>
                 </a>
             </div>
 
             <div class="divBuxheti">
-                <img src="./iStok.jpg" width="30px" alt="" height="30px" id="img2" style=" padding-top: 5px;">
-                <a href="profie.html">
+                <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2" style=" padding-top: 5px;">
+                <a href="../templates/profie.html">
                     <p><?php echo $result['username'] ?></p>
                     
                 </a>

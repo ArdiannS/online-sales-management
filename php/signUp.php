@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../UserModel.php');
+include('UserModel.php');
 
 
 if (isset($_POST['registerBtn'])) {
@@ -10,12 +10,18 @@ if (isset($_POST['registerBtn'])) {
     $user->setPassword($_POST['password']);
     $user->setAge($_POST['age']);
     $user->setUsertype('USER');
+    $user->setBilanci(500);
     $exists = $user->existsByUsername($user->getUsername());
     if ($exists) {
         echo "<script>alert('Perdoreusi ekziston');</script>";
         echo "<script>window.location.href = 'logInForm.php';</script>";
+        return;
     } else {
         $user->insert();
+        echo "<script>window.location.href = 'index.php';</script>";
+        $_SESSION['username'] = $user->getUsername();
+        $_SESSION['cart'] = [];
+        return;
     }
 }
 
@@ -37,7 +43,7 @@ if (isset($_POST['loginBtn'])) {
         }
         echo "<script>window.location.href = 'index.php';</script>";
     } else {
-        echo "<script>alert('Account doesnt exists');</script>";
+        echo "<script>alert('Account doesnt exist.');</script>";
         echo "<script>window.location.href = 'logInForm.php';</script>";
     }
 }

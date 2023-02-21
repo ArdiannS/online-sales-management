@@ -1,11 +1,11 @@
 <?php
 // include('signUp.php');
 session_start();
-include('../UserModel.php');
+include('UserModel.php');
 $user = new UserModel();
 if (isset($_SESSION['username'])) {
     $useri=$user->getCurrentUser();
-    if($useri['usetype'] == 'admin') {
+    if($useri['usetype'] == 'admin'){
         echo "<script>alert('Welcome back');</script>";
         echo "<script>window.location.href = 'indexDash.php';</script>";
     }else if ($useri['usetype'] == 'USER') {
@@ -15,7 +15,6 @@ if (isset($_SESSION['username'])) {
     }
 }else{
     echo "<script>window.location.href = 'logInForm.php';</script>";
-
 }
 ?>
 <html>
@@ -85,9 +84,6 @@ if (isset($_SESSION['username'])) {
             <div class="divBuxheti">
                 <img src="../images/download.png" width="30px" alt="" height="30px" id="img2" style=" padding-top: 5px;">
                 <a href="profie.php">
-                    <?php
-                        $useri = $user->getCurrentUser();
-                    ?>
                     <p><?php echo $useri['username']?></p>
 
                 </a>
@@ -95,12 +91,8 @@ if (isset($_SESSION['username'])) {
 
             <div class="divBuxheti">
                 <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2" style=" padding-top: 5px;">
-                <a href="profie.php">
-                    <?php
-                        $useri = $user->getCurrentUser();
-                    ?>
-                    <p><?php echo $useri['bilanci'] . "$"?></p>
-
+                <a href="cart.php">
+                    <p><?php echo ($useri['bilanci'] == null?0:$useri['bilanci']) . "$"?></p>
                 </a>
             </div>
         </div>

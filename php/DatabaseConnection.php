@@ -1,9 +1,9 @@
 <?php
 class DatabaseConnection
 {
-    public $servername = "localhost:9999";
+    public $servername = "localhost";
     public $dbusername = 'root';
-    public $dbpassword = '';
+    public $dbpassword = 'localhost';
     public $database = 'online-sales-managment';
     public $conn;
 
