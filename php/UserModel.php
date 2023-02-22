@@ -9,18 +9,20 @@ class UserModel extends DatabaseConnection
     private $age;
     private $bilanci;
     private $usetype;
+
+
     public $conn;
 
-    public function __construct($id = ' ', $username = ' ', $email = ' ', $password = ' ', $age = ' ', $usetype = ' ', $bilanci=' ')
+    public function __construct($id = ' ', $username = ' ', $email = ' ', $password = ' ', $age = ' ', $usetype = ' ',$bilanci = ' ')
     {
-        parent::__construct();
         $this->id = $id;
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
         $this->age = $age;
         $this->usetype = $usetype;
-        $this->$bilanci = $bilanci;
+        $this->bilanci = $bilanci;
+
         $this->conn = $this->connectToDatabase();
     }
     public function getBilanci(){
@@ -181,10 +183,14 @@ class UserModel extends DatabaseConnection
         try {
             $sqlStm = "UPDATE users SET username=?,password=?, email=?, age=?,usetype=? where id=?";
             $stm = $this->conn->prepare($sqlStm);
-            $stm->execute([$this->username, $this->password,$this->email, $this->age, $this->usetype,$this->id]);
-            echo "<script>alert('dhenat jane Perditsuar me sukses');document.location='displayDhenat.php';</script>";
+            $stm->execute([
+                $this->username, $this->password, $this->email, $this->age, $this->usetype, $this->id
+            ]);
+            echo "<script>alert('dhenat jane Perditsuar me sukses');
+            document.location='index.php';</script>";
+            return $this->username;
         } catch (Exception $e) {
-            return $e->getMessage();
+            return null;
         }
     }
     public function deleteUserById($id)
@@ -208,4 +214,11 @@ class UserModel extends DatabaseConnection
     }
 
 }
+
+
+
+
+
+
+
 ?>

@@ -192,7 +192,7 @@
                 <a href="index.php">
                     <li>Products</li>
                 </a>
-                <a href="AboutUs.html">
+                <a href="AboutUs.php">
                     <li>Contact us</li>
                 </a>
                 <?php

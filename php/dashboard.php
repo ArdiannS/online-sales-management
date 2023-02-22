@@ -185,13 +185,13 @@
         <div style="margin-left: 3px" class="StartBlock">
             <ul class="inline-list">
 
-                <a href="products.php">
-                    <li>Users</li>
-                </a>
                 <a href="index.php">
+                    <li>Home</li>
+                </a>
+                <a href="products.php">
                     <li>Products</li>
                 </a>
-                <a href="AboutUs.html">
+                <a href="AboutUs.php">
                     <li>Contact us</li>
                 </a>
                 <?php

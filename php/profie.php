@@ -9,7 +9,7 @@ session_start(); ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/profile.css">
     <link rel="stylesheet" href="../style/style.css">
-    <script src="../js/products.js"></script>
+    <script src="products.js"></script>
     <style>
         @media screen and (min-width: 768px) {
             body {
@@ -32,10 +32,11 @@ session_start(); ?>
         </div>
         <div style="margin-left: 3px" class="StartBlock">
             <ul>
-                <a href="../php/products.php">
+
+                <a href="products.php">
                     <li>Products</li>
                 </a>
-                <a href="../php/index.php">
+                <a href="index.php">
                     <li>Home</li>
                 </a>
                 <a href="OurStory.html">
@@ -66,8 +67,9 @@ session_start(); ?>
 
         <div class="rightBlock" style="justify-content: flex-end; gap: 4%;">
             <div class="divBuxheti">
-                <img src="../images/download.png" width="30px" alt="" height="30px" id="img2" style=" padding-top: 5px;">
-                <a href="../php/logInForm.php">
+                <img src="../images/download.png" width="30px" alt="" height="30px" id="img2"
+                    style=" padding-top: 5px;">
+                <a href="logInForm.html">
                     <?php
                     if (isset($_SESSION['username'])) {
 
@@ -86,8 +88,7 @@ session_start(); ?>
 
             <div class="divBuxheti">
                 <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2" style=" padding-top: 5px;">
-
-                <a href="../php/profie.php">
+                <a href="profie.html">
                     <p>
                         <?php echo $result['bilanci'] . "$" ?>
                     </p>

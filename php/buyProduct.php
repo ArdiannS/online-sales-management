@@ -47,7 +47,7 @@
 
         <div class="search">
             <input type="text" class="searchTerm" placeholder="Kerko te gjitha produktet...">
-            <button type="submit" class="searchButton"><img src="search (2).png"
+            <button type="submit" class="searchButton"><img src="../images/search (2).png"
                     style="width: 125%; padding-right: 20px;" alt="">
             </button>
         </div>
@@ -58,15 +58,46 @@
             <div class="divBuxheti">
                 <img src="../images/download.png" width="30px" alt="" height="30px" id="img2"
                     style=" padding-top: 5px;">
-                    <p><?php echo $currentUser['username']?></p>
+                    <?php
+                if (isset($_SESSION['username'])) {
+                    $useri = $user->getCurrentUser();
+                    ?>
+                    <p>
+                        <a href="profie.php">
+                            <?php echo $useri['username'] ?>
+                        </a>
+
+                    </p>
+                <?php } else { ?>
+
+                    <a href="logInForm.php">
+                        <p>Log in</p>
+                    </a>
+                <?php }
+                ?>
                 </a>
             </div>
 
             <div class="divBuxheti">
                 <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2"
                     style=" padding-top: 5px;">
-                    <a href="profie.html">
-                <p><?php echo ($currentUser['bilanci'] == null?0:$currentUser['bilanci']).""?> </p>
+                    <a href="../templates/profie.html">
+                    <?php
+                if (isset($_SESSION['username'])) {
+                    ?>
+                    <p>
+                        <a href="profie.php">
+                            <?php echo $currentUser['bilanci'] . "$"?>
+                        </a>
+
+                    </p>
+                <?php } else { ?>
+
+                    <a href="">
+                        <p>Bilanci</p>
+                    </a>
+                <?php }
+                ?>
             </a>
             </div>
         </div>
@@ -158,7 +189,7 @@
 
         <div class="divF">
             <div class="Help">
-                <img src="./logooo2.jpg" alt="" width="200px" id="img1">
+                <img src="../images/logooo2.jpg" alt="" width="200px" id="img1">
 
             </div>
             <div class="divHelp">
