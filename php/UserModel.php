@@ -139,17 +139,33 @@ class UserModel extends DatabaseConnection
         return null;
     }
 
+    // function getCurrentUser()
+    // {
+    //     if(session_status() != 2)session_start();
+    //     $userName = $_SESSION['username'];
+    //     $query = "SELECT * FROM users WHERE username='$userName'";
+    //     $result = mysqli_query($this->conn, $query);
+    //     if (mysqli_num_rows($result) > 0) {
+    //         return $result->fetch_array();
+    //     }
+    //     return null;
+    // }
     function getCurrentUser()
-    {
-        if(session_status() != 2)session_start();
-        $userName = $_SESSION['username'];
-        $query = "SELECT * FROM users WHERE username='$userName'";
-        $result = mysqli_query($this->conn, $query);
-        if (mysqli_num_rows($result) > 0) {
-            return $result->fetch_array();
-        }
-        return null;
+{
+    if (session_status() != 2) {
+        session_start();
     }
+    $userName = $_SESSION['username'];
+    $query = "SELECT * FROM users WHERE username='$userName'";
+    $result = mysqli_query($this->conn, $query);
+    if (mysqli_num_rows($result) > 0) {
+        $user = $result->fetch_array();
+        $_SESSION['username'] = $user['username'];
+        return $user;
+    }
+    return null;
+}
+
     public function editUserById($id)
     {
         $data = null;
@@ -181,6 +197,7 @@ class UserModel extends DatabaseConnection
     public function update()
     {
         try {
+            
             $sqlStm = "UPDATE users SET username=?,password=?, email=?, age=?,usetype=? where id=?";
             $stm = $this->conn->prepare($sqlStm);
             $stm->execute([

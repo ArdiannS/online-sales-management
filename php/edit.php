@@ -21,7 +21,11 @@ if (isset($_POST['update'])) {
     if ($updatedUsername != null) {
       session_destroy();
       session_start();
-      $_SESSION['username'] = $updatedUsername;
+      if ($updatedUsername->getUsertype() != 'USER') {
+        $_SESSION['username'] = $updatedUsername;
+        return;
+      }
+      $useri = $user->getCurrentUser();
     } else {
       echo "<script>alert('Ka ndodhur nje problem');
      document.location='profie.php'</script>";
@@ -82,7 +86,8 @@ $userData = $editingData;
         <input type="email" name="email" id="email" placeholder="Email" value="<?php echo $userData['email'] ?>">
         <label for="age">Age:</label>
         <input type="number" name="age" id="age" placeholder="Age" value="<?php echo $userData['age'] ?>">
-        <input type="hidden" name="usetype" id="usetype" placeholder="UserType" value="<?php echo $userData['usetype'] ?>">
+        <input type="hidden" name="usetype" id="usetype" placeholder="UserType"
+          value="<?php echo $userData['usetype'] ?>">
         <button name='update'>Edito</button>
 
       </div>
