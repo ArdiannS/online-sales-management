@@ -37,8 +37,8 @@
     
 <body style="margin: 0;">
     <?php
-     session_start();
-     include('UserModel.php');
+     if(session_status() != 2)session_start();
+     include_once('UserModel.php');
      $user = new UserModel();
      if (isset($_SESSION['username'])) {
         $currentUser = $user->getCurrentUser();
@@ -89,7 +89,7 @@
             <div class="divBuxheti">
                 <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2"
                     style=" padding-top: 5px;">
-                    <a href="../templates/profie.html">
+                    <a href="../php/cart.php">
                 <p><?php echo ($currentUser['bilanci'] == null?0:$currentUser['bilanci']."$")?></p>
             </a>
             </div>

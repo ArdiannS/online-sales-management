@@ -36,6 +36,7 @@ if (isset($_POST['loginBtn'])) {
         exit();
     } else if ($userFound != null) {
         $_SESSION['username'] = $user->getUsername();
+        $_SESSION['cart'] = [];
         if ($userFound["usetype"] == 'admin') {
             echo "<script>window.location.href = 'indexDash.php';</script>";
             return;

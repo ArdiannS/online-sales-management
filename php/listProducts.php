@@ -3,7 +3,7 @@
 
 <head>
     <title>Split Page Example</title>
-   <link rel="stylesheet" href="../style/dashboard.css">
+    <link rel="stylesheet" href="../style/dashboard.css">
 </head>
 
 <body>
@@ -24,12 +24,10 @@
                     <li>Contact us</li>
                 </a>
                 <?php
-
                 ?>
             </ul>
         </div>
     </div>
-    <!-- Wrap everything in a main container -->
     <div class="main-container">
         <!-- Add the sidebar container -->
         <div class="sidebar">
@@ -56,11 +54,11 @@
                        <h3>Add products</h3>
                      </div>
                   </div>
-                <div class="dashboard-div-button-container">
+                  <div class="dashboard-div-button-container">
                      <div class="dashboard-div-button" id="list-products">
                        <h3>List products</h3>
                      </div>
-                  </div>
+                </div>
             </div>
         
         <script>
@@ -74,7 +72,7 @@
                 window.location.href = 'dashboard.php';
            });
            document.getElementById('list-addUsers').addEventListener('click',function(){
-                window.location.href = 'listProducts.php';
+                window.location.href = 'addUser.php';
            });
         </script>
         </div>
@@ -86,10 +84,10 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Password</th>
-                            <th>Age</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Type</th>
                             <th>User Type</th>
                             <th>Bilanci</th>
                             <th>Action</th>

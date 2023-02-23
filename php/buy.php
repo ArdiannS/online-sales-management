@@ -20,7 +20,7 @@
       echo "<script>window.location.href = 'buyProduct.php?product=$productID'</script>";
       return;
    }
-   if(array_key_exists("add-to-cart", $_POST))addToCart($productID, $amount, $total);
+   if(array_key_exists("add-to-cart", $_POST))addToCart($productID, $amount, $total, $productData);
    if($total > $currentUser['bilanci']){
       echo "<script>window.location.href = 'buyProduct.php?product=$productID'</script>";
       return;
@@ -39,11 +39,22 @@
      $product->decreaseAmountOfProductById($productToBuyID, $amount);
      echo "<script>window.location.href = 'buyProduct.php?product=$productToBuyID'</script>";
    }
-   function addToCart($productID, $amount, $total){
+   function addToCart($productID, $amount, $total, $productToBuy){
        if(session_status() != 2) session_start();
-       $_SESSION['cart'][$productID] = ["productID"=>$productID, "amount"=>$amount, "total"=>$total];
+       $currentAmount = 0;
+       $currentTotal = 0;
+       if(array_key_exists($productID, $_SESSION['cart'])){
+           $currentAmount = $_SESSION['cart'][$productID]['amount'];
+           $currentTotal = $_SESSION['cart'][$productID]['total'];
+       }
+       $totalCost = $currentTotal + $total;
+       $totalAmount = $amount + $currentAmount;
+       if($totalAmount > $productToBuy['amount']){
+          echo "<script>window.location.href = 'buyProduct.php?product=$productID'</script>";
+          return;
+       }
+       $_SESSION['cart'][$productID] = ["productID"=>$productID, "amount"=>$totalAmount, "total"=>$totalCost];
        $v = $_SESSION['cart'][$productID]["productID"];
-       echo "<script>alert($v)</script>";
        echo "<script>window.location.href = 'buyProduct.php?product=$productID'</script>";
    }
 ?>

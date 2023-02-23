@@ -50,7 +50,7 @@
 
         <div class="search">
             <input type="text" class="searchTerm" placeholder="Kerko te gjitha produktet...">
-            <button type="submit" class="searchButton"><img src="search (2).png"
+            <button type="submit" class="searchButton"><img src="../images/search (2).png"
                     style="width: 125%; padding-right: 20px;" alt="">
             </button>
         </div>
@@ -73,32 +73,41 @@
             </div>
         </div>
     </div>
+    <div class="cart-main-container">
     <?php
        foreach($products as $key=>$value){
         $currentProductData = $productDatabase->getProductsByID($key);
+        $typeMapping = ["Accessories"=>"Accessory", "Devices"=>"Device", "Furniture"=>"Furniture","Music_Instruments"=>"Music Instrument", "Toys"=> "Toy", "Animal_Foods"=>"Animal Food","Plants"=>"Plant"];
         if($currentProductData == null) continue;
         $currentProductData = mysqli_fetch_array($currentProductData);
         if($currentProductData == null){
             continue;
         }
     ?>
-    <div class="cart-main-container">
        <div class="product-in-cart">
            <div class="product-card-image-container">
               <img class="product-card-image" src="../uploads/<?php echo $currentProductData['image']?>">
            </div>
            <div class="product-card-additional-information">
-              <h2><?php echo $currentProductData['name']?></h2>
-              <h2><?php echo $currentProductData['type']?></h2>
-              <h2><?php echo $currentProductData['price']?></h2>
-              <h2><?php echo $value['total']?></h2>
-              <h2><?php echo $value['amount']?></h2>
+              <div class="product-card-header">
+                 <div class="product-card-title"><h2><?php echo $currentProductData['name']?></h2></div>
+              </div>
+             <div class="product-card-additional-information-container">
+                <div class="product-card-additional-information-container-left">
+                  <h3>Type: <?php echo $typeMapping[$currentProductData['type']]?></h3>
+                  <h5>You have <?php echo $value['amount']?> of this product in your cart.</h5>
+                </div>
+                <div class="product-card-additional-information-container-right"> 
+                  <div class="product-card-type-price-container"><h4>Total: <?php echo $value['total']?>$</h4></div>
+                  <div class="product-card-type-price-container"><h6><?php echo $currentProductData['price']?>$ per product</h6></div>
+                </div>
+             </div>
            </div>
        </div>
-    </div>
     <?php
      }
     ?>
+    </div>
     <footer class="main-footer">
         <div class="partners">
             <div id="h3meet">
