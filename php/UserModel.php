@@ -192,8 +192,6 @@ class UserModel extends DatabaseConnection
             $stm->execute([
                 $this->username, $this->password, $this->email, $this->age, $this->usetype, $this->id
             ]);
-            echo "<script>alert('dhenat jane Perditsuar me sukses');
-            document.location='index.php';</script>";
             return $this->username;
         } catch (Exception $e) {
             return null;

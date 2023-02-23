@@ -17,7 +17,6 @@
         if (isset($_SESSION['username'])) {
             $currentUser = $user->getCurrentUser();
         }
-
    ?>
     <div class="header">
         <div class="leftLogo">
@@ -131,9 +130,8 @@
                         <p>
                             <?php echo "Postuar ne : " . $product['postedAt']?>
                         </p>
-                        <p>
-                            <?php echo "Edituar ne : " . $product['last_edit_time']?>
-                        </p>
+                       <?php if($currentUser['id'] == $product['userID'] || $currentUser['usetype'] != 'USER')
+                          echo "<p>Edituar ne : " . $product['last_edit_time']."</p>";?>
 
 
 

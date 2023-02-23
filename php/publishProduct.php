@@ -134,7 +134,7 @@
                     <option value="Music Instruments">Music Instruments</option>
                     <option value="Toys">Toys</option>
                     <option value="Animal Foods">Animal Foods</option>
-                    <option value="Plants">Accessories</option>
+                    <option value="Plants">Plants</option>
               </select></div>
               <div style="height: 30%"><input type="number" name="product-amount"class="publish-product-input" placeholder="Sasia e produktit..."></div>
           </div>   

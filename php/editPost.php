@@ -105,9 +105,8 @@
         }
     </style>
 </head>
-
 <body>
-    <form method="POST" enctype='multipart/form-data'>
+    <form action="userEditPost.php?id=<?php echo $_GET['id']?>"method="POST" enctype='multipart/form-data'>
         <h2 style="text-align: center;">Edit your post Info</h2>
         <label for="title">Emri:</label>
         <input type="text" id="title" name="emri" placeholder="Post Title"><br><br>
@@ -117,9 +116,16 @@
         <input type="file" id="file-input" class="file-input" name="foto" accept="image/*">
 
         <label for="Price">Cmimi:</label>
-        <input type="text" id="author" name="cmimi" placeholder="Cmimi"><br><br>
-        <label for="Type">Lloji:</label>
-        <input type="text" id="author" name="type" placeholder="Lloji"><br><br>
+        <input type="number" id="author" name="cmimi" placeholder="Cmimi"><br><br>
+        <select name="type" >
+                    <option value="Accessories">Accessories</option>
+                    <option value="Devices">Devices</option>
+                    <option value="Furniture">Furniture</option>
+                    <option value="Music Instruments">Music Instruments</option>
+                    <option value="Toys">Toys</option>
+                    <option value="Animal Foods">Animal Foods</option>
+                    <option value="Plants">Plants</option>
+              </select><br><br>
         <label for="Amount">Sasia:</label>
         <input type="number" id="author" name="sasia" placeholder="Sasia"><br><br>
         <label for="description">Pershkrimi:</label><br>
@@ -127,43 +133,4 @@
 
         <input type="submit" name="edit" value="Edit">
     </form>
-    <?php
-    include "ProductModel.php";
-    $product = new ProductModel();
-    $id = $_GET['id'];
-    $product->setId($id);
-    if (isset($_POST['edit'])) {
-        $product->setEmri($_POST['emri']);
-        $image = $_FILES["foto"];
-        $product->setCmimi($_POST['cmimi']);
-        $product->setType($_POST['type']);
-        $product->setAmount($_POST['sasia']);
-        $product->setPershkrimi($_POST['description']);
-
-        $fileName = basename($image["name"]);
-        $targetDir = "../uploads/";
-        $targetFilePath = $targetDir . $fileName;
-        $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-
-        if (!empty($fileName)) {
-            $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'pdf');
-            if (in_array($fileType, $allowTypes)) {
-                echo "Working";
-                if (move_uploaded_file($image["tmp_name"], $targetFilePath)) {
-                    echo "Working2";
-                    $product->setImage($fileName);
-                    $product->update();
-                } else {
-                    $statusMsg = "Sorry, there was an error uploading your file.";
-                }
-            } else {
-                $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
-            }
-        } else {
-            echo "<script>alert('filename is empty');
-            window.location.href = 'editYourPost.php';</script>";
-            return;
-        }
-    }
-    ?>
 </body>

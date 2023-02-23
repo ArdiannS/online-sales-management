@@ -11,34 +11,13 @@ $user = new UserModel();
 $id = $_GET['id'];
 
 $user->setId($id);
-
-if (isset($_POST['update'])) {
-    $user->setUsername($_POST['username']);
-    $user->setPassword($_POST['password']);
-    $user->setEmail($_POST['email']);
-    $user->setAge($_POST['age']);
-    $user->setId($id);
-
-    if ($user->existsByUsername($user->getUsername()) == $user->getUsername()) {
-        echo "<script>alert('ky Username ekzsiton');
-        // document.location='editProfile.php'</script>";
-        return;
-    } else {
-        $updated = $user->update();
-        if($updated){
-            session_start();
-            $_SESSION['username'] = $updated;
-        }
-    
-    }
-}
 $editingData = $user->editUserById($id);
 $userData = $editingData;
 
 ?>
 
 <body>
-    <form action="" method="POST">
+    <form action="userEditProfile.php?id=<?php echo $id?>" method="POST">
         <div id="formulari">
             <h1>Edit Your Info
                 <?php
@@ -48,8 +27,8 @@ $userData = $editingData;
             </h1>
             <input type="text" name="username" id="username" placeholder="Username"
                 value="<?php echo $userData['username'] ?>">
-            <input type="password" name="password" id="password" placeholder="Password"
-                value="<?php echo $userData['password'] ?>">
+            <input type="password" name="current_password" id="password" placeholder="Current password..."value="">
+            <input type="password" name="new_password" id="password" placeholder="New password..." value="">
             <input type="email" name="email" id="email" placeholder="Email" value="<?php echo $userData['email'] ?>">
             <input type="number" name="age" id="age" placeholder="Age" value="<?php echo $userData['age'] ?>">
             <button name='update'>Edito</button>

@@ -39,7 +39,8 @@
         <!-- Add the sidebar container -->
         <div class="sidebar">
             <!-- Sidebar content here -->
-            <div class="dashboard-div-button-container">
+            <div class="dashboard-buttons-layout">
+                <div class="dashboard-div-button-container">
                      <div class="dashboard-div-button" id="add-users">
                        <h3>Add users</h3>
                      </div>
@@ -49,9 +50,6 @@
                        <h3>List users</h3>
                      </div>
                   </div>
-            </div>
-            
-            <div class="dashboard-buttons-layout">
                 <div class="dashboard-div-button-container">
                      <div class="dashboard-div-button" id="add-products">
                        <h3>Add products</h3>

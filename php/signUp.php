@@ -22,6 +22,7 @@ if (isset($_POST['registerBtn'])) {
         echo "<script>window.location.href = 'index.php';</script>";
         $_SESSION['username'] = $user->getUsername();
         $_SESSION['cart'] = [];
+        $_SESSION['changePasswordTries'] = 3;
         return;
     }
 }
@@ -40,13 +41,14 @@ if (isset($_POST['loginBtn'])) {
     } else if ($userFound != null) {
         $_SESSION['username'] = $user->getUsername();
         $_SESSION['cart'] = [];
+        $_SESSION['changePasswordTries'] = 3;
         if ($userFound["usetype"] == 'admin') {
             echo "<script>window.location.href = 'indexDash.php';</script>";
             return;
         }
         echo "<script>window.location.href = 'index.php';</script>";
     } else {
-        echo "<script>alert('Account doesnt exist.');</script>";
+        echo "<script>alert('Username or password are incorrect.');</script>";
         echo "<script>window.location.href = 'logInForm.php';</script>";
     }
 

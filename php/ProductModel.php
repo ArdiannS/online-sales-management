@@ -107,7 +107,7 @@ class ProductModel extends DatabaseConnection
       $query = "UPDATE products SET amount = amount - $amount WHERE ID = '$id'";
       $stm = $this->conn->prepare($query);
       $stm->execute();
-    } catch (Exception $e) {
+    }catch (Exception $e) {
       return $e->getMessage();
     }
   }
@@ -162,8 +162,7 @@ class ProductModel extends DatabaseConnection
       $stm->execute([
         $this->emri, $this->pershkrimi, $this->image, $this->cmimi, $this->type, $this->amount, $this->id
       ]);
-      echo "<script>alert('dhenat jane Perditsuar me sukses');
-          document.location='index.php';</script>";
+      
     } catch (Exception $e) {
       echo "<script>alert('" . $e->getMessage() . "')";
       return null;

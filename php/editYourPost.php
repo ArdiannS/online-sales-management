@@ -280,9 +280,9 @@ session_start();
                                 <?php echo $produkti['last_edit_time'] ?>
                             </td>
                             <td>
-                                <a href="editPost.php?id=<?php echo $produkti['ID']; ?>" <button
+                                <a href="editPost.php?id=<?php echo $produkti['ID']; ?>"> <button
                                     class="edit-button">Edit</button></a>
-                                <a href="deleteYourProduct.php?id=<?php echo $produkti['ID']; ?>" <button class="delete-button"
+                                <a href="deleteYourProduct.php?id=<?php echo $produkti['ID']; ?>"> <button class="delete-button"
                                     name="delete">Delete</button>
                             </td>
                             <?php
