@@ -17,7 +17,6 @@ if (isset($_POST['update'])) {
     $user->setPassword($_POST['password']);
     $user->setEmail($_POST['email']);
     $user->setAge($_POST['age']);
-    $user->setUsertype($_POST['usetype']);
     $user->setId($id);
 
     if ($user->existsByUsername($user->getUsername()) == $user->getUsername()) {
@@ -53,8 +52,6 @@ $userData = $editingData;
                 value="<?php echo $userData['password'] ?>">
             <input type="email" name="email" id="email" placeholder="Email" value="<?php echo $userData['email'] ?>">
             <input type="number" name="age" id="age" placeholder="Age" value="<?php echo $userData['age'] ?>">
-            <input type="text" name="usetype" id="usetype" placeholder="UserType"
-                value="<?php echo $userData['usetype'] ?>">
             <button name='update'>Edito</button>
         </div>
         </div>

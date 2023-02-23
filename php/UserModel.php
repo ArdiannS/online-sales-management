@@ -68,8 +68,8 @@ class UserModel extends DatabaseConnection
 
     public function setPassword($password)
     {
-        $this->password = $password;
-    }
+        $this->password = $password;   
+     }
 
     public function getAge()
     {
@@ -139,17 +139,6 @@ class UserModel extends DatabaseConnection
         return null;
     }
 
-    // function getCurrentUser()
-    // {
-    //     if(session_status() != 2)session_start();
-    //     $userName = $_SESSION['username'];
-    //     $query = "SELECT * FROM users WHERE username='$userName'";
-    //     $result = mysqli_query($this->conn, $query);
-    //     if (mysqli_num_rows($result) > 0) {
-    //         return $result->fetch_array();
-    //     }
-    //     return null;
-    // }
     function getCurrentUser()
 {
     if (session_status() != 2) {
@@ -220,7 +209,6 @@ class UserModel extends DatabaseConnection
     }
     function existsByUserNameAndEmail($username, $email)
     {
-        $data = null;
         $query = "SELECT * FROM users WHERE username = . '$username' . and email = '$email' ";
         $result = mysqli_query($this->conn, $query);
         if (mysqli_num_rows($result) > 0) {

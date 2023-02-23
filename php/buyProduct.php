@@ -100,7 +100,7 @@
                 ?>
             </a>
             </div>
-        </div>
+        </div> 
     </div>
 
     <?php
@@ -109,10 +109,10 @@
     if (isset($_GET['product'])) {
         $product_slug = $_GET['product'];
         $product_data = $pd->getProductsByID($product_slug);
-        
         $product = mysqli_fetch_array($product_data);
         $productPublisher = $user->getUserById($product['userID']);
         $productPublisher = mysqli_fetch_array($productPublisher);
+
         if ($product) {
             ?>
             <div class="main-container-product" style="">
@@ -128,6 +128,12 @@
                             <?php echo "Postuar nga: " . $productPublisher['username'] ?>
                         </p>
                         <p>Çmimi i transportit: <b>Free </b></p>
+                        <p>
+                            <?php echo "Postuar ne : " . $product['postedAt']?>
+                        </p>
+                        <p>
+                            <?php echo "Edituar ne : " . $product['last_edit_time']?>
+                        </p>
 
 
 

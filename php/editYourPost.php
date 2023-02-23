@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html>
+<?php
+include 'ProductModel.php';
+include 'UserModel.php';
+session_start();
+?>
 
 <head>
     <title>Split Page Example</title>
@@ -186,10 +191,10 @@
         <div style="margin-left: 3px" class="StartBlock">
             <ul class="inline-list">
 
-                <a href="products.php">
-                    <li>Users</li>
-                </a>
                 <a href="index.php">
+                    <li>Home</li>
+                </a>
+                <a href="products.php">
                     <li>Products</li>
                 </a>
                 <a href="AboutUs.php">
@@ -198,9 +203,6 @@
                 <?php
 
                 ?>
-
-
-
             </ul>
         </div>
     </div>
@@ -209,28 +211,14 @@
         <!-- Add the sidebar container -->
         <div class="sidebar">
             <!-- Sidebar content here -->
-            <h2 style=text-align:center>Dashboard</h2>
-            <ul>
-                <h3>User</h3>
-                <a href="addUser.php">
-                    <li>Add User</li>
-                </a>
-                <a href="dashboard.php">
-                    <li>User list</li>
-                </a>
-            </ul>
+            <h2 style=text-align:center>Your own Products</h2>
 
             <ul>
                 <h3>Product</h3>
                 <li>Product List</li>
                 <li>Add Product</li>
             </ul>
-            <ul>
-                <h3>Contact us</h3>
-                <a href="DashboardContactUs.php">
-                    <li>Who contacted us</li>
-                </a>
-            </ul>
+
 
 
 
@@ -238,59 +226,71 @@
         <!-- Add the content container -->
         <div class="content" style="background-color: gray;">
             <!-- Content here -->
-            <h1>Content</h1>
+            <h1 style="text-align:center;">Your Products</h1>
             <table class="user-table">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Surname</th>
-                        <th>Email</th>
-                        <th>Reason</th>
+                        <th>ID Product</th>
+                        <th>User ID</th>
+                        <th>Emri</th>
+                        <th>Pershkrimi</th>
+                        <th>Cmimi</th>
+                        <th>Lloji</th>
+                        <th>Sasia</th>
+                        <th>Koha e fundit e edituar</th>
                         <th>Action</th>
                     </tr>
-                </thead>
-                <?php
-                include('ContactModel.php');
-                $contact = new ContactModel();
-                $result = $contact->getAllContacts();
-                if($result == null){
-                    return;
-                }
-                foreach ($result as $user) {
+                    <?php
+
+                    $user = new UserModel();
+                    $products = new ProductModel();
+                    $current = $user->getCurrentUser();
+
+                    $id = $current[0];
 
 
-                    ?>
+                    $results = $products->getYourOwnProducts($id);
 
+                    foreach ($results as $produkti) {
+                        ?>
                     <tbody>
                         <tr>
                             <td>
-                                <?php echo $user['ID'] ?>
+                                <?php echo $produkti['ID'] ?>
                             </td>
                             <td>
-                                <?php echo $user['name'] ?>
+                                <?php echo $produkti['userID'] ?>
                             </td>
                             <td>
-                                <?php echo $user['surname'] ?>
+                                <?php echo $produkti['name'] ?>
                             </td>
                             <td>
-                                <?php echo $user['email'] ?>
+                                <?php echo $produkti['description'] ?>
                             </td>
                             <td>
-                                <?php echo $user['reason'] ?>
+                                <?php echo $produkti['price'] ?>
                             </td>
                             <td>
-                                <a href="deleteContact.php?id=<?php echo $user['ID'] ?>" <button class="delete-button"
+                                <?php echo $produkti['type'] ?>
+                            </td>
+                            <td>
+                                <?php echo $produkti['amount'] ?>
+                            </td>
+                            <td>
+                                <?php echo $produkti['last_edit_time'] ?>
+                            </td>
+                            <td>
+                                <a href="editPost.php?id=<?php echo $produkti['ID']; ?>" <button
+                                    class="edit-button">Edit</button></a>
+                                <a href="deleteYourProduct.php?id=<?php echo $produkti['ID']; ?>" <button class="delete-button"
                                     name="delete">Delete</button>
                             </td>
-                        </tr>
-                    <?php }
-
-                ?>
-
+                            <?php
+                    }
+                    ?>
+                        </thead>
                 </tbody>
             </table>
-
         </div>
     </div>
 </body>
