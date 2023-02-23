@@ -39,7 +39,7 @@ session_start(); ?>
                 <a href="index.php">
                     <li>Home</li>
                 </a>
-                <a href="OurStory.html">
+                <a href="../templates/OurStory.html">
                     <li>About us</li>
                 </a>
                 <a href="AboutUs.php">
@@ -122,8 +122,10 @@ session_start(); ?>
                 <div class="logoutButton">
                     <div class="" style="display: flex; justify-content: center; margin-right: 36px;">
                         <a href="logOut.php"> <button type="submit" id="loginBtn" name="loginBtn">Log Out</button></a>
-                        <a href="edit.php?id=<?php echo $result['id']; ?>"> <button class="edit-button"
+                        <a href="editProfile.php?id=<?php echo $result['id']; ?>"> <button class="edit-button"
                             name="edit" id="loginBtn">Edit</button></a>
+                        <a href="editYourPost.php"> <button type="submit" id="editPost" name="editPost">Edit your Post</button></a>
+
 
                     </div>
                 </div>

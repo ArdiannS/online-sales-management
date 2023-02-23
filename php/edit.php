@@ -21,7 +21,11 @@ if (isset($_POST['update'])) {
     if ($updatedUsername != null) {
       session_destroy();
       session_start();
-      $_SESSION['username'] = $updatedUsername;
+      if ($updatedUsername->getUsertype() != 'USER') {
+        $_SESSION['username'] = $updatedUsername;
+        return;
+      }
+      $useri = $user->getCurrentUser();
     } else {
       echo "<script>alert('Ka ndodhur nje problem');
      document.location='profie.php'</script>";
@@ -45,7 +49,6 @@ $userData = $editingData;
 <body>
   <form action="" method="POST">
     <?php
-    if ($userData['usetype'] == 'admin') {
       ?>
       <div id="formulari">
         <h1>Edit
@@ -66,28 +69,7 @@ $userData = $editingData;
         <button name='update'>Edito</button>
       </div>
       <?php
-    } else {
-      ?>
-      <div id="formulari">
-        <h1>Edit
-          <?php echo $userData['username'] . 's' ?> User
-        </h1>
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" placeholder="Username"
-          value="<?php echo $userData['username'] ?>">
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" placeholder="Password"
-          value="<?php echo $userData['password'] ?>">
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" placeholder="Email" value="<?php echo $userData['email'] ?>">
-        <label for="age">Age:</label>
-        <input type="number" name="age" id="age" placeholder="Age" value="<?php echo $userData['age'] ?>">
-        <input type="hidden" name="usetype" id="usetype" placeholder="UserType" value="<?php echo $userData['usetype'] ?>">
-        <button name='update'>Edito</button>
-
-      </div>
-      <?php
-    }
+    
     ?>
 
   </form>

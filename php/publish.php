@@ -1,8 +1,14 @@
 <?php
+session_start();
+        if(!isset($_SESSION['username'])){
+            echo "<script>alert('U need to have an account !');window.location.href = 'publishProduct.php';</script>";
+            return;
+        }
         if($_POST['product-name'] == null || $_POST['product-price'] == null || $_POST['product-description'] == null||$_FILES['product-image'] == null || $_POST['product-amount'] == null){
             echo "<script>alert('some fields are null');window.location.href = 'publishProduct.php';</script>";
             return;
         }
+        
         $productName = $_POST['product-name'];
         $productPrice = $_POST['product-price'];
         $productDescription = $_POST['product-description'];
