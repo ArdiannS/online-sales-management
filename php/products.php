@@ -105,8 +105,23 @@
             <div class="divBuxheti">
                 <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2"
                     style=" padding-top: 5px;">
-                    <a href="../templates/profie.html">
-                <p><?php echo ($currentUser['bilanci'] == null?0:$currentUser['bilanci']."$")?></p>
+                    <a href="../templates/cart.html">
+                    <?php
+                      if (isset($_SESSION['username'])) {
+                    ?>
+                    <p>
+                        <a href="cart.php">
+                            <?php echo $currentUser['bilanci'] . "$"?>
+                        </a>
+
+                    </p>
+                <?php } else { ?>
+
+                    <a href="">
+                        <p>Bilanci</p>
+                    </a>
+                <?php }
+                ?>
             </a>
             </div>
         </div>
