@@ -9,7 +9,7 @@ session_start(); ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/profile.css">
     <link rel="stylesheet" href="../style/style.css">
-    <script src="../js/products.js"></script>
+    <script src="products.js"></script>
     <style>
         @media screen and (min-width: 768px) {
             body {
@@ -32,16 +32,17 @@ session_start(); ?>
         </div>
         <div style="margin-left: 3px" class="StartBlock">
             <ul>
-                <a href="../php/products.php">
+
+                <a href="products.php">
                     <li>Products</li>
                 </a>
-                <a href="../php/index.php">
+                <a href="index.php">
                     <li>Home</li>
                 </a>
-                <a href="OurStory.html">
+                <a href="../templates/OurStory.html">
                     <li>About us</li>
                 </a>
-                <a href="AboutUs.html">
+                <a href="AboutUs.php">
                     <li>Contact us</li>
                 </a>
 
@@ -66,26 +67,30 @@ session_start(); ?>
 
         <div class="rightBlock" style="justify-content: flex-end; gap: 4%;">
             <div class="divBuxheti">
-                <img src="../images/download.png" width="30px" alt="" height="30px" id="img2" style=" padding-top: 5px;">
-                <a href="../php/logInForm.php">
+                <img src="../images/download.png" width="30px" alt="" height="30px" id="img2"
+                    style=" padding-top: 5px;">
+                <a href="logInForm.html">
                     <?php
                     if (isset($_SESSION['username'])) {
-                        
+
 
                         ?>
-                        <p><?php echo $result['username'] ?></p>
+                        <p>
+                            <?php echo $result['username'] ?>
+                        </p>
                         <?php
                     }
                     ?>
+
+
                 </a>
             </div>
 
             <div class="divBuxheti">
                 <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2" style=" padding-top: 5px;">
-
-                <a href="../php/profie.php">
+                <a href="profie.html">
                     <p>
-                        <?php echo $result['bilanci'] . "$"?>
+                        <?php echo $result['bilanci'] . "$" ?>
                     </p>
                 </a>
             </div>
@@ -97,44 +102,66 @@ session_start(); ?>
                 <?php
 
                 ?>
-                <h1>Username :
-                    <?php echo  $result['username'] ?>
+                <h1>Username:
+                    <?php echo $result['username'] ?>
                 </h1>
             </div>
             <div class="profile-card-info-container">
-                <h1> Numri total i parave ne karte :
+                <h1> Numri total i parave ne karte:
                     <?php echo $result['bilanci'] . "$" ?>
                 </h1>
-                <h1>Emaili :
+                <h1>Emaili:
                     <?php echo $result['email'] ?>
                 </h1>
-                <h1>Mosha :
+                <h1>Mosha:
                     <?php echo $result['age'] ?>
                 </h1>
-                <h1>
-                    <?php echo $result['email'] ?>
-                </h1>
+                <div class="edit-button-container">
+                </div>
+
                 <div class="logoutButton">
                     <div class="" style="display: flex; justify-content: center; margin-right: 36px;">
                         <a href="logOut.php"> <button type="submit" id="loginBtn" name="loginBtn">Log Out</button></a>
-                    </div>
-                    <style>
-                        button {
-                            border: none;
-                            padding: 10px;
-                            background-color: rgb(red, green, blue);
-                            border-radius: 12px;
-                            color: black;
-                            font-weight: bold;
-                            cursor: pointer;
-                            width: 150px;
-                            height: 40px;
-                        }
-                    </style>
+                        <a href="editProfile.php?id=<?php echo $result['id']; ?>"> <button class="edit-button"
+                            name="edit" id="loginBtn">Edit</button></a>
+                        <a href="editYourPost.php"> <button type="submit" id="editPost" name="editPost">Edit your Post</button></a>
 
+
+                    </div>
                 </div>
+
+                <style>
+                    .profile-main-container {
+                        text-align: center;
+
+                    }
+
+                    .user-profile-card {
+                        padding-top: 100px;
+                        background-color: gainsboro;
+                    }
+
+                    button {
+                        border: none;
+                        padding: 10px;
+                        background-color: rgb(red, green, blue);
+                        border-radius: 12px;
+                        color: black;
+                        font-weight: bold;
+                        cursor: pointer;
+                        width: 150px;
+                        height: 40px;
+                    }
+
+                    .logoutButton button {
+                        margin: 10px;
+                    }
+
+                </style>
+
             </div>
         </div>
+    </div>
     </div>
 
 </body>

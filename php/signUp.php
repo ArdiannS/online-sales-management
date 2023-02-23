@@ -6,7 +6,9 @@ if (isset($_POST['registerBtn'])) {
     $user = new UserModel();
     $user->setUsername($_POST['username']);
     $user->setEmail($_POST['email']);
-    $user->setPassword($_POST['password']);
+    $password = $_POST['password'];
+    $hash = md5($password);
+    $user->setPassword($hash);
     $user->setAge($_POST['age']);
     $user->setUsertype('USER');
     $user->setBilanci(500);
@@ -20,7 +22,7 @@ if (isset($_POST['registerBtn'])) {
         echo "<script>window.location.href = 'index.php';</script>";
         $_SESSION['username'] = $user->getUsername();
         $_SESSION['cart'] = [];
-        return;        
+        return;
     }
 }
 
@@ -28,7 +30,8 @@ if (isset($_POST['registerBtn'])) {
 if (isset($_POST['loginBtn'])) {
     $user = new UserModel();
     $user->setUsername($_POST['username']);
-    $user->setPassword($_POST['password']);
+    $hashed = md5($_POST['password']);
+    $user->setPassword($hashed);
     $userFound = $user->getUserbyUsernameAndPassword($user->getUsername(), $user->getPassword());
     if (validateEmptyData($user->getUsername(), $user->getPassword())) {
         echo "<script>alert('Ju lutem plotesoni te gjitha fushat');</script>";
@@ -46,10 +49,8 @@ if (isset($_POST['loginBtn'])) {
         echo "<script>alert('Account doesnt exist.');</script>";
         echo "<script>window.location.href = 'logInForm.php';</script>";
     }
+
 }
-
-
-
 
 function validateEmptyData($username, $password)
 {
@@ -59,18 +60,4 @@ function validateEmptyData($username, $password)
         return false;
     }
 }
-function validimi($username,$password){
-    $db = new DatabaseConnection();
-    $result = $db->fetch();
-    foreach ($result as $user) {
-        if($user['username'] == $username && $user['password'] == $password){
-            $_SESSION['usetype']=$user['usetype'];
-            $_SESSION['username']=$user['username'];
-            return true;
-        }
-    }   
-}
-
-
-
 ?>

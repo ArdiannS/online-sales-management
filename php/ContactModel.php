@@ -1,16 +1,18 @@
 <?php
-include 'DatabaseConnection.php';
+include_once 'DatabaseConnection.php';
 
 class ContactModel extends DatabaseConnection
 {
+    private $id;
     private $name;
     private $surname;
     private $email;
     private $reason;
     public $conn;
 
-    public function __construct($name = ' ', $surname = ' ', $email = ' ', $reason = ' ')
+    public function __construct($id = ' ',$name = ' ', $surname = ' ', $email = ' ', $reason = ' ')
     {
+        $this->id = $id;
         $this->name = $name;
         $this->surname = $surname;
         $this->email = $email;
@@ -18,6 +20,12 @@ class ContactModel extends DatabaseConnection
 
         $this->conn = $this->connectToDatabase();
 
+    }
+    public function getID(){
+        return $this->id;
+    }
+    public function setID($id){
+        $this->id = $id;
     }
     public function getName()
     {
@@ -70,20 +78,23 @@ class ContactModel extends DatabaseConnection
         }
 
     }
-    // public function insert()
-    // {
-    //     try {
-    //         $query = "INSERT INTO contact(name, surname, email, reason) VALUES (?,?,?,?)";
-    //         $stm = $this->conn->prepare($query);
-    //         $stm->execute([$this->name, $this->surname, $this->email, $this->reason]);
-    //         echo "<script>alert('records added successfully');</script>";
-    //         echo "<script>window.location.href = 'index.php';</script>";
-
-    //     } catch (Exception $e) {
-    //         echo "<script>alert('Error: " . $e->getMessage() . "');</script>";
-    //     }
-
-    // }
+    public function getAllContacts(){
+        $data = null;
+        $query = "SELECT * FROM contact";
+        if($sql = $this->conn->query($query)){
+            while($row = mysqli_fetch_assoc($sql)){
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
+    public function deleteById($id){
+        $query = "DELETE FROM contact WHERE ID = '$id'";
+        if($sql = $this->conn->query($query)){
+            return true;
+        }
+        return false;
+    }
 
 
 }

@@ -9,18 +9,20 @@ class UserModel extends DatabaseConnection
     private $age;
     private $bilanci;
     private $usetype;
+
+
     public $conn;
 
-    public function __construct($id = ' ', $username = ' ', $email = ' ', $password = ' ', $age = ' ', $usetype = ' ', $bilanci=' ')
+    public function __construct($id = ' ', $username = ' ', $email = ' ', $password = ' ', $age = ' ', $usetype = ' ',$bilanci = ' ')
     {
-        parent::__construct();
         $this->id = $id;
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
         $this->age = $age;
         $this->usetype = $usetype;
-        $this->$bilanci = $bilanci;
+        $this->bilanci = $bilanci;
+
         $this->conn = $this->connectToDatabase();
     }
     public function getBilanci(){
@@ -66,8 +68,8 @@ class UserModel extends DatabaseConnection
 
     public function setPassword($password)
     {
-        $this->password = $password;
-    }
+        $this->password = $password;   
+     }
 
     public function getAge()
     {
@@ -95,6 +97,7 @@ class UserModel extends DatabaseConnection
             $stm = $this->conn->prepare($query);
             $stm->execute([$this->username, $this->password, $this->email, $this->age, $this->usetype, $this->bilanci]);
             echo "<script>alert('records added successfully');</script>";
+            echo "<script>window.location.href = 'index.php';</script>";
         } catch (Exception $e) {
             echo "<script>alert('Error: " . $e->getMessage() . "');</script>";
         }
@@ -137,16 +140,21 @@ class UserModel extends DatabaseConnection
     }
 
     function getCurrentUser()
-    {
-        if(session_status() != 2)session_start();
-        $userName = $_SESSION['username'];
-        $query = "SELECT * FROM users WHERE username='$userName'";
-        $result = mysqli_query($this->conn, $query);
-        if (mysqli_num_rows($result) > 0) {
-            return $result->fetch_array();
-        }
-        return null;
+{
+    if (session_status() != 2) {
+        session_start();
     }
+    $userName = $_SESSION['username'];
+    $query = "SELECT * FROM users WHERE username='$userName'";
+    $result = mysqli_query($this->conn, $query);
+    if (mysqli_num_rows($result) > 0) {
+        $user = $result->fetch_array();
+        $_SESSION['username'] = $user['username'];
+        return $user;
+    }
+    return null;
+}
+
     public function editUserById($id)
     {
         $data = null;
@@ -178,12 +186,17 @@ class UserModel extends DatabaseConnection
     public function update()
     {
         try {
+            
             $sqlStm = "UPDATE users SET username=?,password=?, email=?, age=?,usetype=? where id=?";
             $stm = $this->conn->prepare($sqlStm);
-            $stm->execute([$this->username, $this->password,$this->email, $this->age, $this->usetype,$this->id]);
-            echo "<script>alert('dhenat jane Perditsuar me sukses');document.location='displayDhenat.php';</script>";
+            $stm->execute([
+                $this->username, $this->password, $this->email, $this->age, $this->usetype, $this->id
+            ]);
+            echo "<script>alert('dhenat jane Perditsuar me sukses');
+            document.location='index.php';</script>";
+            return $this->username;
         } catch (Exception $e) {
-            return $e->getMessage();
+            return null;
         }
     }
     public function deleteUserById($id)
@@ -196,7 +209,6 @@ class UserModel extends DatabaseConnection
     }
     function existsByUserNameAndEmail($username, $email)
     {
-        $data = null;
         $query = "SELECT * FROM users WHERE username = . '$username' . and email = '$email' ";
         $result = mysqli_query($this->conn, $query);
         if (mysqli_num_rows($result) > 0) {
@@ -207,4 +219,11 @@ class UserModel extends DatabaseConnection
     }
 
 }
+
+
+
+
+
+
+
 ?>

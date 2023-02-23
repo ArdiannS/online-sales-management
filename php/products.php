@@ -57,10 +57,10 @@
                 <a href="index.php">
                     <li>Home</li>
                 </a>
-                <a href="OurStory.html">
+                <a href="../templates/OurStory.html">
                     <li>About us</li>
                 </a>
-                <a href="AboutUs.html">
+                <a href="AboutUs.php">
                     <li>Contact us</li>
                 </a>
 
@@ -82,14 +82,30 @@
             <div class="divBuxheti">
                 <img src="../images/download.png" width="30px" alt="" height="30px" id="img2"
                     style=" padding-top: 5px;">
-                    <p><?php echo $currentUser['username']?></p>
+                    <?php
+                if (isset($_SESSION['username'])) {
+                    $useri = $user->getCurrentUser();
+                    ?>
+                    <p>
+                        <a href="profie.php">
+                            <?php echo $useri['username'] ?>
+                        </a>
+
+                    </p>
+                <?php } else { ?>
+
+                    <a href="logInForm.php">
+                        <p>Log in</p>
+                    </a>
+                <?php }
+                ?>
                 </a>
             </div>
 
             <div class="divBuxheti">
                 <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2"
                     style=" padding-top: 5px;">
-                    <a href="../php/cart.php">
+                    <a href="../templates/profie.html">
                 <p><?php echo ($currentUser['bilanci'] == null?0:$currentUser['bilanci']."$")?></p>
             </a>
             </div>

@@ -5,9 +5,11 @@ include('UserModel.php');
         $user = new UserModel();
         $user->setUsername($_POST['username']);
         $user->setEmail($_POST['email']);
-        $user->setPassword($_POST['password']);
+        $hash = md5($_POST['password']);
+        $user->setPassword($hash);
         $user->setAge($_POST['age']);
         $user->setUsertype($_POST['usetype']);
+        $user->setBilanci(500);
         $exists = $user->existsByUsername($user->getUsername());
         if ($exists) {
             echo "<script>alert('Perdoreusi ekziston');</script>";

@@ -7,6 +7,11 @@
 </head>
 
 <body>
+    <?php
+    include('UserModel.php');
+    $user = new UserModel();
+        
+    ?>
     <div class="header">
         <div class="leftLogo">
             <img src="../images/logooo.jpg" width="130px" height="100px" alt="" id="img1">
@@ -14,13 +19,13 @@
         <div style="margin-left: 3px" class="StartBlock">
             <ul class="inline-list">
 
-                <a href="products.php">
-                    <li>Users</li>
-                </a>
                 <a href="index.php">
+                    <li>Home</li>
+                </a>
+                <a href="products.php">
                     <li>Products</li>
                 </a>
-                <a href="AboutUs.html">
+                <a href="AboutUs.php">
                     <li>Contact us</li>
                 </a>
                 <?php
@@ -37,89 +42,79 @@
             <h1 style=text-align:center>Dashboard</h1>
             <div class="dashboard-buttons-layout">
                 <h3>User</h3>
-               
-                   <div class="dashboard-div-button-container">
-                     <div class="dashboard-div-button" id="add-users">
-                       <h3>Add users</h3>
-                     </div>
-                </div>
-                  <div class="dashboard-div-button-container">       
-                     <div class="dashboard-div-button" id="list-users">
-                       <h3>List users</h3>
-                     </div>
-                  </div>
-            </div>
+                <a href="addUser.php"><li>Add User</li></a>
+                <a href=""><li>User list</li></a>
+            </ul>
             
-            <div class="dashboard-buttons-layout">
-                <div class="dashboard-div-button-container">
-                     <div class="dashboard-div-button" id="add-products">
-                       <h3>Add products</h3>
-                     </div>
-                  </div>
-                <div class="dashboard-div-button-container">
-                     <div class="dashboard-div-button" id="list-products">
-                       <h3>List products</h3>
-                     </div>
-                  </div>
-            </div>
-        
-        <script>
-           document.getElementById('list-products').addEventListener('click',function(){
-                window.location.href = 'listProducts.php';
-           });
-           document.getElementById('add-products').addEventListener('click',function(){
-                window.location.href = 'addProducts.php';
-           });
-           document.getElementById('list-users').addEventListener('click',function(){
-                window.location.href = 'dashboard.php';
-           });
-           document.getElementById('list-addUsers').addEventListener('click',function(){
-                window.location.href = 'listProducts.php';
-           });
-        </script>
+            <ul>
+                <h3>Product</h3>
+                <li>Product List</li>
+                <li>Add Product</li>
+            </ul>
+
+
+
         </div>
         <!-- Add the content container -->
         <div class="content" style="background-color: gray;">
             <!-- Content here -->
             <h1>Content</h1>
-                <table class="user-table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Password</th>
-                            <th>Age</th>
-                            <th>User Type</th>
-                            <th>Bilanci</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-            <?php
-            include('UserModel.php');
-            $user = new UserModel();
-            $result = $user->getAllUsers();
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Age</th>
+                        <th>User Type</th>
+                        <th>Bilanci</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <?php
 
-            foreach ($result as $user) {
+                $result = $user->getAllUsers();
+                if ($result == null) {
+                    return;
+                }
+
+                foreach ($result as $user) {
 
 
-                ?>
-                
+                    ?>
+
                     <tbody>
                         <tr>
-                            <td><?php echo $user['id']?></td>
-                            <td><?php echo $user['username']?></td>
-                            <td><?php echo $user['email']?></td>
-                            <td><?php echo $user['password']?></td>
-                            <td><?php echo $user['age']?></td>
-                            <td><?php echo $user['usetype']?></td>
-                            <td>$<?php echo $user['bilanci']?></td>
                             <td>
-                               <a href="edit.php?id=<?php echo $user['id']; ?>"><button class="edit-button">Edit</button></a>
-                               <a href="delete.php?id=<?php echo $user['id']; ?>"><button class="delete-button" name="delete">Delete</button>
+                                <?php echo $user['id'] ?>
+                            </td>
+                            <td>
+                                <?php echo $user['username'] ?>
+                            </td>
+                            <td>
+                                <?php echo $user['email'] ?>
+                            </td>
+                            <td>
+                                <?php echo $user['password'] ?>
+                            </td>
+                            <td>
+                                <?php echo $user['age'] ?>
+                            </td>
+                            <td>
+                                <?php echo $user['usetype'] ?>
+                            </td>
+                            <td>$
+                                <?php echo $user['bilanci'] ?>
+                            </td>
+                            <td>
+                               <a href="edit.php?id=<?php echo $user['id']; ?>"<button class="edit-button">Edit</button></a>
+                               <a href="delete.php?id=<?php echo $user['id']; ?>"<button class="delete-button" name="delete">Delete</button>
                             </td>
                         </tr>
-                    <?php } ?>
+                    <?php }
+
+            ?>
                 </tbody>
             </table>
 

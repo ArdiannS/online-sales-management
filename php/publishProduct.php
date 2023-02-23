@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,16 +61,49 @@
             <div class="divBuxheti">
                 <img src="../images/download.png" width="30px" alt="" height="30px" id="img2"
                     style=" padding-top: 5px;">
-                    <p>Llogaria ime</p>
+                    <?php
+                    session_start();
+                    include 'UserModel.php';
+                    $user = new UserModel();
+                    if (isset($_SESSION['username'])) {
+                    $useri = $user->getCurrentUser();
+                    ?>
+                    <p>
+                        <a href="profie.php">
+                            <?php echo $useri['username'] ?>
+                        </a>
+
+                    </p>
+                <?php } else { ?>
+
+                    <a href="logInForm.php">
+                        <p>Log in</p>
+                    </a>
+                <?php }
+                ?>
                 </a>
             </div>
 
             <div class="divBuxheti">
                 <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2"
                     style=" padding-top: 5px;">
-                    <a href="profie.html">
-                <p>0.0 </p>
-            </a>
+                    <a href="../templates/profie.html">
+                    <?php
+                if (isset($_SESSION['username'])) {
+                    ?>
+                    <p>
+                        <a href="profie.php">
+                            <?php echo $useri['bilanci'] . "$"?>
+                        </a>
+
+                    </p>
+                <?php } else { ?>
+
+                    <a href="">
+                        <p>Bilanci</p>
+                    </a>
+                <?php }
+                ?>
             </div>
         </div>
     </div>
