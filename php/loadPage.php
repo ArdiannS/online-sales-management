@@ -8,7 +8,7 @@
    }
     $index = isset($_POST['indexToLook'])?$_POST['indexToLook']:0;
       if($index <= 0){
-        echo "<script>window.location.href = 'http://localhost/prjekti__web/online-sales-management/php/products.php?i=0$URLoffset'</script>";
+        echo "<script>window.location.href = 'products.php?i=0$URLoffset'</script>";
         return;
       }
       include 'ProductModel.php';
@@ -22,5 +22,5 @@
       if(($index-1)*18 < $numberOfProducts)$index--;
       else $index = ceil($numberOfProducts/18)-1;
      }else $index = 0;
-     echo "<script>window.location.href = 'http://localhost/prjekti__web/online-sales-management/php/products.php?i=$index$URLoffset'</script>";
+     echo "<script>window.location.href = 'products.php?i=$index$URLoffset'</script>";
 ?>
