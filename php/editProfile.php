@@ -25,11 +25,11 @@ if (isset($_POST['update'])) {
         return;
     } else {
         $updated = $user->update();
-        if($updated){
+        if ($updated) {
             session_start();
             $_SESSION['username'] = $updated;
         }
-    
+
     }
 }
 $editingData = $user->editUserById($id);
@@ -46,11 +46,15 @@ $userData = $editingData;
                 ?>
                 <?php echo $userData['username'] . 's' ?> User
             </h1>
+            <label for="Username">Username:</label>
             <input type="text" name="username" id="username" placeholder="Username"
                 value="<?php echo $userData['username'] ?>">
+            <label for="Username">Password:</label>
             <input type="password" name="password" id="password" placeholder="Password"
                 value="<?php echo $userData['password'] ?>">
+            <label for="Username">Email:</label>
             <input type="email" name="email" id="email" placeholder="Email" value="<?php echo $userData['email'] ?>">
+            <label for="Username">Age:</label>
             <input type="number" name="age" id="age" placeholder="Age" value="<?php echo $userData['age'] ?>">
             <button name='update'>Edito</button>
         </div>
@@ -59,7 +63,6 @@ $userData = $editingData;
     <style>
         <head><style>
 
-        /* CSS styles */
         #formulari {
             max-width: 500px;
             margin: 0 auto;

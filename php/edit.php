@@ -4,8 +4,18 @@ include 'UserModel.php';
 $user = new UserModel();
 $id = $_GET['id'];
 $user->setId($id);
-
+$currentUser = mysqli_fetch_array($user->getUserById($id));
 if (isset($_POST['update'])) {
+  if($_POST['username'] == null || $_POST['password'] == null || $_POST['email'] == null || $_POST['age'] == null){
+    echo "<script>alert('The data has been overwritten.');
+    document.location='edit.php?id=$id'</script>";
+    return;
+  }
+  if($_POST['age'] < 0){
+    echo "<script>alert('The data has been overwritten.');
+    document.location='edit.php?id=$id'</script>";
+    return;
+  }
   $user->setUsername($_POST['username']);
   $user->setPassword($_POST['password']);
   $user->setEmail($_POST['email']);
@@ -64,8 +74,10 @@ $userData = $editingData;
         <input type="email" name="email" id="email" placeholder="Email" value="<?php echo $userData['email'] ?>">
         <label for="age">Age:</label>
         <input type="number" name="age" id="age" placeholder="Age" value="<?php echo $userData['age'] ?>">
-        <label for="usertype">UserType:</label>
-        <input type="text" name="usetype" id="usetype" placeholder="UserType" value="<?php echo $userData['usetype'] ?>">
+        <select name="usetype">
+             <option value="ADMIN">ADMIN</option>
+             <option value="USER">USER</option>
+        </select>
         <button name='update'>Edito</button>
       </div>
       <?php

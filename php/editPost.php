@@ -146,42 +146,50 @@
     $result = $product->getProductsByID($id);
     $product = mysqli_fetch_array($result);
     ?>
- 
+
 
 </head>
 
 <body>
 
-    <form method="POST" enctype='multipart/form-data'>
-        <h2 style="text-align: center;">Edit your post Info</h2>
-        <label for="title">Emri:</label>
-        <input type="text" id="title" name="emri" value=<?php echo $product['name'] ?>><br><br>
-        <label class="file-label" for="file-input">Your image</label>
-        <img src="../uploads/<?php echo $product['image'] ?>" alt="Default Image" id="preview"
-            style="height: 40%; width: 40%;">
-        <input type="file" id="file-input" name="foto" class="file-input" accept="image/*" value=<?php echo $product['price']?>>
-        <p id="filename"></p>
-        <label for="Price">Cmimi:</label>
-        <input type="text" id="author" name="cmimi" placeholder="Cmimi" value=<?php echo $product['price']?>><br><br>
-        <label for="Price">Lloji:</label> <br>
-        <select name="type">
-            <option value="">
-                <?php echo $product['type'] ?>  
-            </option>
-            <option value="Accessories">Accessories</option>
-            <option value="Devices">Devices</option>
-            <option value="Furniture">Furniture</option>
-            <option value="Music Instruments">Music Instruments</option>
-            <option value="Toys">Toys</option>
-            <option value="Animal Foods">Animal Foods</option>
-            <option value="Plants">Accessories</option>
-        </select><br><br>
-        <label for="Amount">Sasia:</label>
-        <input type="number" id="author" name="sasia" placeholder="Sasia" value=<?php echo $product['amount'] ?>><br><br>
-        <label for="description">Pershkrimi:</label><br>
-        <textarea id="content" name="description" rows="10"
-            cols="50"><?php echo $product['description'] ?></textarea><br><br>
+<form method="POST" enctype='multipart/form-data'>
+    <h2 style="text-align: center;">Edit your post Info</h2>
+    <label for="title">Emri:</label>
+    <input type="text" id="title" name="emri" value=<?php echo $product['name'] ?>><br><br>
 
-        <input type="submit" name="edit" value="Edit">
-    </form>
+    <?php
+    if (isset($_FILES['foto']) && $_FILES['foto']['size'] > 0) {
+        $newImage = $_FILES['foto']['name'];
+        move_uploaded_file($_FILES['foto']['tmp_name'], '../uploads/' . $newImage);
+    } else {
+        $newImage = $product['image'];
+    }
+    ?>
+    <label class="file-label" for="file-input">Your image</label>
+    <img src="../uploads/<?php echo $newImage ?>" alt="Default Image" id="preview" style="height: 40%; width: 40%;">
+    <input type="file" id="file-input" name="foto" class="file-input" accept="image/*" value=<?php echo $newImage ?>>
+    <p id="filename"></p>
+
+    <label for="Price">Cmimi:</label>
+    <input type="text" id="author" name="cmimi" placeholder="Cmimi" value=<?php echo $product['price'] ?>><br><br>
+    <label for="Price">Lloji:</label> <br>
+    <select name="type">
+        <option value="">
+            <?php echo $product['type'] ?>
+        </option>
+        <option value="Accessories">Accessories</option>
+        <option value="Devices">Devices</option>
+        <option value="Furniture">Furniture</option>
+        <option value="Music Instruments">Music Instruments</option>
+        <option value="Toys">Toys</option>
+        <option value="Animal Foods">Animal Foods</option>
+        <option value="Plants">Plants</option>
+    </select><br><br>
+    <label for="Amount">Sasia:</label>
+    <input type="number" id="author" name="sasia" placeholder="Sasia" value=<?php echo $product['amount'] ?>><br><br>
+    <label for="description">Pershkrimi:</label><br>
+    <textarea id="content" name="description" rows="10" cols="50"><?php echo $product['description'] ?></textarea><br><br>
+    <input type="submit" name="edit" value="Edit">
+</form>
+
 </body>
