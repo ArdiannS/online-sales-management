@@ -3,7 +3,6 @@
    include_once("UserModel.php");
    $database = new ProductModel();
    $productID = $_GET['product'];
-  
    $amount = $_POST['amount'];
    
    $dataInSQLIformat = $database->getProductsByID($productID);
@@ -13,6 +12,8 @@
      return;
    }
    $productData = mysqli_fetch_array($dataInSQLIformat);
+   $productPublisher = $user->getUserById($product['userID']);
+   $productPublisher = mysqli_fetch_array($productPublisher);
    $user = new UserModel();
    $currentUser = $user->getCurrentUser();
    $total = $amount * $productData['price'];
@@ -31,11 +32,12 @@
    else if(array_key_exists("buy-now", $_POST))buyNow($user, $database, $currentUser, $productData, $amount);
 
    function addToWishList(){
-
+       
    }
    function buyNow($user, $product, $currentUser, $productToBuy, $amount){
      $productToBuyID = $productToBuy['ID'];
      $user->decreaseBalanceById($currentUser['id'], $amount*$productToBuy['price']);
+     $user->increaseBalanceById($productPublisher['id'], $amount*$productToBuy['price']);
      $product->decreaseAmountOfProductById($productToBuyID, $amount);
      echo "<script>window.location.href = 'buyProduct.php?product=$productToBuyID'</script>";
    }

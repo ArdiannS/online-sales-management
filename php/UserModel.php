@@ -183,6 +183,15 @@ class UserModel extends DatabaseConnection
           return $e->getMessage();
        }
     }
+    public function increaseBalanceById($id, $amount){
+        try{
+            $query = "UPDATE users SET bilanci = bilanci - $amount WHERE id='$id'";
+            $stm = $this->conn->prepare($query);
+            $stm->execute();
+          }catch(Exception $e){
+             return $e->getMessage();
+          }
+    }
     public function update()
     {
         try {

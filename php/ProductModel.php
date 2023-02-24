@@ -127,6 +127,33 @@ class ProductModel extends DatabaseConnection
     $query = "SELECT * FROM products WHERE ID = '$ID'";
     return mysqli_query($this->conn, $query);
   }
+  public function addRating($rating){
+    $productID = $this->id;
+    $productDataQuery = "SELECT rating, numberOfRatings FROM products WHERE ID = $productID";
+    $productData = mysqli_query($this->conn, $productDataQuery);
+    $productData = $productData->fetch_array();
+    $numberOfRatings = $productData['numberOfRatings'];
+    $currentRating = $productData['rating'] == null?0:$productData['rating'];
+    $currentRatingSum = $currentRating*$numberOfRatings+$rating;
+    $numberOfRatings++;
+    $currentRating = $currentRatingSum/$numberOfRatings;
+    $productDataQuery = "UPDATE products SET rating = $currentRating, numberOfRatings = $numberOfRatings WHERE ID = $productID";
+    $stm = $this->conn->prepare($productDataQuery);
+    $stm->execute();
+  }
+  public function updateRating($rating, $previousRating){
+    $productID = $this->id;
+    $productDataQuery = "SELECT rating, numberOfRatings FROM products WHERE ID = $productID";
+    $productData = mysqli_query($this->conn, $productDataQuery);
+    $productData = $productData->fetch_array();
+    $numberOfRatings = $productData['numberOfRatings'];
+    $currentRating = $productData['rating'] == null?0:$productData['rating'];
+    $currentRatingSum = $currentRating*$numberOfRatings+$rating-$previousRating;
+    $currentRating = $currentRatingSum/$numberOfRatings;
+    $productDataQuery = "UPDATE products SET rating = $currentRating, numberOfRatings = $numberOfRatings WHERE ID = $productID";
+    $stm = $this->conn->prepare($productDataQuery);
+    $stm->execute();
+  }
   public function getYourOwnProducts($id)
   {
     $query = "SELECT * FROM products p where p.userID = $id";

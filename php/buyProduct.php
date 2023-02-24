@@ -123,6 +123,10 @@
                     <div class="main-cointaner-product-description">
                         <h1>Produkti:<?php echo $product['name'] ?></h1>
                         <p>Besueshmëria: 100%</p>
+                        <form action="rating.php?product=<?php echo $product_slug?>" method="post">
+                            <input id="rating" name="rating" min="1" max="5"type="number">
+                            <button>RATE</button>
+                        </form>
                         <p>
                             <?php echo "Postuar nga: " . $productPublisher['username'] ?>
                         </p>
