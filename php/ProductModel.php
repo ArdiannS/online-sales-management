@@ -107,7 +107,7 @@ class ProductModel extends DatabaseConnection
       $query = "UPDATE products SET amount = amount - $amount WHERE ID = '$id'";
       $stm = $this->conn->prepare($query);
       $stm->execute();
-    } catch (Exception $e) {
+    }catch (Exception $e) {
       return $e->getMessage();
     }
   }
@@ -126,6 +126,33 @@ class ProductModel extends DatabaseConnection
   {
     $query = "SELECT * FROM products WHERE ID = '$ID'";
     return mysqli_query($this->conn, $query);
+  }
+  public function addRating($rating){
+    $productID = $this->id;
+    $productDataQuery = "SELECT rating, numberOfRatings FROM products WHERE ID = $productID";
+    $productData = mysqli_query($this->conn, $productDataQuery);
+    $productData = $productData->fetch_array();
+    $numberOfRatings = $productData['numberOfRatings'];
+    $currentRating = $productData['rating'] == null?0:$productData['rating'];
+    $currentRatingSum = $currentRating*$numberOfRatings+$rating;
+    $numberOfRatings++;
+    $currentRating = $currentRatingSum/$numberOfRatings;
+    $productDataQuery = "UPDATE products SET rating = $currentRating, numberOfRatings = $numberOfRatings WHERE ID = $productID";
+    $stm = $this->conn->prepare($productDataQuery);
+    $stm->execute();
+  }
+  public function updateRating($rating, $previousRating){
+    $productID = $this->id;
+    $productDataQuery = "SELECT rating, numberOfRatings FROM products WHERE ID = $productID";
+    $productData = mysqli_query($this->conn, $productDataQuery);
+    $productData = $productData->fetch_array();
+    $numberOfRatings = $productData['numberOfRatings'];
+    $currentRating = $productData['rating'] == null?0:$productData['rating'];
+    $currentRatingSum = $currentRating*$numberOfRatings+$rating-$previousRating;
+    $currentRating = $currentRatingSum/$numberOfRatings;
+    $productDataQuery = "UPDATE products SET rating = $currentRating, numberOfRatings = $numberOfRatings WHERE ID = $productID";
+    $stm = $this->conn->prepare($productDataQuery);
+    $stm->execute();
   }
   public function getYourOwnProducts($id)
   {
@@ -162,8 +189,7 @@ class ProductModel extends DatabaseConnection
       $stm->execute([
         $this->emri, $this->pershkrimi, $this->image, $this->cmimi, $this->type, $this->amount, $this->id
       ]);
-      echo "<script>alert('dhenat jane Perditsuar me sukses');
-          document.location='index.php';</script>";
+      
     } catch (Exception $e) {
       echo "<script>alert('" . $e->getMessage() . "')";
       return null;

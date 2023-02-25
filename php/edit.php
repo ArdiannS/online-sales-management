@@ -17,14 +17,19 @@ if (isset($_POST['update'])) {
     return;
   }
   $user->setUsername($_POST['username']);
-  $user->setPassword($_POST['password']);
+  $user->setPassword(md5($_POST['password']));
   $user->setEmail($_POST['email']);
   $user->setAge($_POST['age']);
   $user->setUsertype($_POST['usetype']);
   $user->setId($id);
-  if ($user->existsByUsername($user->getUsername()) == $user->getUsername()) {
+  if($currentUser['username'] == $_POST['username']){
+    echo "<script>alert('The data has been overwritten.');
+    document.location='edit.php?id=$id'</script>";
+   return;
+  }
+  if ($user->existsByUsername($user->getUsername())) {
     echo "<script>alert('ky Username ekzsiton');
-     document.location='profie.php'</script>";
+     document.location='edit.php?id=$id'</script>";
     return;
   } else {
     $updatedUsername = $user->update();

@@ -183,6 +183,15 @@ class UserModel extends DatabaseConnection
           return $e->getMessage();
        }
     }
+    public function increaseBalanceById($id, $amount){
+        try{
+            $query = "UPDATE users SET bilanci = bilanci + $amount WHERE id='$id'";
+            $stm = $this->conn->prepare($query);
+            $stm->execute();
+          }catch(Exception $e){
+             return $e->getMessage();
+          }
+    }
     public function update()
     {
         try {
@@ -192,8 +201,6 @@ class UserModel extends DatabaseConnection
             $stm->execute([
                 $this->username, $this->password, $this->email, $this->age, $this->usetype, $this->id
             ]);
-            echo "<script>alert('dhenat jane Perditsuar me sukses');
-            document.location='index.php';</script>";
             return $this->username;
         } catch (Exception $e) {
             return null;

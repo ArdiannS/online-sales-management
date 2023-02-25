@@ -9,27 +9,69 @@ body{
 
 .cart-main-container{
     width: 100%;
-    height: 80%;
+    height: auto;
     display: flex;
+    background-color: lightgray;
  }
  .product-in-cart{
     width: 40%;
-    height: 10%;
+    height: 200px;
     display: flex;
+    margin-left: 6.66%;
+    background-color: darkslategray;
  }
  .product-card-image-container{
     width: 30%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
  }
  .product-card-image{
-   max-height: 100%;
-   max-width: 100%;
-   min-width: 99%;
-   min-height: 99%;
+   max-height: 90%;
+   max-width: 90%;
+   min-height: 89%;
+   min-width: 89%;
  }
  .product-card-additional-information{
    width: 60%;
    height: 100%;
+   color: white;
  }
- 
- 
+ .product-card-header{
+    margin-top: 2.6%;
+    width: 113%;
+    height: 30%;
+    background-color: #007777;
+    display: flex;
+    justify-content: flex-start;
+}
+.product-card-title{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.product-card-additional-information-container{
+    width: 100%;
+    height: 70%;
+    display: flex;
+}
+.product-card-additional-information-container-left{
+    width: 70%;
+    height: 80%;
+}
+.product-card-additional-information-container-right{
+    width: 30%;
+    height: 80%;
+    transform: translateX(43.5%);
+    background-color: #007777;
+}
+.product-card-type-price-container{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

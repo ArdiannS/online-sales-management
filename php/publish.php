@@ -1,7 +1,7 @@
 <?php
 session_start();
         if(!isset($_SESSION['username'])){
-            echo "<script>alert('U need to have an account !');window.location.href = 'publishProduct.php';</script>";
+            echo "<script>alert('You need to have an account!');window.location.href = 'publishProduct.php';</script>";
             return;
         }
         if($_POST['product-name'] == null || $_POST['product-price'] == null || $_POST['product-description'] == null||$_FILES['product-image'] == null || $_POST['product-amount'] == null){

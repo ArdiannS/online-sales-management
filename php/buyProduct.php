@@ -101,7 +101,6 @@
             color: white;
         }
     </style>
-
 </head>
 
 <body style="margin: 0;">
@@ -112,7 +111,6 @@
     if (isset($_SESSION['username'])) {
         $currentUser = $user->getCurrentUser();
     }
-
     ?>
     <div class="header">
         <div class="leftLogo">
@@ -220,6 +218,10 @@
                             <?php echo $product['name'] ?>
                         </h1>
                         <p>Besueshmëria: 100%</p>
+                        <form action="rating.php?product=<?php echo $product_slug ?>" method="post">
+                            <input id="rating" name="rating" min="1" max="5" type="number">
+                            <button>RATE</button>
+                        </form>
                         <p>
                             <?php echo "Postuar nga: " . $productPublisher['username'] ?>
                         </p>
@@ -227,12 +229,8 @@
                         <p>
                             <?php echo "Postuar ne : " . $product['postedAt'] ?>
                         </p>
-                        <p>
-                            <?php echo "Edituar ne : " . $product['last_edit_time'] ?>
-                        </p>
-
-
-
+                        <?php if ($currentUser['id'] == $product['userID'] || $currentUser['usetype'] != 'USER')
+                            echo "<p>Edituar ne : " . $product['last_edit_time'] . "</p>"; ?>
 
 
                         <div class="Pay">
@@ -330,7 +328,7 @@
                     <td>
                         <?php echo "Komentuar ne : " . $commentUser['commentedAt'] ?>
                     </td>
-                   
+
                     <td>
                         <?php $user = $_SESSION['username'];
                         if ($user == $productPublisher['username']) {
@@ -338,18 +336,18 @@
                             <a href="commentDelete.php?id=<?php echo $commentUser['ID']; ?>" <button class="delete-button"
                                 name="delete">Delete</button>
                                 <?php
-                                
-                        } else if($id == $commentUser['id']){
+
+                        } else if ($id == $commentUser['id']) {
                             ?>
-                            <a href="commentDelete.php?id=<?php echo $commentUser['ID']; ?>" <button class="delete-button"
-                                name="delete">Delete</button>
-                                <a href="editComment.php?id=<?php echo $commentUser['ID']; ?>" <button
-                                    class="edit-button">Edit</button></a>
-                                <?php
+                                    <a href="commentDelete.php?id=<?php echo $commentUser['ID']; ?>" <button class="delete-button"
+                                        name="delete">Delete</button>
+                                        <a href="editComment.php?id=<?php echo $commentUser['ID']; ?>" <button
+                                            class="edit-button">Edit</button></a>
+                                    <?php
                         }
-                    
+
                         ?>
-                    
+
 
                     </td>
                 </tr>

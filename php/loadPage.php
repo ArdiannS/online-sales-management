@@ -11,7 +11,7 @@
         echo "<script>window.location.href = 'products.php?i=0$URLoffset'</script>";
         return;
       }
-      include 'ProductModel.php';
+      include_once('ProductModel.php');
         $db = new ProductModel();
         $result = $db->getProducts();
         $numberOfProducts = 0;

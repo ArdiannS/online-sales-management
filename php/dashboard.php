@@ -42,7 +42,7 @@
                        <h3>Add users</h3>
                      </div>
                 </div>
-                  <div class="dashboard-div-button-container">       
+                  <div class="dashboard-div-button-container">
                      <div class="dashboard-div-button" id="list-users">
                        <h3>List users</h3>
                      </div>
@@ -63,7 +63,7 @@
                      </div>
                   </div>
             </div>
-        
+
         <script>
            document.getElementById('list-products').addEventListener('click',function(){
                 window.location.href = 'listProducts.php';
@@ -136,15 +136,13 @@
                                 <?php echo $user['bilanci'] ?>
                             </td>
                             <td>
-                                <a href="edit.php?id=<?php echo $user['id']; ?>" <button
-                                    class="edit-button">Edit</button></a>
-                                <a href="delete.php?id=<?php echo $user['id']; ?>" <button class="delete-button"
-                                    name="delete">Delete</button>
+                               <a href="edit.php?id=<?php echo $user['id']; ?>"><button class="edit-button">Edit</button></a>
+                               <a href="delete.php?id=<?php echo $user['id']; ?>"><button class="delete-button" name="delete">Delete</button>
                             </td>
                         </tr>
                     <?php }
 
-                ?>
+            ?>
                 </tbody>
             </table>
 
