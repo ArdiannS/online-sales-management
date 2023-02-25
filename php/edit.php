@@ -6,7 +6,7 @@ $id = $_GET['id'];
 $user->setId($id);
 $currentUser = mysqli_fetch_array($user->getUserById($id));
 if (isset($_POST['update'])) {
-  if($_POST['username'] == null || $_POST['password'] == null || $_POST['email'] == null  $_POST['age'] == null){
+  if($_POST['username'] == null || $_POST['password'] == null || $_POST['email'] == null || $_POST['age'] == null){
     echo "<script>alert('The data has been overwritten.');
     document.location='edit.php?id=$id'</script>";
     return;

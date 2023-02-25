@@ -54,13 +54,3 @@ echo "<script>alert('Updated not successfully.');
     document.location='editProfile.php?id=$id'</script>";
     return;
 ?>
-<!DOCTYPE html>
-<html>
-
-<head>
-</head>
-
-<body>
-</body>
-
-</html>

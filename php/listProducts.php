@@ -243,20 +243,23 @@
                 window.location.href = 'listProducts.php';
            });
            document.getElementById('add-products').addEventListener('click',function(){
-                window.location.href = 'addProducts.php';
+                window.location.href = 'publishProduct.php';
            });
            document.getElementById('list-users').addEventListener('click',function(){
                 window.location.href = 'dashboard.php';
            });
-           document.getElementById('list-addUsers').addEventListener('click',function(){
-                window.location.href = 'listProducts.php';
+           document.getElementById('add-users').addEventListener('click',function(){
+                window.location.href = 'addUser.php';
+           });
+           document.getElementById('contact-us').addEventListener('click',function(){
+                window.location.href = 'DashboardContactUs.php';
            });
           </script>
          </div>
         <!-- Add the content container -->
         <div class="content" style="background-color: gray;">
             <!-- Content here -->
-            <h1 style="text-align:center;">Your Products</h1>
+            <h1 style="text-align:center;">All products</h1>
             <table class="user-table">
                 <thead>
                     <tr>

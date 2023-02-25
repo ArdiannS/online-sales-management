@@ -25,6 +25,7 @@ $userData = $editingData;
                 ?>
                 <?php echo $userData['username'] . 's' ?> User
             </h1>
+            <label for="Username">Username:</label>
             <input type="text" name="username" id="username" placeholder="Username"
                 value="<?php echo $userData['username'] ?>">
             <input type="password" name="current_password" id="password" placeholder="Current password..."value="">
@@ -38,7 +39,6 @@ $userData = $editingData;
     <style>
         <head><style>
 
-        /* CSS styles */
         #formulari {
             max-width: 500px;
             margin: 0 auto;

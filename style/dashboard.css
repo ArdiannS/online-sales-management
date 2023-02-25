@@ -12,13 +12,11 @@ body{
     padding: 0;
 }
 
-/* Add styles for main container */
 .main-container {
     display: flex;
     height: 100vh;
 }
 
-/* Add styles for sidebar container */
 .sidebar {
     width: 20%;
     background-color: black;
@@ -26,7 +24,6 @@ body{
     padding: 20px;
 }
 
-/* Add styles for content container */
 .content {
     width: 80%;
     padding: 20px;
@@ -65,15 +62,7 @@ body{
 
 }
 
-/* .divBuxheti {
-    width: 45%;
-    background-color: #fafbfc;
-    align-items: center;
-    border-radius: 9px;
-    display: flex;
-    justify-content: center;
-    justify-content: space-around;
-} */
+
 .divBuxheti {
     display: flex;
     align-items: center;
@@ -186,3 +175,19 @@ body{
     width: 100%;
     text-decoration: none;
 }
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
