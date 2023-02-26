@@ -97,7 +97,10 @@
                         <th>Age</th>
                         <th>User Type</th>
                         <th>Bilanci</th>
+                        <th>Last Edit by</th>
                         <th>Action</th>
+
+
                     </tr>
                 </thead>
                 <?php
@@ -134,6 +137,9 @@
                             </td>
                             <td>$
                                 <?php echo $user['bilanci'] ?>
+                            </td>
+                            <td>
+                                <?php echo $user['lastEditBy'] ?>
                             </td>
                             <td>
                                <a href="edit.php?id=<?php echo $user['id']; ?>"><button class="edit-button">Edit</button></a>

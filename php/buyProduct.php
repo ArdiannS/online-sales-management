@@ -173,7 +173,7 @@
 
             <div class="divBuxheti">
                 <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2" style=" padding-top: 5px;">
-                <a href="../templates/profie.html">
+                <a href="profie.php">
                     <?php
                     if (isset($_SESSION['username'])) {
                         ?>
@@ -227,11 +227,14 @@
                         </p>
                         <p>Çmimi i transportit: <b>Free </b></p>
                         <p>
-                            
+
                             <?php echo "Postuar ne : " . $product['postedAt'] ?>
                         </p>
-                        <?php 
-                            echo "<p>Edituar ne : " . $product['last_edit_time'] . "</p>"; ?>
+                        <?php
+                        echo "<p>Edituar ne : " . $product['last_edit_time'] . "</p>"; ?>
+
+
+
 
 
                         <div class="Pay">
@@ -260,14 +263,16 @@
                                 Wishlist</button><br><br>
                             <button type="submit" name="buy-now" class="buy-now">Buy now</button>
                         </form>
+                        <h2>Rating:
+                            <?php echo round($product['rating'], 2) ?>/5(
+                            <?php echo $product['numberOfRatings'] ?>)<h2>
                     </div>
+
+
                 </div>
             </div>
 
-
-            </div>
-
-            <?php
+                <?php
         } else {
             echo "Product not found";
         }
@@ -280,152 +285,154 @@
 
 
 
-    <form action="" method="POST">
-        <label for="comment">Product Review:</label>
-        <textarea id="comment" name="comment" required></textarea>
-        <!-- <a href="comments.php"></a><input type="submit" value="Submit" name = "submit"> -->
-        <input type="submit" name="submit" value="Submit"></button>
-    </form>
-    <?php
-    include 'CommentModel.php';
-    $comment = new CommentModel();
-    $user = new UserModel();
-    if(isset($_SESSION['username'])){
-    $current = $user->getCurrentUser();
-    $id = $current[0];
-}
-    $product_slug = $_GET['product'];
-    if (isset($_POST["submit"])) {
-        $comment->setProductID($product_slug);
-        $comment->setUserID($id);
-        $comment->setcommentContent($_POST['comment']);
-        $comment->insert();
-    }
+        <form action="" method="POST">
+            <label for="comment">Product Review:</label>
+            <textarea id="comment" name="comment" required></textarea>
+            <!-- <a href="comments.php"></a><input type="submit" value="Submit" name = "submit"> -->
+            <input type="submit" name="submit" value="Submit"></button>
+        </form>
+        <?php
+        include 'CommentModel.php';
+        $comment = new CommentModel();
+        $user = new UserModel();
+        if (isset($_SESSION['username'])) {
+            $current = $user->getCurrentUser();
+            $id = $current[0];
+        }
+        $product_slug = $_GET['product'];
+        if (isset($_POST["submit"])) {
+            $comment->setProductID($product_slug);
+            $comment->setUserID($id);
+            $comment->setcommentContent($_POST['comment']);
+            $comment->insert();
+        }
 
-    $result = $comment->getCommentByProductId($product_slug);
-
-
-    ?>
+        $result = $comment->getCommentByProductId($product_slug);
 
 
-    <table>
-        <thead>
-            <tr>
-                <th>Username</th>
-                <th>Comment</th>
-                <th>Date</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                
-                <?php if(isset($_SESSION['username'])){ echo $id; ?> 
-                        <?php if ($result == null) return;?>
-                <?php foreach ($result as $commentUser) {
-                    ?>
-                    <td>
-                        <?php echo $commentUser['username'] ?>
-                    </td>
-                    <td>
-                        <?php echo $commentUser['commentContent'] ?>
-                    </td>
-                    <td>
-                        <?php echo "Komentuar ne : " . $commentUser['commentedAt'] ?>
-                    </td>
+        ?>
 
-                    <td>
-                        <?php if(isset($_SESSION['username'])){
-                        $user = $_SESSION['username'];
-                        if ($user == $productPublisher['username']) {
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Comment</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+                    <?php if (isset($_SESSION['username'])) {
+                        echo $id; ?>
+                        <?php if ($result == null)
+                            return; ?>
+                        <?php foreach ($result as $commentUser) {
                             ?>
-                            <a href="commentDelete.php?id=<?php echo $commentUser['ID']; ?>" <button class="delete-button"
-                                name="delete">Delete</button>
-                                <?php
+                            <td>
+                                <?php echo $commentUser['username'] ?>
+                            </td>
+                            <td>
+                                <?php echo $commentUser['commentContent'] ?>
+                            </td>
+                            <td>
+                                <?php echo "Komentuar ne : " . $commentUser['commentedAt'] ?>
+                            </td>
 
-                        } else if ($id == $commentUser['id']) {
-                            ?>
-                                    <a href="commentDelete.php?id=<?php echo $commentUser['ID']; ?>" <button class="delete-button"
-                                        name="delete">Delete</button>
-                                        <a href="editComment.php?id=<?php echo $commentUser['ID']; ?>" <button
-                                            class="edit-button">Edit</button></a>
-                                    <?php
+                            <td>
+                                <?php if (isset($_SESSION['username'])) {
+                                    $user = $_SESSION['username'];
+                                    if ($user == $productPublisher['username']) {
+                                        ?>
+                                        <a href="commentDelete.php?id=<?php echo $commentUser['ID']; ?>"> <button class="delete-button"
+                                                name="delete">Delete</button>
+                                            <?php
+
+                                    } else if ($id == $commentUser['id']) {
+                                        ?>
+                                                <a href="commentDelete.php?id=<?php echo $commentUser['ID']; ?>"> <button
+                                                        class="delete-button" name="delete">Delete</button>
+                                                    <a href="editComment.php?id=<?php echo $commentUser['ID']; ?>"> <button
+                                                            class="edit-button">Edit</button></a>
+                                                <?php
+                                    }
+                                }
+
+                                ?>
+
+
+                            </td>
+                        </tr>
+                        <?php
                         }
                     }
-
-                        ?>
-
-
-                    </td>
-                </tr>
-                <?php
-                }   
-                }
-                ?>
-        </tbody>
-    </table>
+                    ?>
+            </tbody>
+        </table>
 
 
 
-    <footer class="main-footer">
-        <div class="partners">
-            <div id="h3meet">
-                <h3>Meet our partners</h3>
-            </div>
-            <div class="imgHolder">
-                <img src="../images/msi.jpg" alt="" width="200px" id="id1">
-                <img src="../images/lenovo.png" alt="" width="200px" id="id2">
-                <img src="../images/stl.png" alt="" width="200px" id="id2">
-                <img src="../images/smsg.png" alt="" width="200px" id="id2">
+        <footer class="main-footer">
+            <div class="partners">
+                <div id="h3meet">
+                    <h3>Meet our partners</h3>
+                </div>
+                <div class="imgHolder">
+                    <img src="../images/msi.jpg" alt="" width="200px" id="id1">
+                    <img src="../images/lenovo.png" alt="" width="200px" id="id2">
+                    <img src="../images/stl.png" alt="" width="200px" id="id2">
+                    <img src="../images/smsg.png" alt="" width="200px" id="id2">
+
+                </div>
 
             </div>
 
-        </div>
 
 
+            <div class="divF">
+                <div class="Help">
+                    <img src="../images/logooo2.jpg" alt="" width="200px" id="img1">
 
-        <div class="divF">
-            <div class="Help">
-                <img src="../images/logooo2.jpg" alt="" width="200px" id="img1">
+                </div>
+                <div class="divHelp">
+                    <h3>Ndihma dhe Kontakti</h3>
+                    <a href="">
+                        <p>Probleme me llogarine ?</p>
+                    </a>
+                    <a href="">
+                        <p>Keni harruar Fjalkalimin</p>
+                    </a>
 
+                </div>
+                <div class="divH1">
+                    <h3>Programi partneritetit</h3>
+                    <a href="">
+                        <p>Behu partner</p>
+                    </a>
+                </div>
+                <div class="divH2">
+                    <h3>Rreth Nesh</h3>
+                    <a href="">
+                        <p>Rreth (Emrit te kompanise)</p>
+                    </a>
+                    <a href="">
+                        <p>Produktet</p>
+                    </a>
+                </div>
+                <div class="Pay">
+                    <h2>Menyrat tona te pageses</h2>
+                    <a href=""><img src="../images/raif.png" alt="" width="40px"></a>
+                    <img src="../images/nlb.jpeg" alt="" width="50px">
+                    <img src="../images/visa.jpg" alt="" width="35px">
+                    <img src="../images/visaE.png" alt="" width="35px">
+                    <img src="../images/mst.png" alt="" width="35px">
+                    <img src="../images/mst2.png" alt="" width="35px">
+                </div>
             </div>
-            <div class="divHelp">
-                <h3>Ndihma dhe Kontakti</h3>
-                <a href="">
-                    <p>Probleme me llogarine ?</p>
-                </a>
-                <a href="">
-                    <p>Keni harruar Fjalkalimin</p>
-                </a>
 
-            </div>
-            <div class="divH1">
-                <h3>Programi partneritetit</h3>
-                <a href="">
-                    <p>Behu partner</p>
-                </a>
-            </div>
-            <div class="divH2">
-                <h3>Rreth Nesh</h3>
-                <a href="">
-                    <p>Rreth (Emrit te kompanise)</p>
-                </a>
-                <a href="">
-                    <p>Produktet</p>
-                </a>
-            </div>
-            <div class="Pay">
-                <h2>Menyrat tona te pageses</h2>
-                <a href=""><img src="../images/raif.png" alt="" width="40px"></a>
-                <img src="../images/nlb.jpeg" alt="" width="50px">
-                <img src="../images/visa.jpg" alt="" width="35px">
-                <img src="../images/visaE.png" alt="" width="35px">
-                <img src="../images/mst.png" alt="" width="35px">
-                <img src="../images/mst2.png" alt="" width="35px">
-            </div>
-        </div>
-
-        </div>
+    </div>
     </footer>
 
 
