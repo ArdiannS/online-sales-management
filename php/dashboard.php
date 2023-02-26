@@ -34,18 +34,15 @@
             </ul>
         </div>
     </div>
-    <!-- Wrap everything in a main container -->
     <div class="main-container">
-        <!-- Add the sidebar container -->
         <div class="sidebar">
-            <!-- Sidebar content here -->
             <div class="dashboard-buttons-layout">
                 <div class="dashboard-div-button-container">
                      <div class="dashboard-div-button" id="add-users">
                        <h3>Add users</h3>
                      </div>
                 </div>
-                  <div class="dashboard-div-button-container">       
+                  <div class="dashboard-div-button-container">
                      <div class="dashboard-div-button" id="list-users">
                        <h3>List users</h3>
                      </div>
@@ -66,28 +63,29 @@
                      </div>
                   </div>
             </div>
-        
+
         <script>
            document.getElementById('list-products').addEventListener('click',function(){
                 window.location.href = 'listProducts.php';
            });
            document.getElementById('add-products').addEventListener('click',function(){
-                window.location.href = 'addProducts.php';
+                window.location.href = 'publishProduct.php';
            });
            document.getElementById('list-users').addEventListener('click',function(){
                 window.location.href = 'dashboard.php';
            });
-           document.getElementById('list-addUsers').addEventListener('click',function(){
-                window.location.href = 'listProducts.php';
+           document.getElementById('add-users').addEventListener('click',function(){
+                window.location.href = 'addUser.php';
+           });
+           document.getElementById('contact-us').addEventListener('click',function(){
+                window.location.href = 'DashboardContactUs.php';
            });
         </script>
 
 
 
         </div>
-        <!-- Add the content container -->
         <div class="content" style="background-color: gray;">
-            <!-- Content here -->
             <h1>Content</h1>
             <table class="user-table">
                 <thead>

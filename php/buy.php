@@ -11,10 +11,10 @@
      echo "<script>window.location.href = 'buyProduct.php?product=$productID';</script>";
      return;
    }
-   $productData = mysqli_fetch_array($dataInSQLIformat);
-   $productPublisher = $user->getUserById($product['userID']);
-   $productPublisher = mysqli_fetch_array($productPublisher);
    $user = new UserModel();
+   $productData = mysqli_fetch_array($dataInSQLIformat);
+   $productPublisher = $user->getUserById($productData['userID']);
+   $productPublisheri = mysqli_fetch_array($productPublisher);
    $currentUser = $user->getCurrentUser();
    $total = $amount * $productData['price'];
    if($amount > $productData['amount']){
@@ -29,15 +29,15 @@
   
   
    if(array_key_exists("add-to-wishlist", $_POST))addToWishlist();
-   else if(array_key_exists("buy-now", $_POST))buyNow($user, $database, $currentUser, $productData, $amount);
+   else if(array_key_exists("buy-now", $_POST))buyNow($user, $database, $currentUser, $productData, $amount,$productPublisheri);
 
    function addToWishList(){
        
    }
-   function buyNow($user, $product, $currentUser, $productToBuy, $amount){
+   function buyNow($user, $product, $currentUser, $productToBuy, $amount,$productPublisheri){
      $productToBuyID = $productToBuy['ID'];
      $user->decreaseBalanceById($currentUser['id'], $amount*$productToBuy['price']);
-     $user->increaseBalanceById($productPublisher['id'], $amount*$productToBuy['price']);
+     $user->increaseBalanceById($productPublisheri['id'], $amount*$productToBuy['price']);
      $product->decreaseAmountOfProductById($productToBuyID, $amount);
      echo "<script>window.location.href = 'buyProduct.php?product=$productToBuyID'</script>";
    }

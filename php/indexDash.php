@@ -17,7 +17,7 @@ if (isset($_SESSION['username'])) {
     <link rel="stylesheet" type="text/css" href="../style/style.css">
     <link rel="stylesheet" type="text/css" href="../style/secondSlider.css">
     <script src="../js/secondSlider.js"></script>
-    <script src="./js/script.js"></script>
+    <script src="../js/script.js"></script>
     <style>
         @media screen and (min-width: 768px) {
             body {

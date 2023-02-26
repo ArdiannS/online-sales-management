@@ -5,7 +5,6 @@
     $product->setId($id);
     $productData = $product->getProductsById($id);
     if($productData != null) $productData = mysqli_fetch_array($productData);
-
         $name = $_POST['emri'];
         $price = $_POST['cmimi'];
         $image = $_FILES['foto'];
