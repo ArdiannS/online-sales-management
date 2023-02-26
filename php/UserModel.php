@@ -9,13 +9,14 @@ class UserModel extends DatabaseConnection
     private $age;
     private $bilanci;
     private $usetype;
-
+    private $lastEditedBy;
 
     public $conn;
 
-    public function __construct($id = ' ', $username = ' ', $email = ' ', $password = ' ', $age = ' ', $usetype = ' ',$bilanci = ' ')
+    public function __construct($id = ' ', $username = ' ', $email = ' ', $password = ' ', $age = ' ', $usetype = ' ',$bilanci = ' ', $lastEditedBy = ' ')
     {
         $this->id = $id;
+        $this->lastEditedBy = $lastEditedBy;
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
@@ -28,6 +29,8 @@ class UserModel extends DatabaseConnection
     public function getBilanci(){
         return $this->bilanci;
     }
+    public function getLastEditedBy(){return $this->lastEditedBy;}
+    public function setLastEditedBy($t){$this->lastEditedBy = $t;}
     public function setBilanci($b){
         $this->bilanci = $b;
     }
@@ -196,10 +199,10 @@ class UserModel extends DatabaseConnection
     {
         try {
             
-            $sqlStm = "UPDATE users SET username=?,password=?, email=?, age=?,usetype=? where id=?";
+            $sqlStm = "UPDATE users SET username=?,password=?, email=?, age=?,usetype=?, lastEditedBy=? where id=?";
             $stm = $this->conn->prepare($sqlStm);
             $stm->execute([
-                $this->username, $this->password, $this->email, $this->age, $this->usetype, $this->id
+                $this->username, $this->password, $this->email, $this->age, $this->usetype, $this->lastEditedBy, $this->id
             ]);
             return $this->username;
         } catch (Exception $e) {

@@ -4,6 +4,8 @@ include 'UserModel.php';
 $user = new UserModel();
 $id = $_GET['id'];
 $user->setId($id);
+$admin = $user->getCurrentUser();
+$adminID = $admin['id'];
 $currentUser = mysqli_fetch_array($user->getUserById($id));
 if (isset($_POST['update'])) {
   if($_POST['username'] == null || $_POST['password'] == null || $_POST['email'] == null || $_POST['age'] == null){
@@ -22,9 +24,11 @@ if (isset($_POST['update'])) {
   $user->setAge($_POST['age']);
   $user->setUsertype($_POST['usetype']);
   $user->setId($id);
+  $user->setLastEditedBy($admin['username']);
   if($currentUser['username'] == $_POST['username']){
+    $u = $user->update();
     echo "<script>alert('The data has been overwritten.');
-    document.location='edit.php?id=$id'</script>";
+    document.location='dashboard.php'</script>";
    return;
   }
   if ($user->existsByUsername($user->getUsername())) {
@@ -33,13 +37,10 @@ if (isset($_POST['update'])) {
     return;
   } else {
     $updatedUsername = $user->update();
+    echo "<script>alert('The data has been overwritten.');
+     document.location='dashboard.php'</script>";
+    return;
     if ($updatedUsername != null) {
-      session_destroy();
-      session_start();
-      if ($updatedUsername->getUsertype() != 'USER') {
-        $_SESSION['username'] = $updatedUsername;
-        return;
-      }
       $useri = $user->getCurrentUser();
     } else {
       echo "<script>alert('Ka ndodhur nje problem');
