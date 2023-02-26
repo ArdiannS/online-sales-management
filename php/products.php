@@ -105,7 +105,7 @@
             <div class="divBuxheti">
                 <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2"
                     style=" padding-top: 5px;">
-                    <a href="../templates/cart.html">
+                    <a href="cart.php">
                     <?php
                       if (isset($_SESSION['username'])) {
                     ?>

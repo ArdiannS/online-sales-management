@@ -31,10 +31,10 @@
                 <a href="index.php">
                     <li>Home</li>
                 </a>
-                <a href="OurStory.html">
+                <a href="../templates/OurStory.html">
                     <li>About us</li>
                 </a>
-                <a href="AboutUs.html">
+                <a href="AboutUs.php">
                     <li>Contact us</li>
                 </a>
 
@@ -80,7 +80,7 @@
             <div class="divBuxheti">
                 <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2"
                     style=" padding-top: 5px;">
-                    <a href="../templates/profie.html">
+                    <a href="profie.php">
                     <?php
                 if (isset($_SESSION['username'])) {
                     ?>
@@ -161,6 +161,7 @@
                   <button type="submit" name="add-to-wishlist"class="add-to-wishlist">Add to Wishlist</button><br><br>
                   <button type="submit" name="buy-now"class="buy-now">Buy now</button>
                 </form>
+                <h2>Rating: <?php echo round($product['rating'],2)?>/5(<?php echo $product['numberOfRatings']?>)<h2>
             </div>
         </div>
     </div>  

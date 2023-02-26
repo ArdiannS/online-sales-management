@@ -49,7 +49,7 @@ if (isset($_SESSION['username'])) {
                 <a href="index.php">
                     <li>Home</li>
                 </a>
-                <a href="OurStory.html">
+                <a href="../templates/OurStory.html">
                     <li>About us</li>
                 </a>
                 <a href="AboutUs.php">

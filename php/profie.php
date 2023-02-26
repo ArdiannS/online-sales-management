@@ -69,7 +69,7 @@ session_start(); ?>
             <div class="divBuxheti">
                 <img src="../images/download.png" width="30px" alt="" height="30px" id="img2"
                     style=" padding-top: 5px;">
-                <a href="logInForm.html">
+                <a href="logInForm.php">
                     <?php
                     if (isset($_SESSION['username'])) {
 
@@ -88,7 +88,7 @@ session_start(); ?>
 
             <div class="divBuxheti">
                 <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2" style=" padding-top: 5px;">
-                <a href="profie.html">
+                <a href="profie.php">
                     <p>
                         <?php echo $result['bilanci'] . "$" ?>
                     </p>

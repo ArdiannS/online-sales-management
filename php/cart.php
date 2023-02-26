@@ -35,10 +35,10 @@
                 <a href="index.php">
                     <li>Home</li>
                 </a>
-                <a href="OurStory.html">
+                <a href="../templates/OurStory.html">
                     <li>About us</li>
                 </a>
-                <a href="AboutUs.html">
+                <a href="AboutUs.php">
                     <li>Contact us</li>
                 </a>
 
@@ -67,7 +67,7 @@
             <div class="divBuxheti">
                 <img src="../images/iStok.jpg" width="30px" alt="" height="30px" id="img2"
                     style=" padding-top: 5px;">
-                    <a href="profie.html">
+                    <a href="profie.php">
                 <p><?php echo ($currentUser['bilanci'] == null?0:$currentUser['bilanci']).""?> </p>
             </a>
             </div>
