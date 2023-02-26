@@ -140,8 +140,7 @@
 
         <div class="search">
             <input type="text" class="searchTerm" placeholder="Kerko te gjitha produktet...">
-            <button type="submit" class="searchButton"><img src="../images/search (2).png"
-                    style="width: 125%; padding-right: 20px;" alt="">
+            <button type="submit" class="searchButton"><img src="../images/search (2).png" style="width: 125%; padding-right: 20px;" alt="">
             </button>
         </div>
 
@@ -329,15 +328,15 @@
                         <?php $user = $_SESSION['username'];
                         if ($user == $productPublisher['username']) {
                             ?>
-                            <a href="commentDelete.php?id=<?php echo $commentUser['ID']; ?>" <button class="delete-button"
+                            <a href="commentDelete.php?id=<?php echo $commentUser['ID']; ?>"> <button class="delete-button"
                                 name="delete">Delete</button>
                                 <?php
 
                         } else if ($id == $commentUser['id']) {
                             ?>
-                                    <a href="commentDelete.php?id=<?php echo $commentUser['ID']; ?>" <button class="delete-button"
+                                    <a href="commentDelete.php?id=<?php echo $commentUser['ID']; ?>"> <button class="delete-button"
                                         name="delete">Delete</button>
-                                        <a href="editComment.php?id=<?php echo $commentUser['ID']; ?>" <button
+                                        <a href="editComment.php?id=<?php echo $commentUser['ID']; ?>"> <button
                                             class="edit-button">Edit</button></a>
                                     <?php
                         }
