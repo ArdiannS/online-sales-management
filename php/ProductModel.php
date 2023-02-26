@@ -136,6 +136,7 @@ class ProductModel extends DatabaseConnection
     $currentRating = $productData['rating'] == null?0:$productData['rating'];
     $currentRatingSum = $currentRating*$numberOfRatings+$rating;
     $numberOfRatings++;
+    echo $numberOfRatings;
     $currentRating = $currentRatingSum/$numberOfRatings;
     $productDataQuery = "UPDATE products SET rating = $currentRating, numberOfRatings = $numberOfRatings WHERE ID = $productID";
     $stm = $this->conn->prepare($productDataQuery);

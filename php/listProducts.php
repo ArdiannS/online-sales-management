@@ -279,6 +279,9 @@
                     $user = new UserModel();
                     $products = new ProductModel();
                     $productData = $products->getProducts();
+                    if($productData == null){
+                        return;
+                    }
                     foreach ($productData as $produkti) {
                         ?>
                     <tbody>

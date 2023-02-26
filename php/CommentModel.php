@@ -68,6 +68,7 @@ class CommentModel extends DatabaseConnection
     }
     function getCommentByProductId($product)
     {
+        $data = null;
         $query = "SELECT * FROM comments inner join users on comments.userID = users.id  where productID = $product";
         if ($sql = $this->conn->query($query)) {
             while ($row = mysqli_fetch_assoc($sql)) {

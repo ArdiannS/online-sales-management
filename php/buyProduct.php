@@ -125,10 +125,10 @@
                 <a href="index.php">
                     <li>Home</li>
                 </a>
-                <a href="OurStory.html">
+                <a href="../templates/OurStory.html">
                     <li>About us</li>
                 </a>
-                <a href="AboutUs.html">
+                <a href="AboutUs.php">
                     <li>Contact us</li>
                 </a>
 
@@ -227,9 +227,10 @@
                         </p>
                         <p>Çmimi i transportit: <b>Free </b></p>
                         <p>
+                            
                             <?php echo "Postuar ne : " . $product['postedAt'] ?>
                         </p>
-                        <?php if ($currentUser['id'] == $product['userID'] || $currentUser['usetype'] != 'USER')
+                        <?php 
                             echo "<p>Edituar ne : " . $product['last_edit_time'] . "</p>"; ?>
 
 
@@ -289,8 +290,10 @@
     include 'CommentModel.php';
     $comment = new CommentModel();
     $user = new UserModel();
+    if(isset($_SESSION['username'])){
     $current = $user->getCurrentUser();
     $id = $current[0];
+}
     $product_slug = $_GET['product'];
     if (isset($_POST["submit"])) {
         $comment->setProductID($product_slug);
@@ -316,7 +319,9 @@
         </thead>
         <tbody>
             <tr>
-                <?php echo $id; ?>
+                
+                <?php if(isset($_SESSION['username'])){ echo $id; ?> 
+                        <?php if ($result == null) return;?>
                 <?php foreach ($result as $commentUser) {
                     ?>
                     <td>
@@ -330,7 +335,8 @@
                     </td>
 
                     <td>
-                        <?php $user = $_SESSION['username'];
+                        <?php if(isset($_SESSION['username'])){
+                        $user = $_SESSION['username'];
                         if ($user == $productPublisher['username']) {
                             ?>
                             <a href="commentDelete.php?id=<?php echo $commentUser['ID']; ?>" <button class="delete-button"
@@ -345,6 +351,7 @@
                                             class="edit-button">Edit</button></a>
                                     <?php
                         }
+                    }
 
                         ?>
 
@@ -352,6 +359,7 @@
                     </td>
                 </tr>
                 <?php
+                }   
                 }
                 ?>
         </tbody>
